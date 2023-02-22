@@ -1,0 +1,12 @@
+.title {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+
+    color: blue;
+    font-family: sans-serif;
+    font-size: 50px;
+}

@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "69d44f27-fae7-45ec-87ad-04dc0f5bb47d",
+		"name": "CS555 Agile Titans",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}",
+					"host": [
+						"{{server}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userName\": \"z\",\n    \"email\": \"z@vishw.site\",\n    \"password\": \"zzz\",\n    \"lastName\": \"zz\",\n    \"firstName\": \"z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}user/signup",
+					"host": [
+						"{{server}}user"
+					],
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userName\": \"z\",\n    \"email\": \"z@vishw.site\",\n    \"password\": \"zzz\",\n    \"lastName\": \"zz\",\n    \"firstName\": \"z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}user/login",
+					"host": [
+						"{{server}}user"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
