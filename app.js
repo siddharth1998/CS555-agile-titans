@@ -4,6 +4,7 @@ import morgan from "morgan";
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { router as userRouter} from "./routes/user.js";
+import { router as taskRouter } from "./routes/Task.js";
 /** This import will automatically create a database connection for us :) */
 import * as dB from "./models/connection.js";
 
@@ -24,3 +25,4 @@ app.use(express.static('public'));
 app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
 app.use("/user", userRouter);
+app.use("/task", taskRouter);
