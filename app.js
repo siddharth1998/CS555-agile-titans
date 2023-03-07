@@ -28,6 +28,9 @@ app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 /** This is where we can put our React app or normal HTML, CSS, JS website inside the public folder. */
 app.get("/ticket", (req, res) => res.sendFile(`${__dirname}/public/issue.html`));
 
+/** This is where we can put our React app or normal HTML, CSS, JS website inside the public folder. */
+app.get("/customerCare", (req, res) => res.sendFile(`${__dirname}/public/customerCare.html`));
+
 app.use("/user", userRouter);
 app.use("/task", taskRouter);
 app.use("/form", ticketRouter);
