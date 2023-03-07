@@ -3,6 +3,7 @@ import { PORT } from "./config.js";
 import morgan from "morgan";
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { router as ticketRouter } from "./routes/form.js";
 import { router as userRouter} from "./routes/user.js";
 import { router as taskRouter } from "./routes/Task.js";
 /** This import will automatically create a database connection for us :) */
@@ -24,5 +25,9 @@ app.use(express.static('public'));
 /** This is where we can put our React app or normal HTML, CSS, JS website inside the public folder. */
 app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
+/** This is where we can put our React app or normal HTML, CSS, JS website inside the public folder. */
+app.get("/ticket", (req, res) => res.sendFile(`${__dirname}/public/issue.html`));
+
 app.use("/user", userRouter);
 app.use("/task", taskRouter);
+app.use("/form", ticketRouter);
