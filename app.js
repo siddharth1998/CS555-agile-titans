@@ -1,6 +1,6 @@
-import express from "express";
+import express from "express";// http web server
 import { PORT } from "./config.js";
-import morgan from "morgan";
+import morgan from "morgan";// for logging
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { router as userRouter} from "./routes/user.js";
@@ -12,15 +12,23 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
-app.listen(PORT, () => console.log(`Server has started on port : ${PORT}`));
+app.use((req, res, next) => {
+    if (req.originalUrl.startsWith("/photoUpload")) {
+        next();// to skip the code 
+    } else {
+        express.json()(req, res, next);// to only use json 
+    }
+});
 
-app.use(morgan("dev"));
+app.listen(PORT, () => console.log(`Server has started on port : ${PORT}`));// port expose
+
+app.use(morgan("dev"));// middleware to send each reponse via middleware for LOGGING 
 
 app.use(express.static('public'));
 
 /** This is where we can put our React app or normal HTML, CSS, JS website inside the public folder. */
-app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
+app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));// route 
+
 
 app.use("/user", userRouter);

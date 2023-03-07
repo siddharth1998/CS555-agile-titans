@@ -8,7 +8,7 @@ router.post("/signup", async (req, res) => {
     try {
         if (!req.body) res.status(400).json({ status : 'error', message : "No user details are sent" });
 
-        let user = await create(req.body);
+        let user = await create(req.body);// user payload
         return res.status(201).json({ status: 'success', message: 'user created successfully', user });
     } catch (err) {
         console.error(`Error while creating a new user`);
