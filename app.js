@@ -7,6 +7,7 @@ import { router as userRouter} from "./routes/user.js";
 import { router as taskRouter } from "./routes/Task.js";
 /** This import will automatically create a database connection for us :) */
 import * as dB from "./models/connection.js";
+import { router as projectRouter } from "./routes/Project.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -26,3 +27,4 @@ app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
 app.use("/user", userRouter);
 app.use("/task", taskRouter);
+app.use("/project",projectRouter);
