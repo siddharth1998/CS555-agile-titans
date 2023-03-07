@@ -6,10 +6,6 @@ const ticketSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    password: {
-        type: String,
-        required: true
-    },
     email: {
         type: String,
         required: true,
