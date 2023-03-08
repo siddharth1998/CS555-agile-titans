@@ -1,12 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
-import Auth from './components/Auth';
+import ContractList from './components/ContractList';
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <Auth></Auth>
-    </div>
+    <Router>
+      <div className="App">
+        {/* <Auth></Auth> */}
+        <ContractList></ContractList>
+      </div>
+    </Router>
   );
 }
 

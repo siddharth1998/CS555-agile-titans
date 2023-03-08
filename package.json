@@ -20,6 +20,7 @@
   "homepage": "https://github.com/siddharth1998/CS555-agile-titans#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongoose": "^6.9.3",
     "morgan": "^1.10.0",
