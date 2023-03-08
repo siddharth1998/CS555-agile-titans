@@ -8,7 +8,8 @@ const findContractByFirstParty = async (firstParty) => {
   return contractList;
 }
 
-const createContractDetail = (contract) => new contractListModel(contract).save();
+const createContractDetail = (contract) =>
+  new contractDetailsModel(contract).save();
 
 
 export { createContractList, findContractByFirstParty, createContractDetail };
