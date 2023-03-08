@@ -8,6 +8,7 @@
   <li>Jay</li>
   <li>Aayushi</li>
   <li>Tanvisha</li>
+  <li>Ning Zhang</li>
 </ol>
 
 ## Asana Board
