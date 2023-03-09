@@ -1,13 +1,16 @@
 import './App.css';
 import ContractList from './components/ContractList';
-import { BrowserRouter as Router } from "react-router-dom";
+import Auth from './components/Auth';
+import Issue from './components/Issue';
+import { HashRouter as Router, Route, } from "react-router-dom";
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        {/* <Auth></Auth> */}
-        <ContractList></ContractList>
+      <div>
+        <Route exact path="/" component={Auth} />
+        <Route path="/contract" component={ContractList} />
+        <Route path="/issue" component={Issue} />
       </div>
     </Router>
   );

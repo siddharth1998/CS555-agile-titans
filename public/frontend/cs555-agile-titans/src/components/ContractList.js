@@ -11,8 +11,6 @@ const ContractList = () => {
       redirect: "follow",
     };
 
-    if (contractList.length > 0) return;
-
     fetch("http://localhost:3001/contract", requestOptions)
       .then((response) => response.text())
       .then((result) => {
@@ -25,7 +23,7 @@ const ContractList = () => {
         };});
         setContractList(result.contractList);})
       .catch((error) => console.log("error", error));
-  }, [contractList]);
+  }, []);
 
   const handleSubmit = () => {
     navigate("/contract/create");
