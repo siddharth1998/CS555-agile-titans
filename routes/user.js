@@ -53,6 +53,7 @@ router.post("/auth/login", async (req, res) => {
       .status(401)
       .json({ status: "error", message: "Invalid Credentials" });
   } catch (err) {
+    if (err === "user not found") return res.status(401).json({ status: "error", message: "Unauthorized" });
     console.error(`Error while logging user`);
     console.error(err);
     return res.status(500).json({ status: "error", message: err });
