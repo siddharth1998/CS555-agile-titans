@@ -7,7 +7,7 @@ console.log("Will this be run everytime ?");
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const privateKey = fs.readFileSync(path.join(__dirname, '..', 'jwt_signing_key'));
 
-const getAuthToken = payload => jwt.sign(payload, privateKey, { expiresIn: '1m' });
+const getAuthToken = payload => jwt.sign(payload, privateKey, { expiresIn: '1d' });
 
 const validate = (req, res, next) => {
     const token = req.header("Auth");
