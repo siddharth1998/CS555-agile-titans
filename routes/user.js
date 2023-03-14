@@ -1,11 +1,12 @@
 import express from "express";
 import { create, validate } from "../services/user.js";
 import { userModel } from "../models/user.js";
+import { getAuthToken } from "../services/auth.js";
 
 const router = express.Router();
 
-/** /user/signup  */
-router.post("/signup", async (req, res) => {
+/** /user/auth/signup  */
+router.post("/auth/signup", async (req, res) => {
   try {
     if (!req.body)
       res
@@ -23,8 +24,8 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-/** /user/login */
-router.post("/login", async (req, res) => {
+/** /user/auth/login */
+router.post("/auth/login", async (req, res) => {
   try {
     if (!req.body)
       return res
@@ -42,11 +43,12 @@ router.post("/login", async (req, res) => {
         .json({ status: "error", message: "Password is required" });
 
     let valid = await validate(req.body.email, req.body.password);
+    let { password, ...rest } = req.body;
 
     if (valid)
       return res
         .status(200)
-        .json({ status: "success", message: "user logged in successfully" });
+        .json({ status: "success", message: "user logged in successfully", token: getAuthToken(rest) });
     return res
       .status(401)
       .json({ status: "error", message: "Invalid Credentials" });
