@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { fetchSomething } from "../services/fetchService";
+import { SERVER_URL } from '../config';
 
 const ContractList = () => {
   const navigate = useNavigate();
@@ -11,21 +13,18 @@ const ContractList = () => {
       redirect: "follow",
     };
 
-    if (contractList.length > 0) return;
-
-    fetch("http://localhost:3001/contract", requestOptions)
-      .then((response) => response.text())
-      .then((result) => {
-        result =  JSON.parse(result);
-        result.contractList = result.contractList.map(c => { return {
+    fetchSomething(`${SERVER_URL}contract`, requestOptions, result => {
+      result.contractList = result.contractList.map(c => {
+        return {
           ...c,
           dateSigned: new Date(c.dateSigned).toDateString(),
           startDate: new Date(c.startDate).toDateString(),
           endDate: new Date(c.endDate).toDateString(),
-        };});
-        setContractList(result.contractList);})
-      .catch((error) => console.log("error", error));
-  }, [contractList]);
+        };
+      });
+      setContractList(result.contractList);
+    }, err => console.log("error", err))
+  }, []);
 
   const handleSubmit = () => {
     navigate("/contract/create");

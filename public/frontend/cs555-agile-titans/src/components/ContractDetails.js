@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchSomething } from "../services/fetchService";
+import { SERVER_URL } from '../config';
 
 const ContractDetails = () => {
   const [error, setError] = useState("");
@@ -38,10 +40,11 @@ const ContractDetails = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3001/contract/details/create", requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+    fetchSomething(`${SERVER_URL}contract/details/create`, requestOptions, res => {
+      console.log(res);
+    }, err => {
+      console.log(err);
+    });
   };
 
   const handleSubmit = (e) => {
@@ -70,7 +73,7 @@ const ContractDetails = () => {
             <div class="mb-3 row">
               <label for="contractNo" class="col-sm-2 col-form-label">Contract No.</label>
               <div class="col-sm-3">
-                <input type="text" class="form-control" id="contractNo" ref={contractNoRef} value="LEASE0001"/>
+                <input type="text" class="form-control" id="contractNo" ref={contractNoRef} value="LEASE0001" />
               </div>
             </div>
             <div>
@@ -78,23 +81,23 @@ const ContractDetails = () => {
               <div class="mb-3 row">
                 <div class="col-sm-3">
                   <label for="dateSigned" class="visually-hidden">Date Signed</label>
-                  <input type="text" class="form-control" id="dateSigned" ref={dateSignedRef} value="2023-01-01"/>
+                  <input type="text" class="form-control" id="dateSigned" ref={dateSignedRef} value="2023-01-01" />
                 </div>
                 <div class="col-sm-3">
-                  , by and between 
+                  , by and between
                 </div>
                 <div class="col-sm-3">
                   <label for="firstPartyName" class="visually-hidden">Party A</label>
-                  <input type="text" class="form-control" id="firstPartyName" ref={firstPartyRef} value="AMD"/>
+                  <input type="text" class="form-control" id="firstPartyName" ref={firstPartyRef} value="AMD" />
                 </div>
                 <div class="col-sm-3">
-                  , (“Party A”), and 
+                  , (“Party A”), and
                 </div>
-              </div>  
+              </div>
               <div class="mb-3 row">
                 <div class="col-sm-3">
                   <label for="secondPartyName" class="visually-hidden">Party B</label>
-                  <input type="text" class="form-control" id="secondPartyName" ref={secondPartyRef} value="Nick"/>
+                  <input type="text" class="form-control" id="secondPartyName" ref={secondPartyRef} value="Nick" />
                 </div>
                 <div class="col-sm-9">
                   , (“Party B”), collectively referred to herein as the "Parties".
@@ -112,7 +115,7 @@ const ContractDetails = () => {
               </div>
               <div class="col-sm-2">
                 <label for="paymentAmount" class="visually-hidden">Payment Amount</label>
-                <input type="text" class="form-control" id="paymentAmount" ref={paymentAmountRef} value="100000"/>
+                <input type="text" class="form-control" id="paymentAmount" ref={paymentAmountRef} value="100000" />
               </div>
               <div class="col-sm-5">
                 for the services provided by Party A.
@@ -126,7 +129,7 @@ const ContractDetails = () => {
               </div>
               <div class="col-sm-3">
                 <label for="noticePeriod" class="visually-hidden">Notice Period</label>
-                <input type="text" class="form-control" id="noticePeriod" ref={noticePeriodRef} value="30"/>
+                <input type="text" class="form-control" id="noticePeriod" ref={noticePeriodRef} value="30" />
               </div>
               <div class="col-sm-5">
                 days' written notice to the other Party.
@@ -136,21 +139,21 @@ const ContractDetails = () => {
             <h2>Term</h2>
             <div>
               <div class="mb-3 row">
-              <div class="col-sm-5">
-                This Agreement shall commence on
+                <div class="col-sm-5">
+                  This Agreement shall commence on
+                </div>
+                <div class="col-sm-3">
+                  <label for="startDate" class="visually-hidden">Start Date</label>
+                  <input type="text" class="form-control" id="startDate" ref={startDateRef} value="2023-01-01" />
+                </div>
+                <div class="col-sm-4">
+                  , and shall continue until
+                </div>
               </div>
-              <div class="col-sm-3">
-                <label for="startDate" class="visually-hidden">Start Date</label>
-                <input type="text" class="form-control" id="startDate" ref={startDateRef} value="2023-01-01"/>
-              </div>
-              <div class="col-sm-4">
-                , and shall continue until
-              </div>
-            </div>
-            <div class="mb-3 row">
+              <div class="mb-3 row">
                 <div class="col-sm-3">
                   <label for="endDate" class="visually-hidden">End Date</label>
-                  <input type="text" class="form-control" id="endDate" ref={endDateRef} value="2023-12-31"/>
+                  <input type="text" class="form-control" id="endDate" ref={endDateRef} value="2023-12-31" />
                 </div>
                 <div class="col-sm-9">
                   , unless terminated earlier in accordance with this Agreement.
@@ -182,7 +185,7 @@ const ContractDetails = () => {
                 <div class="mb-3 row">
                   <label for="firstPartySignature" class="col-sm-3 col-form-label">Party A:</label>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control" id="firstPartySignature" ref={firstPartySignedRef} value="AMD"/>
+                    <input type="text" class="form-control" id="firstPartySignature" ref={firstPartySignedRef} value="AMD" />
                   </div>
                 </div>
                 <button type="button" class="btn btn-primary mb-3" onClick={handleSubmit}>Party A Sign</button>
@@ -191,7 +194,7 @@ const ContractDetails = () => {
                 <div class="mb-3 row">
                   <label for="secondPartySignature" class="col-sm-3 col-form-label">Party B:</label>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control" id="secondPartySignature" ref={secondPartySignedRef} value=""/>
+                    <input type="text" class="form-control" id="secondPartySignature" ref={secondPartySignedRef} value="" />
                   </div>
                 </div>
                 <button type="button" class="btn btn-primary mb-3">Party B Sign</button>
