@@ -35,4 +35,4 @@ app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));// ro
 
 
 app.use("/photoUpload",phtoUploadRouter);
-app.use("/user", userRouter);
+app.use("/ ", userRouter);
