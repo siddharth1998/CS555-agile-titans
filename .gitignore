@@ -104,7 +104,7 @@ dist
 .tern-port
 
 #ignore config files
-config.js
+*config.js*
 
 #ignoring the Upload folder
 uploads/*
