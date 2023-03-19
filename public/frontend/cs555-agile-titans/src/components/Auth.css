@@ -66,6 +66,13 @@ h2.active {
   border-bottom: 2px solid #5fbae9;
 }
 
+.signup-text {
+  color: #56baed;
+  margin-bottom: 40px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 /* FORM TYPOGRAPHY*/
 
 input[type="button"],
@@ -84,7 +91,7 @@ input[type="reset"] {
   box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
-  margin: 5px 20px 40px 20px;
+  margin: 5px 20px 10px 20px;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -130,7 +137,7 @@ input[type="password"] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus, input[type="password"]:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
