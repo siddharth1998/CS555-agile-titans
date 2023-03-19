@@ -53,6 +53,21 @@ const Auth = () => {
 
 		fetchSomething(`${SERVER_URL}user/auth/signup`, options, res => {
 			setSignUpFlag(prev => !prev);
+			setLoginData(() => {
+				return {
+					email: "",
+					password: ""
+				}
+			});
+			setSignUpData(() => {
+				return {
+					"userName": "",
+					"email": "",
+					"password": "",
+					"lastName": "",
+					"firstName": ""
+				};
+			});
 		}, err => {
 			console.log(err);
 			localStorage.removeItem("Auth");
