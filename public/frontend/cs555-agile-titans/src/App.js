@@ -1,15 +1,31 @@
 import './App.css';
 import ContractList from './components/ContractList';
-import { BrowserRouter as Router } from "react-router-dom";
+import Auth from './components/Auth';
+import Dashboard from './components/Dashboard';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Auth></Auth>,
+    },
+    {
+      path: "/contract",
+      element: <ContractList></ContractList>,
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard></Dashboard>,
+    },
+    {
+      path: "/hello",
+      element: <div>Not world!</div>,
+    },
+  ]);
+
   return (
-    <Router>
-      <div className="App">
-        {/* <Auth></Auth> */}
-        <ContractList></ContractList>
-      </div>
-    </Router>
+    <RouterProvider router={router} />
   );
 }
 

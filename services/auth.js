@@ -3,7 +3,6 @@ import { fileURLToPath } from 'url'
 import jwt from "jsonwebtoken";
 import * as fs from "fs";
 
-console.log("Will this be run everytime ?");
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const privateKey = fs.readFileSync(path.join(__dirname, '..', 'jwt_signing_key'));
 
