@@ -40,7 +40,7 @@ const ContractDetails = () => {
       redirect: "follow",
     };
 
-    fetchSomething(`${SERVER_URL}contract/details/create`, requestOptions, res => {
+    fetchSomething(`contract/details/create`, requestOptions, res => {
       console.log(res);
     }, err => {
       console.log(err);

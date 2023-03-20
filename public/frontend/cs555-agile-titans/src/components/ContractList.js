@@ -13,7 +13,7 @@ const ContractList = () => {
       redirect: "follow",
     };
 
-    fetchSomething(`${SERVER_URL}contract`, requestOptions, result => {
+    fetchSomething(`contract`, requestOptions, result => {
       result.contractList = result.contractList.map(c => {
         return {
           ...c,

@@ -32,7 +32,7 @@ const Auth = () => {
 		options.headers = new Headers();
 		options.headers.append("Content-Type", "application/json");
 
-		fetchSomething(`${SERVER_URL}user/auth/login`, options, res => {
+		fetchSomething(`user/auth/login`, options, res => {
 			localStorage.setItem("Auth", res.token);
 			navigate("/dashboard");
 		}, err => {
@@ -51,7 +51,7 @@ const Auth = () => {
 		options.headers = new Headers();
 		options.headers.append("Content-Type", "application/json");
 
-		fetchSomething(`${SERVER_URL}user/auth/signup`, options, res => {
+		fetchSomething(`user/auth/signup`, options, res => {
 			setSignUpFlag(prev => !prev);
 			setLoginData(() => {
 				return {

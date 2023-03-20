@@ -29,7 +29,7 @@ const CreateContract = () => {
       redirect: "follow",
     };
 
-    fetchSomething(`${SERVER_URL}contract/create`, requestOptions, res => console.log(res), err => console.log("error", err));
+    fetchSomething(`contract/create`, requestOptions, res => console.log(res), err => console.log("error", err));
   }
 
   const handleSubmit = (e) => {

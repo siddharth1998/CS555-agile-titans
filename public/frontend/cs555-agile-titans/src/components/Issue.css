@@ -1,0 +1,12 @@
+.main {
+  display: flex;
+  padding: 5%;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.something-issue {
+  text-align: center;
+  margin-top: 2%;
+}
