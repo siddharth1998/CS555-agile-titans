@@ -3,6 +3,7 @@ import ContractList from './components/ContractList';
 import Auth from './components/Auth';
 import Dashboard from './components/Dashboard';
 import Issue from './components/Issue';
+import CustomerCare from './components/CustomerCare';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
     }, {
       path: "/ticket",
       element: <Issue></Issue>
+    }, {
+      path: "/customerCare",
+      element: <CustomerCare></CustomerCare>
     }
   ]);
 

@@ -5,7 +5,7 @@ const Issue = () => {
         <div>
             <h1 className="something-issue"> Customer Care Executive Portal </h1>
             <div className="main">
-                <form className="row g-3" action="/form/issue" method="POST" >
+                <form className="row g-3" action="/api/form/issue" method="POST" >
 
                     <div className="col-md-6">
                         <label for="inputPassword4" className="form-label">User ID</label>

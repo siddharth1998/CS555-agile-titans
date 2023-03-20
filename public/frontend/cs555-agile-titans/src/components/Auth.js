@@ -2,7 +2,6 @@ import './Auth.css';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { fetchSomething } from '../services/fetchService';
-import { SERVER_URL } from '../config';
 
 const Auth = () => {
 	const navigate = useNavigate();
@@ -32,7 +31,7 @@ const Auth = () => {
 		options.headers = new Headers();
 		options.headers.append("Content-Type", "application/json");
 
-		fetchSomething(`user/auth/login`, options, res => {
+		fetchSomething(`api/user/auth/login`, options, res => {
 			localStorage.setItem("Auth", res.token);
 			navigate("/dashboard");
 		}, err => {
@@ -51,7 +50,7 @@ const Auth = () => {
 		options.headers = new Headers();
 		options.headers.append("Content-Type", "application/json");
 
-		fetchSomething(`user/auth/signup`, options, res => {
+		fetchSomething(`api/user/auth/signup`, options, res => {
 			setSignUpFlag(prev => !prev);
 			setLoginData(() => {
 				return {

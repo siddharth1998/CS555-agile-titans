@@ -29,16 +29,17 @@ app.use(express.static('public'));
 /** This is where we can put our React app or normal HTML, CSS, JS website inside the public folder. */
 app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
+/** If it is not an API then we redirect to index.html, where react router will take care of which component to render based on URL */
+app.use((req, res, next) => req.url.includes("api/") ? next() : res.sendFile(`${__dirname}/public/index.html`));
+
 /** 
  * All the other requests that are not auth paths are validated with their JWT tokens
  * for header level authorization.
  * We should allow login and sign up routes to be available without authorization.
 */
-app.use((req, res, next) => req.url.startsWith("/user/auth") ? next() : validate(req, res, next));
+app.use((req, res, next) => req.url.includes("api/user/auth") ? next() : validate(req, res, next));
 
-app.use("/user", userRouter);
-app.use("/task", taskRouter);
-app.use("/form", ticketRouter);
-app.use("/contract", contractRouter);
-app.get("/ticket", (req, res) => res.sendFile(`${__dirname}/public/issue.html`));
-app.get("/customerCare", (req, res) => res.sendFile(`${__dirname}/public/customerCare.html`));
+app.use("/api/user", userRouter);
+app.use("/api/task", taskRouter);
+app.use("/api/form", ticketRouter);
+app.use("/api/contract", contractRouter);

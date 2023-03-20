@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchSomething } from "../services/fetchService";
-import { SERVER_URL } from '../config';
 
 const ContractList = () => {
   const navigate = useNavigate();
@@ -13,7 +12,7 @@ const ContractList = () => {
       redirect: "follow",
     };
 
-    fetchSomething(`contract`, requestOptions, result => {
+    fetchSomething(`api/contract`, requestOptions, result => {
       result.contractList = result.contractList.map(c => {
         return {
           ...c,

@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchSomething } from "../services/fetchService";
-import { SERVER_URL } from '../config';
 
 const CreateContract = () => {
   const [error, setError] = useState("");
@@ -29,7 +28,7 @@ const CreateContract = () => {
       redirect: "follow",
     };
 
-    fetchSomething(`contract/create`, requestOptions, res => console.log(res), err => console.log("error", err));
+    fetchSomething(`api/contract/create`, requestOptions, res => console.log(res), err => console.log("error", err));
   }
 
   const handleSubmit = (e) => {
