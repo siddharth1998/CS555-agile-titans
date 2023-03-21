@@ -1,10 +1,9 @@
 /** This is very painful for me to write something that uses callbacks, but REACT doesn't use async await */
 const fetchSomething = (url, requestOptions, successCb, errorCb) => {
-	url = process.env.REACT_APP_SERVER + url;
 	if (!Object.prototype.hasOwnProperty.call(requestOptions, "headers")) requestOptions.headers = new Headers();
-
 	requestOptions.headers.append("Auth", localStorage.getItem("Auth"));
-	fetch(url, requestOptions)
+
+	fetch(`${window.location.origin}/${url}`, requestOptions)
 		.then(res => {
 			res.text().then(resText => {
 				if (res.status === 401) return window.location.replace("/");
