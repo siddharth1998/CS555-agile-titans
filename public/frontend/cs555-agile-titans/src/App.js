@@ -9,7 +9,6 @@ import CustomerCare from './components/CustomerCare';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
-  console.log(process.env);
   const router = createBrowserRouter([
     {
       path: "/",
