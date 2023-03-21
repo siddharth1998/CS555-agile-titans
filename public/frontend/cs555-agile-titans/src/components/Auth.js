@@ -33,6 +33,7 @@ const Auth = () => {
 
 		fetchSomething(`api/user/auth/login`, options, res => {
 			localStorage.setItem("Auth", res.token);
+			localStorage.setItem("user", JSON.stringify(res.user));
 			navigate("/dashboard");
 		}, err => {
 			localStorage.removeItem("Auth");
@@ -41,7 +42,6 @@ const Auth = () => {
 	};
 
 	const signUp = () => {
-		console.log(signUpData);
 		let options = {
 			method: 'POST',
 			body: JSON.stringify(signUpData),
@@ -68,7 +68,6 @@ const Auth = () => {
 				};
 			});
 		}, err => {
-			console.log(err);
 			localStorage.removeItem("Auth");
 			setErrorMessage(err.message);
 		});

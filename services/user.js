@@ -6,7 +6,7 @@ const validate = async (email, password) => {
     let user = await userModel.findOne({ email });
 
     if (!user) throw "user not found";
-    return user.comparePassword(password);
+    return (await user.comparePassword(password)) ? user : false;
 };
 
 export { create, validate };
