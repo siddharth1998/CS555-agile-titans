@@ -6,8 +6,6 @@ ADD . /src
 
 WORKDIR /src/public/frontend/cs555-agile-titans
 
-RUN echo REACT_APP_SERVER=https://titans.vishw.site/ > .env
-
 RUN npm install
 
 RUN npm run build
