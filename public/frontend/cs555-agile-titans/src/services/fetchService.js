@@ -6,6 +6,7 @@ const fetchSomething = (url, requestOptions, successCb, errorCb) => {
 	fetch(url, requestOptions)
 		.then(res => {
 			res.text().then(resText => {
+				if (res.status === 401) return window.location.replace("/");
 				if (!res.ok) return errorCb(JSON.parse(resText));
 
 				successCb(JSON.parse(resText));
