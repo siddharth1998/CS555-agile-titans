@@ -33,6 +33,7 @@ const Auth = () => {
 
 		fetchSomething(`api/user/auth/login`, options, res => {
 			localStorage.setItem("Auth", res.token);
+			localStorage.setItem("user", JSON.stringify(res.user));
 			navigate("/dashboard");
 		}, err => {
 			localStorage.removeItem("Auth");
