@@ -6,6 +6,7 @@ import Auth from './components/Auth';
 import Dashboard from './components/Dashboard';
 import Issue from './components/Issue';
 import CustomerCare from './components/CustomerCare';
+import ContactUs from './components/ContactUs';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
     }, {
       path: "/customerCare",
       element: <CustomerCare></CustomerCare>
+    }, {
+      path: "/contactUs",
+      element: <ContactUs></ContactUs>
     }
   ]);
 
