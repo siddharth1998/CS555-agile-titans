@@ -51,6 +51,7 @@ const Auth = () => {
 		options.headers.append("Content-Type", "application/json");
 
 		fetchSomething(`api/user/auth/signup`, options, res => {
+			setErrorMessage(null);
 			setSignUpFlag(prev => !prev);
 			setLoginData(() => {
 				return {
