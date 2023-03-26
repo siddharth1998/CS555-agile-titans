@@ -11,9 +11,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{server}}",
+					"raw": "{{production_server}}",
 					"host": [
-						"{{server}}"
+						"{{production_server}}"
 					]
 				}
 			},
@@ -26,7 +26,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"userName\": \"z\",\n    \"email\": \"z@vishw.site\",\n    \"password\": \"zzz\",\n    \"lastName\": \"zz\",\n    \"firstName\": \"z\"\n}",
+					"raw": "{\n    \"userName\": \"x\",\n    \"email\": \"x@vishw.site\",\n    \"password\": \"zzz\",\n    \"lastName\": \"zz\",\n    \"firstName\": \"xz\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -34,11 +34,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{server}}user/signup",
+					"raw": "{{production_server}}user/auth/signup",
 					"host": [
-						"{{server}}user"
+						"{{production_server}}user"
 					],
 					"path": [
+						"auth",
 						"signup"
 					]
 				}
@@ -60,12 +61,36 @@
 					}
 				},
 				"url": {
-					"raw": "{{server}}user/login",
+					"raw": "{{production_server}}user/auth/login",
 					"host": [
-						"{{server}}user"
+						"{{production_server}}user"
 					],
 					"path": [
+						"auth",
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InoiLCJlbWFpbCI6InpAdmlzaHcuc2l0ZSIsImxhc3ROYW1lIjoienoiLCJmaXJzdE5hbWUiOiJ6IiwiaWF0IjoxNjc4ODAxNDYxLCJleHAiOjE2Nzg4MDE1MjF9.UdHHv9QmBnnZsePlQGL5C9ytWfEPxCtjyFSpC_BH_pY",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{production_server}}user/users",
+					"host": [
+						"{{production_server}}user"
+					],
+					"path": [
+						"users"
 					]
 				}
 			},
