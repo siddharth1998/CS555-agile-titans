@@ -36,7 +36,7 @@ const ContractList = () => {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Contract No.</th>
-            <th scope="col">Contract Tyoe</th>
+            <th scope="col">Contract Type</th>
             <th scope="col">Entity</th>
             <th scope="col">Start Date</th>
             <th scope="col">End Date</th>
@@ -52,7 +52,9 @@ const ContractList = () => {
               <tr key={i}>
                 <th scope="row">{i}</th>
                 <td>
-                  <a href="/contract/details">{data.contractNo}</a>
+                  <a href={`/contract/details/${data.contractNo}`}>
+                    {data.contractNo}
+                  </a>
                 </td>
                 <td>{data.contractType}</td>
                 <td>{data.entity}</td>
@@ -61,7 +63,7 @@ const ContractList = () => {
                 <td>{data.dateSigned}</td>
                 <td>{data.firstParty}</td>
                 <td>{data.secondParty}</td>
-                <td>{data.contractStatus ? "In Progress" : "Terminate"}</td>
+                <td>{data.contractStatus}</td>
               </tr>
             );
           })}

@@ -29,7 +29,7 @@ const ContractDetails = () => {
       noticePeriod: noticePeriodRef.current.value,
       startDate: startDateRef.current.value,
       endDate: endDateRef.current.value,
-      firstPartySigned: firstPartySignedRef.current.value,
+      firstPartySignature: firstPartySignedRef.current.value,
     });
 
     var requestOptions = {
@@ -72,7 +72,7 @@ const ContractDetails = () => {
             <div class="mb-3 row">
               <label for="contractNo" class="col-sm-2 col-form-label">Contract No.</label>
               <div class="col-sm-3">
-                <input type="text" class="form-control" id="contractNo" ref={contractNoRef} value="LEASE0001" />
+                <input type="text" class="form-control" id="contractNo" ref={contractNoRef} />
               </div>
             </div>
             <div>
@@ -87,7 +87,7 @@ const ContractDetails = () => {
                 </div>
                 <div class="col-sm-3">
                   <label for="firstPartyName" class="visually-hidden">Party A</label>
-                  <input type="text" class="form-control" id="firstPartyName" ref={firstPartyRef} value="AMD" />
+                  <input type="text" class="form-control" id="firstPartyName" ref={firstPartyRef} />
                 </div>
                 <div class="col-sm-3">
                   , (“Party A”), and
@@ -96,7 +96,7 @@ const ContractDetails = () => {
               <div class="mb-3 row">
                 <div class="col-sm-3">
                   <label for="secondPartyName" class="visually-hidden">Party B</label>
-                  <input type="text" class="form-control" id="secondPartyName" ref={secondPartyRef} value="Nick" />
+                  <input type="text" class="form-control" id="secondPartyName" ref={secondPartyRef} />
                 </div>
                 <div class="col-sm-9">
                   , (“Party B”), collectively referred to herein as the "Parties".
@@ -184,7 +184,7 @@ const ContractDetails = () => {
                 <div class="mb-3 row">
                   <label for="firstPartySignature" class="col-sm-3 col-form-label">Party A:</label>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control" id="firstPartySignature" ref={firstPartySignedRef} value="AMD" />
+                    <input type="text" class="form-control" id="firstPartySignature" ref={firstPartySignedRef} />
                   </div>
                 </div>
                 <button type="button" class="btn btn-primary mb-3" onClick={handleSubmit}>Party A Sign</button>
@@ -193,7 +193,7 @@ const ContractDetails = () => {
                 <div class="mb-3 row">
                   <label for="secondPartySignature" class="col-sm-3 col-form-label">Party B:</label>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control" id="secondPartySignature" ref={secondPartySignedRef} value="" />
+                    <input type="text" class="form-control" id="secondPartySignature" ref={secondPartySignedRef} />
                   </div>
                 </div>
                 <button type="button" class="btn btn-primary mb-3">Party B Sign</button>

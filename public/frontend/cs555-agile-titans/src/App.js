@@ -2,6 +2,7 @@ import './App.css';
 import ContractList from './components/ContractList';
 import CreateContract from './components/CreateContract';
 import ContractDetails from './components/ContractDetails';
+import ContractContent from './components/ContractContent';
 import Auth from './components/Auth';
 import Dashboard from './components/Dashboard';
 import Issue from './components/Issue';
@@ -13,28 +14,39 @@ function App() {
     {
       path: "/",
       element: <Auth></Auth>,
-    }, {
+    },
+    {
       path: "/contract",
       element: <ContractList></ContractList>,
-    }, {
+    },
+    {
       path: "/contract/create",
       element: <CreateContract></CreateContract>,
-    }, {
+    },
+    {
+      path: "/contract/details/:contractNo",
+      element: <ContractContent></ContractContent>,
+    },
+    {
       path: "contract/details",
       element: <ContractDetails></ContractDetails>,
-    }, {
+    },
+    {
       path: "/dashboard",
       element: <Dashboard></Dashboard>,
-    }, {
+    },
+    {
       path: "/hello",
       element: <div>Not world!</div>,
-    }, {
+    },
+    {
       path: "/ticket",
-      element: <Issue></Issue>
-    }, {
+      element: <Issue></Issue>,
+    },
+    {
       path: "/customerCare",
-      element: <CustomerCare></CustomerCare>
-    }
+      element: <CustomerCare></CustomerCare>,
+    },
   ]);
 
   return (
