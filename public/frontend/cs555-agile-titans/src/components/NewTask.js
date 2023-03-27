@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./Tasks.css";
 const NewTask = () => {
   return (
     <div id="wrapper">
@@ -165,7 +165,7 @@ const NewTask = () => {
                             </label>
                           </div>
                           <div className="col-sm-6 input-column">
-                            <input className="form-control" type="email" />
+                            <input className="form-control" type="text" />
                           </div>
                         </div>
                         <div className="row form-group">
