@@ -1,10 +1,11 @@
 import express from "express";
+import { projectModel } from "../models/project.js";
 
 const router = express.Router();
 
-app.get("/projects", async (req, res) => {
+router.get("/projects", async (req, res) => {
   try {
-    const projects = await Project.find();
+    const projects = await projectModel.find();
     res.json(projects);
   } catch (error) {
     console.error(error);
@@ -12,9 +13,9 @@ app.get("/projects", async (req, res) => {
   }
 });
 
-app.get("/projects/:id", async (req, res) => {
+router.get("/projects/:id", async (req, res) => {
   try {
-    const project = await Project.findById(req.params.id);
+    const project = await projectModel.findById(req.params.id);
     res.json(project);
   } catch (error) {
     console.error(error);
@@ -24,7 +25,7 @@ app.get("/projects/:id", async (req, res) => {
 
 router.post("/projects", async (req, res) => {
   try {
-    const newProject = new Project({
+    const newProject = new projectModel({
       projectName: req.body.projectName,
       description: req.body.description,
       startDate: req.body.startDate,
@@ -44,7 +45,7 @@ router.post("/projects", async (req, res) => {
 
 router.put("/projects/:id", async (req, res) => {
   try {
-    const project = await Project.findByIdAndUpdate(
+    const project = await projectModel.findByIdAndUpdate(
       req.params.id,
       {
         $set: {
@@ -68,7 +69,7 @@ router.put("/projects/:id", async (req, res) => {
 
 router.delete("/projects/:id", async (req, res) => {
   try {
-    const project = await Project.findById(req.params.id);
+    const project = await projectModel.findById(req.params.id);
     if (!project) {
       return res.status(404).json({ message: "Project not found" });
     }

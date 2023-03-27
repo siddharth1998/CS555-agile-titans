@@ -13,6 +13,7 @@ import { validate } from "./services/auth.js";
 
 /** This import will automatically create a database connection for us :) */
 import * as dB from "./models/connection.js";
+import { router as projectRouter } from "./routes/Project.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -45,3 +46,7 @@ app.use("/api/task", taskRouter);
 app.use("/api/form", ticketRouter);
 app.use("/api/contract", contractRouter);
 app.use("/api/contactUs", contactUsRouter);
+
+app.use("/user", userRouter);
+app.use("/task", taskRouter);
+app.use("/project",projectRouter);
