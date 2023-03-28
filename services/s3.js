@@ -19,6 +19,7 @@ function uploadFiles(file){
     console.log(bucketName)
     const filestream=fs.createReadStream(file.path)
     const uploadParams={
+        ACL:'public-read',
         Bucket:bucketName,
         Body: filestream,
         Key: file.filename
