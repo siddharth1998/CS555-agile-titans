@@ -1,33 +1,35 @@
 import React from "react";
 import "./Tasks.css";
+import { Link } from "react-router-dom";
+
 const NewTask = () => {
   return (
     <div id="wrapper">
       <nav className="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-warning p-0">
         <div className="container-fluid d-flex flex-column p-0">
-          <a
+          <Link
+            to="/dashboard"
             className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
-            href="/"
           >
             <div className="sidebar-brand-icon rotate-n-15"></div>
             <div className="sidebar-brand-text mx-3">
               <span>Solar epc</span>
             </div>
-          </a>
+          </Link>
           <hr className="sidebar-divider my-0" />
           <ul className="navbar-nav text-light" id="accordionSidebar">
             <li className="nav-item">
-              <a className="nav-link" href="Dashboard.html">
+              <Link to="/dashboard" className="nav-link">
                 <i className="fas fa-tachometer-alt"></i>
                 <span>Dashboard</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item"></li>
             <li className="nav-item">
-              <a className="nav-link active" href="Projects.html">
+              <Link to="/projects" className="nav-link active">
                 <i className="fas fa-list"></i>
                 <span>Projects</span>
-              </a>
+              </Link>
             </li>
           </ul>
           <div className="text-center d-none d-md-inline">

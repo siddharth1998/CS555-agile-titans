@@ -1,33 +1,39 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Projects = () => {
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = `tasks`;
+    navigate(path);
+  };
   return (
     <div id="wrapper">
       <nav className="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-warning p-0">
         <div className="container-fluid d-flex flex-column p-0">
-          <a
+          <Link
+            to="/dashboard"
             className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
-            href="/"
           >
             <div className="sidebar-brand-icon rotate-n-15"></div>
             <div className="sidebar-brand-text mx-3">
               <span>Solar epc</span>
             </div>
-          </a>
+          </Link>
           <hr className="sidebar-divider my-0" />
           <ul className="navbar-nav text-light" id="accordionSidebar">
             <li className="nav-item">
-              <a className="nav-link" href="Dashboard.html">
+              <Link to="/dashboard" className="nav-link">
                 <i className="fas fa-tachometer-alt"></i>
                 <span>Dashboard</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item"></li>
             <li className="nav-item">
-              <a className="nav-link active" href="Projects.html">
+              <Link to="/projects" className="nav-link active">
                 <i className="fas fa-list"></i>
                 <span>Projects</span>
-              </a>
+              </Link>
             </li>
           </ul>
           <div className="text-center d-none d-md-inline">
@@ -84,7 +90,10 @@ const Projects = () => {
                           placeholder="Search for ..."
                         />
                         <div className="input-group-append">
-                          <button className="btn btn-warning py-0" type="button">
+                          <button
+                            className="btn btn-warning py-0"
+                            type="button"
+                          >
                             <i className="fas fa-search"></i>
                           </button>
                         </div>
@@ -131,13 +140,13 @@ const Projects = () => {
           </nav>
           <div className="container-fluid">
             <h3 className="text-dark mb-4">
-              <a
+              <Link
+                to="/newProject"
                 className="btn btn-warning pull-right"
                 role="button"
-                href="NewProject.html"
               >
                 <i className="fa fa-plus"></i>&nbsp;New Project
-              </a>
+              </Link>
               Tasks
             </h3>
             <div className="card shadow">
@@ -198,20 +207,14 @@ const Projects = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr
-                        className="clickable"
-                        onclick="window.location='Tasks.html'"
-                      >
+                      <tr className="clickable" onClick={routeChange}>
                         <td>Project 1</td>
                         <td>This is project 1.</td>
                         <td>Completed</td>
                         <td>2023/11/28</td>
                       </tr>
                       <tr>
-                        <td
-                          className="clickable"
-                          onclick="window.location='Tasks.html'"
-                        >
+                        <td className="clickable" onClick={routeChange}>
                           Project 2
                         </td>
                         <td>This is project 2.</td>
@@ -252,7 +255,11 @@ const Projects = () => {
                     <nav className="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
                       <ul className="pagination">
                         <li className="page-item disabled">
-                          <a className="page-link" aria-label="Previous" href="/">
+                          <a
+                            className="page-link"
+                            aria-label="Previous"
+                            href="/"
+                          >
                             <span aria-hidden="true">«</span>
                           </a>
                         </li>

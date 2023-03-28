@@ -1,33 +1,34 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Tasks = () => {
   return (
     <div id="wrapper">
       <nav className="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-warning p-0">
         <div className="container-fluid d-flex flex-column p-0">
-          <a
+          <Link
+            to="/dashboard"
             className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
-            href="/"
           >
             <div className="sidebar-brand-icon rotate-n-15"></div>
             <div className="sidebar-brand-text mx-3">
               <span>Solar epc</span>
             </div>
-          </a>
+          </Link>
           <hr className="sidebar-divider my-0" />
           <ul className="navbar-nav text-light" id="accordionSidebar">
             <li className="nav-item">
-              <a className="nav-link" href="Dashboard.html">
+              <Link to="/dashboard" className="nav-link">
                 <i className="fas fa-tachometer-alt"></i>
                 <span>Dashboard</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item"></li>
             <li className="nav-item">
-              <a className="nav-link active" href="Projects.html">
+              <Link to="/projects" className="nav-link active">
                 <i className="fas fa-list"></i>
                 <span>Projects</span>
-              </a>
+              </Link>
             </li>
           </ul>
           <div className="text-center d-none d-md-inline">
@@ -134,13 +135,13 @@ const Tasks = () => {
           </nav>
           <div className="container-fluid">
             <h3 className="text-dark mb-4">
-              <a
+              <Link
+                to="/newTask"
                 className="btn btn-warning pull-right"
                 role="buton"
-                href="NewTask.html"
               >
                 <i className="fa fa-plus"></i>&nbsp;New Task
-              </a>
+              </Link>
               Tasks
             </h3>
             <div className="card shadow">
@@ -210,9 +211,9 @@ const Tasks = () => {
                         <td>2</td>
                         <td>2023/11/28</td>
                         <td>
-                          <a href="TaskInfo.html">
+                          <Link to="/taskInfo">
                             <i className="fa fa-eye"></i>
-                          </a>
+                          </Link>
                         </td>
                       </tr>
                       <tr>
@@ -222,9 +223,9 @@ const Tasks = () => {
                         <td>3</td>
                         <td>2022/10/09</td>
                         <td>
-                          <a href="TaskInfo.html">
+                          <Link to="/taskInfo">
                             <i className="fa fa-eye"></i>
-                          </a>
+                          </Link>
                         </td>
                       </tr>
                     </tbody>

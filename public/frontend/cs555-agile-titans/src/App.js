@@ -11,6 +11,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NewTask from "./components/NewTask";
 import Tasks from "./components/Tasks";
 import TaskInfo from "./components/TaskInfo";
+import NewProject from "./components/NewProject";
+import Projects from "./components/Projects";
 
 function App() {
   const router = createBrowserRouter([
@@ -55,12 +57,20 @@ function App() {
       element: <NewTask></NewTask>,
     },
     {
-      path: "/tasks",
+      path: "projects/tasks",
       element: <Tasks></Tasks>,
     },
     {
-      path: "/TaskInfo",
+      path: "/taskInfo",
       element: <TaskInfo></TaskInfo>,
+    },
+    {
+      path: "/newProject",
+      element: <NewProject></NewProject>,
+    },
+    {
+      path: "/projects",
+      element: <Projects></Projects>,
     },
   ]);
 
