@@ -32,7 +32,7 @@ router.post("/",upload.single('image'),async (req,res)=>{
     let variable= result_json._id.toString()
     console.log(variable)
     await result_json.save();
-    res.send("Hello");
+    res.send(result_json.fileName);
 }
 );
 
