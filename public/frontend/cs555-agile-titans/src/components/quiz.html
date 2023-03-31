@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>qu</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Application-Form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <section>
+        <h1 class="text-center text-capitalize"><br><span style="color: rgb(108, 117, 125);">Take the quiz and let us more about your requirments</span><br><br></h1>
+        <div class="container">
+            <form id="application-form">
+                <div class="form-group mb-3">
+                    <div class="row">
+                        <div class="col">
+                            <p><strong>Does the electric company provide service to your home?</strong>&nbsp;<span class="text-danger">*</span></p>
+                            <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Yes</label></div>
+                            <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-2"><label class="form-check-label" for="formCheck-2">No</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <div class="row">
+                        <div class="col">
+                            <p><strong>Do you know your&nbsp; daily and nightly energy in usage in kilo- Watts(kWh)</strong>&nbsp;<span class="text-danger">*</span></p>
+                            <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Yes</label></div>
+                            <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-4"><label class="form-check-label" for="formCheck-4">No</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <p><strong>What's your daily average usage?&nbsp;</strong><span class="text-danger">*</span></p><textarea class="form-control"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                    <p><strong>Would you like to mount your panels on your roof, or build a standalone ground mount?</strong><span class="text-danger">*</span></p>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-6"><label class="form-check-label" for="formCheck-6">Ground Mount</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Roof Mount</label></div>
+                <div class="form-group mb-3">
+                    <p><strong>where you plan to install your solar panels shaded by trees, chimneys, or other obstructions&nbsp;</strong><span class="text-danger">*</span></p>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-7"><label class="form-check-label" for="formCheck-7">Full sunglight</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-8"><label class="form-check-label" for="formCheck-8">Partial/Minimal shaded</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-9"><label class="form-check-label" for="formCheck-9">Fully/Mostly shaded shaded</label></div>
+                <section>
+                    <h1 class="text-center text-capitalize">please fill your details</h1>
+                    <div class="container">
+                        <form id="application-form-1">
+                            <div class="form-group mb-3">
+                                <p><strong>Email&nbsp;</strong><span class="text-danger">*</span></p><input class="form-control" type="email" name="" placeholder="user@domain.com">
+                            </div>
+                            <div class="form-group mb-3">
+                                <p><strong>Phone Number&nbsp;</strong></p><input class="form-control" type="number" name="" placeholder="7777777777">
+                            </div>
+                            <div class="form-group mb-3">
+                                <p><strong>Address&nbsp;</strong><span class="text-danger">*</span></p>
+                            </div>
+                            <div class="form-group mb-3">
+                                <div class="row">
+                                    <div class="col"><input class="form-control" type="text" required="" name="" placeholder="Ex.   Kolkata">
+                                        <p>City</p><input class="form-control" type="text" required="" name="" placeholder="Ex. 700001">
+                                        <p>Zip Code</p>
+                                    </div>
+                                    <div class="col"><input class="form-control" type="text" required="" name="" placeholder="Ex.   West Bengal">
+                                        <p>State</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="justify-content-center d-flex form-group mb-3">
+                                <div id="submit-btn">
+                                    <div class="row"><button class="btn btn-primary btn-light m-0 rounded-pill px-4" type="button" style="min-width: 500px;" action method="POST" target="hidden_iframe">Submit</button></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <h3 id="fail-1" class="text-center text-danger d-none"><br>Form not Submitted&nbsp;<a href="contact.html">Try Again</a><br><br></h3>
+                        <h3 id="success-2" class="text-center text-success d-none"><br>Form Submitted Successfully&nbsp;<a href="contact.html">Send Another Response</a><br><br></h3>
+                    </div>
+                </section>
+            </form>
+        </div>
+        <div class="col">
+            <h3 id="fail" class="text-center text-danger d-none"><br>Form not Submitted&nbsp;<a href="contact.html">Try Again</a><br><br></h3>
+            <h3 id="success-1" class="text-center text-success d-none"><br>Form Submitted Successfully&nbsp;<a href="contact.html">Send Another Response</a><br><br></h3>
+        </div>
+    </section>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/Application-Form-Bootstrap-Image-Uploader.js"></script>
+    <script src="assets/js/Application-Form-submit-form.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
