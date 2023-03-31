@@ -103,6 +103,11 @@ dist
 # TernJS port file
 .tern-port
 
-config.js
+#ignore config files
+#*config.js*
+
+#ignoring the Upload folder
+uploads/*
+# config.js
 
 jwt_*

@@ -1,6 +1,6 @@
-import express from "express";
+import express from "express";// http web server
 import { PORT } from "./config.js";
-import morgan from "morgan";
+import morgan from "morgan";// for logging
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { router as ticketRouter } from "./routes/form.js";
@@ -10,7 +10,7 @@ import { router as contactUsRouter } from "./routes/contactUs.js";
 import cors from "cors";
 import { router as taskRouter } from "./routes/Task.js";
 import { validate } from "./services/auth.js";
-
+import { router as phtoUploadRouter} from "./routes/photoUpload.js";
 /** This import will automatically create a database connection for us :) */
 import * as dB from "./models/connection.js";
 import { router as projectRouter } from "./routes/Project.js";
@@ -19,17 +19,18 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
+
 app.use(express.json());
 app.use(cors());
 
-app.listen(PORT, () => console.log(`Server has started on port : ${PORT}`));
+app.listen(PORT, () => console.log(`Server has started on port : ${PORT}`));// port expose
 
-app.use(morgan("dev"));
+app.use(morgan("dev"));// middleware to send each reponse via middleware for LOGGING 
 
 app.use(express.static('public'));
 
 /** This is where we can put our React app or normal HTML, CSS, JS website inside the public folder. */
-app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
+app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));// route 
 
 /** If it is not an API then we redirect to index.html, where react router will take care of which component to render based on URL */
 app.use((req, res, next) => req.url.includes("api/") ? next() : res.sendFile(`${__dirname}/public/index.html`));
@@ -46,6 +47,7 @@ app.use("/api/task", taskRouter);
 app.use("/api/form", ticketRouter);
 app.use("/api/contract", contractRouter);
 app.use("/api/contactUs", contactUsRouter);
+app.use("/api/photoUpload",phtoUploadRouter);
 
 app.use("/user", userRouter);
 app.use("/task", taskRouter);
