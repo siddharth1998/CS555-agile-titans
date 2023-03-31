@@ -14,14 +14,6 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 
-// app.use((req, res, next) => {
-//     if (req.originalUrl.startsWith("/photoUpload")) {
-//         next();// to skip the code 
-//     } else {
-//         express.json()(req, res, next);// to only use json 
-//     }
-// });
-
 app.use(express.json());
 
 app.listen(PORT, () => console.log(`Server has started on port : ${PORT}`));// port expose
@@ -34,5 +26,5 @@ app.use(express.static('public'));
 app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));// route 
 
 
-app.use("/photoUpload",phtoUploadRouter);
+app.use("/api/photoUpload",phtoUploadRouter);
 app.use("/ ", userRouter);

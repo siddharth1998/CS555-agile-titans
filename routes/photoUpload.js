@@ -28,9 +28,8 @@ router.post("/",upload.single('image'),async (req,res)=>{
         content: req.body.CommentContent,
         operation: req.body.operation
     });
-    console.log(result_json)
+   
     let variable= result_json._id.toString()
-    console.log(variable)
     await result_json.save();
     res.send(result_json.fileName);
 }
