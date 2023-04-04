@@ -7,7 +7,7 @@ import Auth from "./components/Auth";
 import Dashboard from "./components/Dashboard";
 import Issue from "./components/Issue";
 import CustomerCare from "./components/CustomerCare";
-import ContactUs from "./components/ContactUs";
+import ContactUs from "./components/ContactUs/ContactUs";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NewTask from "./components/NewTask";
 import Tasks from "./components/Tasks";

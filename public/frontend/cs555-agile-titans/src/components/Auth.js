@@ -107,7 +107,7 @@ const Auth = () => {
 	const preventDefault = (e) => e.preventDefault();
 
 	return (
-		<div>
+		<div className='auth-body'>
 			{!signUpFlag && <form className="login-form wrapper fadeInDown" onSubmit={preventDefault}>
 				<div id="formContent">
 					<div className="fadeIn first">

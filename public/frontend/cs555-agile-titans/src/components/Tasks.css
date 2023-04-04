@@ -1,4 +1,4 @@
-input[type="text"]{
+.type-text {
   background-color: #fff;
   border: none;
   color: #0d0d0d;
@@ -30,10 +30,10 @@ input[type="date"] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type="text"]:focus {
+.type-text:focus {
   background-color: #fff;
 }
 
-input[type="text"]::placeholder {
+.type-text::placeholder {
   color: #cccccc;
 }
