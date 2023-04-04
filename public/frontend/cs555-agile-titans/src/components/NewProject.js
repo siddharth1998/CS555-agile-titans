@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Dashboard = () => {
+const NewProject = () => {
   return (
     <div id="wrapper">
       <nav className="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-warning p-0">
@@ -133,10 +133,82 @@ const Dashboard = () => {
               </ul>
             </div>
           </nav>
+          <div className="container-fluid">
+            <div className="card-shadow">
+              <div className="row register-form">
+                <div className="col-md-8 offset-md-2">
+                  <form className="custom-form">
+                    <h1 style={{ borderColor: "rgb(255,192,7)" }}>
+                      Add New Project
+                    </h1>
+                    <div className="row form-group">
+                      <div className="col-sm-4 label-column">
+                        <label
+                          className="col-form-label"
+                          for="name-input-field"
+                        >
+                          Project Name{" "}
+                        </label>
+                      </div>
+                      <div className="col-sm-6 input-column">
+                        <input className="form-control" type="text" />
+                      </div>
+                    </div>
+                    <div className="row form-group">
+                      <div className="col-sm-4 label-column">
+                        <label
+                          className="col-form-label"
+                          for="email-input-field"
+                        >
+                          Description
+                        </label>
+                      </div>
+                      <div className="col-sm-6 input-column">
+                        <input className="form-control" type="email" />
+                      </div>
+                    </div>
+                    <div className="row form-group">
+                      <div className="col-sm-4 label-column">
+                        <label
+                          className="col-form-label"
+                          for="name-input-field"
+                        >
+                          Assignee
+                        </label>
+                      </div>
+                      <div className="col-sm-6 input-column">
+                        <input className="form-control" type="text" />
+                      </div>
+                    </div>
+                    <div className="row form-group">
+                      <div className="col-sm-4 label-column">
+                        <label
+                          className="col-form-label"
+                          for="name-input-field"
+                        >
+                          Due Date
+                        </label>
+                      </div>
+                      <div className="col-sm-6 input-column">
+                        <input className="form-control" type="date" />
+                      </div>
+                    </div>
+                    <button
+                      className="btn btn-light submit-button"
+                      type="button"
+                      style={{ background: "rgb(255,192,7)" }}
+                    >
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default NewProject;

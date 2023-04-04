@@ -4,7 +4,12 @@ import jwt from "jsonwebtoken";
 import * as fs from "fs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const privateKey = fs.readFileSync(path.join(__dirname, '..', 'jwt_signing_key'));
+let privateKey;
+try {
+    privateKey = fs.readFileSync(path.join(__dirname, '..', 'jwt_signing_key'));
+} catch (err) {
+    privateKey = process.env.jwt_signing_key;
+}
 
 const getAuthToken = payload => jwt.sign(payload, privateKey, { expiresIn: '1d' });
 

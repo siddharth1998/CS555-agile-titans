@@ -82,12 +82,14 @@ router.post("/auth/login", async (req, res) => {
         .json({ status: "error", message: "Password is required" });
 
     let valid = await validate(req.body.email, req.body.password);
-    let { password, ...rest } = valid.toObject();
 
-    if (valid)
+    if (valid) {
+      let { password, ...rest } = valid.toObject();
       return res
         .status(200)
         .json({ status: "success", message: "user logged in successfully", token: getAuthToken(rest), user: rest });
+    }
+
     return res
       .status(401)
       .json({ status: "error", message: "Invalid Credentials" });

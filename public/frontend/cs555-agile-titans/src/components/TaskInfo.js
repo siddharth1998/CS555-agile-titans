@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Dashboard = () => {
+const TaskInfo = () => {
   return (
     <div id="wrapper">
       <nav className="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-warning p-0">
@@ -133,10 +133,120 @@ const Dashboard = () => {
               </ul>
             </div>
           </nav>
+          <div className="container-fluid">
+            <div className="card-shadow">
+              <div className="card-body">
+                <div className="row">
+                  <div className="row register-form">
+                    <div className="col-md-8 offset-md-2">
+                      <form className="custom-form">
+                        <h1 style={{ borderColor: "rgb(255,192,7)" }}>
+                          Task Details{" "}
+                          <a href="NewTask.html">
+                            <i className="fa fa-pencil"></i>
+                          </a>
+                        </h1>
+                        <div className="row form-group">
+                          <div className="col-sm-4 label-column">
+                            <label
+                              className="col-form-label"
+                              for="name-input-field"
+                            >
+                              Task Name{" "}
+                            </label>
+                          </div>
+                          <div className="col-sm-6 input-column">
+                            <label
+                              className="col-form-label"
+                              for="name-input-field"
+                            >
+                              Task 1{" "}
+                            </label>
+                          </div>
+                        </div>
+                        <div className="row form-group">
+                          <div className="col-sm-4 label-column">
+                            <label
+                              className="col-form-label"
+                              for="description-input-field"
+                            >
+                              Description
+                            </label>
+                          </div>
+                          <div className="col-sm-6 input-column">
+                            <label
+                              className="col-form-label"
+                              for="description-input-field"
+                            >
+                              This is Task 1
+                            </label>
+                          </div>
+                        </div>
+                        <div className="row form-group">
+                          <div className="col-sm-4 label-column">
+                            <label
+                              className="col-form-label"
+                              for="name-input-field"
+                            >
+                              Assignee
+                            </label>
+                          </div>
+                          <div className="col-sm-6 input-column">
+                            <label
+                              className="col-form-label"
+                              for="name-input-field"
+                            >
+                              Angelica Ramos
+                            </label>
+                          </div>
+                        </div>
+                        <div className="row form-group">
+                          <div className="col-sm-4 label-column">
+                            <label
+                              className="col-form-label"
+                              for="name-input-field"
+                            >
+                              Due Date
+                            </label>
+                          </div>
+                          <div className="col-sm-6 input-column">
+                            <label
+                              className="col-form-label"
+                              for="name-input-field"
+                            >
+                              2023/03/02
+                            </label>
+                          </div>
+                        </div>
+                        <div className="row form-group">
+                          <div className="col-sm-4 label-column">
+                            <label
+                              className="col-form-label"
+                              for="name-input-field"
+                            >
+                              Project
+                            </label>
+                          </div>
+                          <div className="col-sm-6 input-column">
+                            <label
+                              className="col-form-label"
+                              for="name-input-field"
+                            >
+                              Project 1
+                            </label>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default TaskInfo;
