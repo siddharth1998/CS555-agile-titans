@@ -31,7 +31,8 @@ const contractListSchema = new mongoose.Schema(
       type: String,
     },
     contractStatus: {
-      type: Boolean,
+      type: String,
+      default: "Not Signed",
     },
   },
   { timestamps: true }

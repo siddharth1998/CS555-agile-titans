@@ -2,6 +2,7 @@ import "./App.css";
 import ContractList from "./components/ContractList";
 import CreateContract from "./components/CreateContract";
 import ContractDetails from "./components/ContractDetails";
+import ContractContent from './components/ContractContent';
 import Auth from "./components/Auth";
 import Dashboard from "./components/Dashboard";
 import Issue from "./components/Issue";
@@ -27,6 +28,10 @@ function App() {
     {
       path: "/contract/create",
       element: <CreateContract></CreateContract>,
+    },
+    {
+      path: "/contract/details/:contractNo",
+      element: <ContractContent></ContractContent>,
     },
     {
       path: "contract/details",
