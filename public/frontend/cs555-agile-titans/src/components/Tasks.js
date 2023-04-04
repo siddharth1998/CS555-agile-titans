@@ -54,7 +54,7 @@ const Tasks = () => {
               <form className="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div className="input-group">
                   <input
-                    className="bg-light form-control border-0 small"
+                    className="bg-light form-control border-0 small type-text"
                     type="text"
                     placeholder="Search for ..."
                   />
@@ -80,7 +80,7 @@ const Tasks = () => {
                     <form className="me-auto navbar-search w-100">
                       <div className="input-group">
                         <input
-                          className="bg-light form-control border-0 small"
+                          className="bg-light form-control border-0 small type-text"
                           type="text"
                           placeholder="Search for ..."
                         />
