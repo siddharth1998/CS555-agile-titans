@@ -1,12 +1,74 @@
 import './ContactUs.css';
 import "./assets/bootstrap/css/bootstrap.min.css";
-import "./assets/css/Background-Image---Parallax---No-Text.css"
-import "./assets/css/Banner-Heading-Image-images.css"
-import "./assets/css/Contact-Details-icons.css"
+import "./assets/css/Background-Image---Parallax---No-Text.css";
+import "./assets/css/Banner-Heading-Image-images.css";
+import "./assets/css/Contact-Details-icons.css";
+import { useState } from 'react';
+import { fetchSomething } from '../../services/fetchService';
 
 const ContactUs = () => {
+    const preventDefault = (e) => e.preventDefault();
+
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: ""
+    });
+
+    const [success, setSuccess] = useState(false);
+    const [failure, setFailure] = useState(false);
+    const [message, setMessage] = useState("");
+
+    const handleFormChange = (e) => {
+        const { name, value } = e.target;
+
+        setFormData(prev => {
+            switch (name) {
+                case "name": return { ...prev, name: value };
+                case "email": return { ...prev, email: value };
+                case "message": return { ...prev, message: value };
+                default: return prev;
+            }
+        });
+    };
+
+    const createRequest = () => {
+        let options = {
+            method: 'POST',
+            body: JSON.stringify(formData),
+            redirect: 'follow'
+        };
+        options.headers = new Headers();
+        options.headers.append("Content-Type", "application/json");
+
+        fetchSomething(`api/contactUs`, options, res => {
+            setFormData({
+                name: "",
+                email: "",
+                message: ""
+            });
+            setMessage(res.message);
+            setSuccess(true);
+            setFailure(false);
+
+            setTimeout(() => setSuccess(false), 1500);
+        }, err => {
+            setMessage(err.message);
+            setSuccess(false);
+            setFailure(true);
+
+            setTimeout(() => setFailure(false), 1500);
+        });
+    };
+
     return (
         <div className='contactUs-body'>
+            {success && <div class="alert alert-success success-message-wrapper" role="alert">
+                {message}
+            </div>}
+            {failure && <div class="alert alert-danger success-message-wrapper" role="alert">
+                {message}
+            </div>}
             <section className="py-4 py-xl-5">
                 <div className="carousel slide" data-bs-ride="false" id="carousel-1">
                     <div className="carousel-inner">
@@ -62,11 +124,51 @@ const ContactUs = () => {
                         </div>
                         <div className="col-md-6 col-lg-5 col-xl-4">
                             <div>
-                                <form className="p-3 p-xl-4" method="post">
-                                    <div className="mb-3"><input className="form-control" type="text" id="name-1" name="name" placeholder="Name" /></div>
-                                    <div className="mb-3"><input className="form-control" type="email" id="email-1" name="email" placeholder="Email"/></div>
-                                    <div className="mb-3"><textarea className="form-control" id="message-1" name="message" rows="6" placeholder="Message"></textarea></div>
-                                    <div><button className="btn btn-primary d-block w-100" type="submit">Send </button></div>
+                                <form className="p-3 p-xl-4" onSubmit={preventDefault}>
+                                    <div className="mb-3">
+                                        <input
+                                            className="form-control"
+                                            type="text"
+                                            id="name-1"
+                                            name="name"
+                                            placeholder="Name"
+                                            onChange={handleFormChange}
+                                            value={formData.name}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="mb-3">
+                                        <input
+                                            className="form-control"
+                                            type="email"
+                                            id="email-1"
+                                            name="email"
+                                            placeholder="Email"
+                                            onChange={handleFormChange}
+                                            value={formData.email}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="mb-3">
+                                        <textarea
+                                            className="form-control"
+                                            id="message-1"
+                                            name="message"
+                                            rows="6"
+                                            placeholder="Message"
+                                            onChange={handleFormChange}
+                                            value={formData.message}
+                                            required
+                                        ></textarea>
+                                    </div>
+                                    <div>
+                                        <button
+                                            className="btn btn-primary d-block w-100"
+                                            type="submit"
+                                            onClick={createRequest}
+                                        >Send
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
