@@ -34,6 +34,10 @@ app.use(express.static('public'));
 /** This is where we can put our React app or normal HTML, CSS, JS website inside the public folder. */
 app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));// route 
 
+/** Contact Us page should be visible to everyone, even though they are not logged in */
+app.get("/contactUs", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
+app.use("/api/contactUs", contactUsRouter);
+
 /** If it is not an API then we redirect to index.html, where react router will take care of which component to render based on URL */
 app.use((req, res, next) => req.url.includes("api/") ? next() : validate(req, res, () => res.sendFile(`${__dirname}/public/index.html`)));
 
@@ -48,7 +52,6 @@ app.use("/api/user", userRouter);
 app.use("/api/task", taskRouter);
 app.use("/api/form", ticketRouter);
 app.use("/api/contract", contractRouter);
-app.use("/api/contactUs", contactUsRouter);
 app.use("/api/photoUpload",phtoUploadRouter);
 
 app.use("/user", userRouter);
