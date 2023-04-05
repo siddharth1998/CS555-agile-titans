@@ -3,28 +3,23 @@ import mongoose from "mongoose";
 const ticketSchema = new mongoose.Schema({
     userId: {
         type: Number,
-        required: true,
-        unique: true
+        required: true
     },
     email: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     description: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     priority: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     status: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     }
 }, { timestamps: true });
 

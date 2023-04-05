@@ -1,4 +1,5 @@
 import express from "express";// http web server
+import cookieParser from "cookie-parser";
 import { PORT } from "./config.js";
 import morgan from "morgan";// for logging
 import { dirname } from 'path';
@@ -21,6 +22,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(cors());
 
 app.listen(PORT, () => console.log(`Server has started on port : ${PORT}`));// port expose
@@ -33,7 +35,7 @@ app.use(express.static('public'));
 app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));// route 
 
 /** If it is not an API then we redirect to index.html, where react router will take care of which component to render based on URL */
-app.use((req, res, next) => req.url.includes("api/") ? next() : res.sendFile(`${__dirname}/public/index.html`));
+app.use((req, res, next) => req.url.includes("api/") ? next() : validate(req, res, () => res.sendFile(`${__dirname}/public/index.html`)));
 
 /** 
  * All the other requests that are not auth paths are validated with their JWT tokens
