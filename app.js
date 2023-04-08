@@ -36,6 +36,7 @@ app.use(morgan("dev"));// middleware to send each reponse via middleware for LOG
 app.use(express.static('public'));
 
 app.use("/dashboard", dashboardRouter);
+app.use("/salesperson", contactUsRouter);
 
 /** This is where we can put our React app or normal HTML, CSS, JS website inside the public folder. */
 app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));// route 

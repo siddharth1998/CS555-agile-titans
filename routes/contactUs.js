@@ -32,9 +32,9 @@ router.get("/", async (req, res) => {
         for (let i = 0; i < contactUsRequests.length; i++) {
             contactUsRequests[i].status = contactUsRequests[i].status ? "Done" : "Pending";
         }
-        return res.render("salesperson", { requests: contactUsRequests });
+        return res.render("Salesperson/salesperson.ejs", { requests: contactUsRequests });
     } catch (err) {
-
+        return res.status(500).json({ status: "error", message: "Uh! Oh Something went wrong on our side, we will fix it :)" });
     }
 });
 
