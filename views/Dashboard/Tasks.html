@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Table - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Pretty-Registration-Form-.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+</head>
+
+<body id="page-top" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
+    <div id="wrapper" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="--bs-primary: #31363b;--bs-primary-rgb: 49,54,59;background: #858c9f;">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"></div>
+                    <div class="sidebar-brand-text mx-3"><span>SOLAR EPC</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" href="Dashboard.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="Projects.html"><i class="fas fa-list"></i><span>Projects</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
+            <div id="content" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid">
+                        <ul class="navbar-nav flex-nowrap ms-auto">
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">Valerie Luna</span></a>
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;"><a class="btn btn-primary pull-right" role="button" href="NewTask.html" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;background: #858c9f;"><i class="fa fa-plus"></i>&nbsp;New Task</a>
+                    <h3 class="text-dark mb-4" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">Tasks</h3>
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">Tasks Info</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 text-nowrap">
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Show&nbsp;<select class="d-inline-block form-select form-select-sm">
+                                                <option value="10" selected="">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select>&nbsp;</label></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"></label></div>
+                                </div>
+                            </div>
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Task Name</th>
+                                            <th>Task Assign&nbsp;</th>
+                                            <th>Status</th>
+                                            <th>Priority</th>
+                                            <th>Due date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Task 1</td>
+                                            <td><span style="background-color: var(--bs-table-bg);">Angelica Ramos</span></td>
+                                            <td>Completed</td>
+                                            <td>2</td>
+                                            <td>2023/03/15</td>
+                                            <td><a href="TaskDetails.html"><i class="fa fa-eye"></i></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Task 2</td>
+                                            <td><span style="background-color: var(--bs-table-bg);">Ashton Cox</span></td>
+                                            <td>In Progress</td>
+                                            <td>3</td>
+                                            <td>2023/03/20</td>
+                                            <td><a href="TaskDetails.html"><i class="fa fa-eye"></i></a></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>Task Name</strong></td>
+                                            <td><strong>Task Assign&nbsp;</strong></td>
+                                            <td><strong>Status</strong></td>
+                                            <td><strong>Priority</strong></td>
+                                            <td><strong>Due date</strong></td>
+                                            <td><strong>Actions</strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>
