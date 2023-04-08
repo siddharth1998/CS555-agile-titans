@@ -14,6 +14,11 @@ const contactUsSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    status: {
+        type: Boolean,
+        required: true,
+        default: false
+    }
 }, { timestamps: true });
 
 const contactUsModel = mongoose.model('contactUs', contactUsSchema, 'contactUs');

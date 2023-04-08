@@ -14,9 +14,15 @@ import { router as phtoUploadRouter} from "./routes/photoUpload.js";
 /** This import will automatically create a database connection for us :) */
 import * as dB from "./models/connection.js";
 import { router as projectRouter } from "./routes/Project.js";
+import dashboardRouter from "./routes/dashboard.js";
+import path  from "path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -28,6 +34,8 @@ app.listen(PORT, () => console.log(`Server has started on port : ${PORT}`));// p
 app.use(morgan("dev"));// middleware to send each reponse via middleware for LOGGING 
 
 app.use(express.static('public'));
+
+app.use("/dashboard", dashboardRouter);
 
 /** This is where we can put our React app or normal HTML, CSS, JS website inside the public folder. */
 app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));// route 

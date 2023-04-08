@@ -9,4 +9,6 @@ const validate = async (email, password) => {
     return (await user.comparePassword(password)) ? user : false;
 };
 
-export { create, validate };
+const getAll = () => userModel.find();
+
+export { create, validate, getAll };

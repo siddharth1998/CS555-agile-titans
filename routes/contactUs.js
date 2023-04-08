@@ -1,4 +1,4 @@
-import { create } from "../services/contactUs.js";
+import { create, getAll } from "../services/contactUs.js";
 import { isValidString } from "../services/helpers.js";
 import express from "express";
 
@@ -22,6 +22,19 @@ router.post("/", async (req, res) => {
         console.error(err);
         if (err.message.includes("duplicate key error collection") && err.message.includes("email")) return res.status(400).json({ status: "error", message: "You have already submitted a request." });
         return res.status(500).json({ status: "error", message: "Uh! Oh Something went wrong on our side, we will fix it :)" });
+    }
+});
+
+router.get("/", async (req, res) => {
+    try {
+        let contactUsRequests = await getAll();
+        
+        for (let i = 0; i < contactUsRequests.length; i++) {
+            contactUsRequests[i].status = contactUsRequests[i].status ? "Done" : "Pending";
+        }
+        return res.render("salesperson", { requests: contactUsRequests });
+    } catch (err) {
+
     }
 });
 

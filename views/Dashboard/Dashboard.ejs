@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Table - Brand</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Dashboard/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Registration-Form-.css">
-    <link rel="stylesheet" href="assets/css/untitled.css">
+    <link rel="stylesheet" href="Dashboard/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="Dashboard/assets/css/Pretty-Registration-Form-.css">
+    <link rel="stylesheet" href="Dashboard/assets/css/untitled.css">
 </head>
 
 <body id="page-top" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
@@ -40,11 +40,21 @@
                         </ul>
                     </div>
                 </nav>
+                These are all the users in our database
+                <table>
+                    <% for(var i=0; i < users.length; i++) { %>
+                        <tr>
+                            <td><%= users[i].firstName %></td>
+                            <td><%= users[i].lastName %></td>
+                            <td><%= users[i].email %></td>
+                        </tr>
+                    <% } %>
+                </table>
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/theme.js"></script>
+    <script src="Dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="Dashboard/assets/js/theme.js"></script>
 </body>
 
 </html>
