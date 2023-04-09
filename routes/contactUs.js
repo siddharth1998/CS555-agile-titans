@@ -7,11 +7,11 @@ const router = express.Router();
 router.post("/", async (req, res) => {
     try {
         if (!req.body || (Object.keys(req.body).length === 0)) return res.status(400).json({ status: "error", message: "No details are sent" });
-        let { email, fullName, message } = req.body;
+        let { email, name, message } = req.body;
+
+        if (!isValidString(name)) return res.status(400).json({ status: "error", message: "Invalid Name" });
 
         if (!isValidString(email)) return res.status(400).json({ status: "error", message: "Invalid Email" });
-
-        if (!isValidString(fullName)) return res.status(400).json({ status: "error", message: "Invalid Name" });
 
         if (!isValidString(message)) return res.status(400).json({ status: "error", message: "Invalid Message" });
 

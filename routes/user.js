@@ -85,6 +85,7 @@ router.post("/auth/login", async (req, res) => {
 
     if (valid) {
       let { password, ...rest } = valid.toObject();
+      res.cookie('Auth', getAuthToken(rest), { httpOnly: true, secure: true });
       return res
         .status(200)
         .json({ status: "success", message: "user logged in successfully", token: getAuthToken(rest), user: rest });

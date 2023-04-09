@@ -6,3 +6,10 @@
 	background-size: cover;
 	height: 100vh;
 }
+
+.success-message-wrapper {
+	width: fit-content;
+	position: absolute !important;
+	right: 20px;
+	top: 20px;
+}

@@ -1,4 +1,5 @@
 import express from "express";// http web server
+import cookieParser from "cookie-parser";
 import { PORT } from "./config.js";
 import morgan from "morgan";// for logging
 import { dirname } from 'path';
@@ -27,6 +28,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(cors());
 
 app.listen(PORT, () => console.log(`Server has started on port : ${PORT}`));// port expose
@@ -41,8 +43,12 @@ app.use("/salesperson", contactUsRouter);
 /** This is where we can put our React app or normal HTML, CSS, JS website inside the public folder. */
 app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));// route 
 
+/** Contact Us page should be visible to everyone, even though they are not logged in */
+app.get("/contactUs", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
+app.use("/api/contactUs", contactUsRouter);
+
 /** If it is not an API then we redirect to index.html, where react router will take care of which component to render based on URL */
-app.use((req, res, next) => req.url.includes("api/") ? next() : res.sendFile(`${__dirname}/public/index.html`));
+app.use((req, res, next) => req.url.includes("api/") ? next() : validate(req, res, () => res.sendFile(`${__dirname}/public/index.html`)));
 
 /** 
  * All the other requests that are not auth paths are validated with their JWT tokens
@@ -55,7 +61,6 @@ app.use("/api/user", userRouter);
 app.use("/api/task", taskRouter);
 app.use("/api/form", ticketRouter);
 app.use("/api/contract", contractRouter);
-app.use("/api/contactUs", contactUsRouter);
 app.use("/api/photoUpload",phtoUploadRouter);
 
 app.use("/user", userRouter);
