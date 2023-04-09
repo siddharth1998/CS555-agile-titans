@@ -38,10 +38,6 @@ function App() {
       element: <ContractDetails></ContractDetails>,
     },
     {
-      path: "/dashboard",
-      element: <Dashboard></Dashboard>,
-    },
-    {
       path: "/hello",
       element: <div>Not world!</div>,
     },
