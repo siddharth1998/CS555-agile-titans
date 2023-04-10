@@ -1,0 +1,24 @@
+.unresolved{
+    color: red !important;
+    font-weight: bold;
+}
+
+.resolved {
+    color: green;
+    font-weight: bold;
+}
+
+.high {
+    color: red !important;
+    font-weight: bold;
+}
+
+.medium {
+    color: yellow;
+    font-weight: bold;
+}
+
+.low {
+    color: green;
+    font-weight: bold;
+}

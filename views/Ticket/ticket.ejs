@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>salesperson</title>
+    <title>Tickets</title>
     <link rel="stylesheet" href="/Salesperson/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/Salesperson/assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="/Salesperson/assets/fonts/font-awesome.min.css">
@@ -12,19 +12,49 @@
     <link rel="stylesheet" href="/Salesperson/assets/css/styles.css">
     <link rel="stylesheet" href="/Salesperson/assets/css/Table-With-Search-search-table.css">
     <link rel="stylesheet" href="/Salesperson/assets/css/Table-With-Search.css">
+
+    <style>
+        .unresolved{
+            color: red !important;
+            font-weight: bold;
+        }
+
+        .resolved {
+            color: green;
+            font-weight: bold;
+        }
+        
+        .high {
+            color: red !important;
+            font-weight: bold;
+        }
+
+        .medium {
+            color: yellow;
+            font-weight: bold;
+        }
+
+        .low {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
     <div class="col-md-12 search-table-col">
+    <h1><center>All Tickets</center></h1>
+        <div class="form-group pull-right col-lg-4"><input type="text" class="search form-control" placeholder="Search by typing here.."></div><span class="counter pull-right"></span>
         <div class="table-responsive table table-hover table-bordered results">
             <table class="table table-hover table-bordered">
                 <thead class="bill-header cs">
                     <tr>
-                        <th id="trs-hd-1" class="col-lg-1">ID.NO</th>
-                        <th id="trs-hd-3" class="col-lg-3">Customer Name</th>
-                        <th id="trs-hd-4" class="col-lg-2">E-Mail</th>
-                        <th id="trs-hd-5" class="col-lg-2">Query Asked</th>
-                        <th id="trs-hd-6" class="col-lg-2">Action</th>
+                        <th id="trs-hd-1" class="col-lg-1">User Id</th>
+                        <th id="trs-hd-3" class="col-lg-3">E-Mail</th>
+                        <th id="trs-hd-4" class="col-lg-2">Description</th>
+                        <th id="trs-hd-5" class="col-lg-2">Status</th>
+                        <th id="trs-hd-6" class="col-lg-2">Priority</th>
+                        <th id="trs-hd-6" class="col-lg-2">Date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,12 +66,15 @@
                     <tr></tr>
                     <% for(var i=0; i < requests.length; i++) { %>
                         <tr>
+                            <td><%= requests[i].userId %></td>
                             <td><%= requests[i].email %></td>
-                            <td><%= requests[i].fullName %></td>
-                            <td><%= requests[i].message %></td>
-                            <td><%= requests[i].status %></td>
+                            <td><%= requests[i].description %></td>
+                            <td class=<%= requests[i].status %>><%= requests[i].status %></td>
+                            <td class=<%= requests[i].priority %>><%= requests[i].priority %></td>
+                            <td><%= requests[i].createdAt %></td>
                         </tr>
                     <% } %>
+
                 </tbody>
             </table>
         </div>
