@@ -66,3 +66,5 @@ app.use("/api/photoUpload",phtoUploadRouter);
 app.use("/user", userRouter);
 app.use("/task", taskRouter);
 app.use("/project",projectRouter);
+
+export default app;
