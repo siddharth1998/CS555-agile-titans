@@ -2,29 +2,24 @@ import mongoose from "mongoose";
 
 const projectSchema = new mongoose.Schema(
   {
-    name: {
+    projectName: {
       type: String,
-      required: true,
     },
     description: {
       type: String,
-      required: true,
     },
     status: {
       type: String,
-      enum: ["new", "in progress", "completed"],
-      default: "new",
+      //      enum: ["new", "in progress", "completed"],
     },
     startDate: {
       type: Date,
-      required: true,
     },
     endDate: {
       type: Date,
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
       ref: "user",
     },
     teamMembers: [

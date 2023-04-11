@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Table - Brand</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <title>SOLAR EPC</title>
+    <link rel="stylesheet" href="/Dashboard/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Registration-Form-.css">
-    <link rel="stylesheet" href="assets/css/untitled.css">
+    <link rel="stylesheet" href="/Dashboard/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/Dashboard/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/Dashboard/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/Dashboard/assets/css/Pretty-Registration-Form-.css">
+    <link rel="stylesheet" href="/Dashboard/assets/css/untitled.css">
 </head>
 
 <body id="page-top" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
@@ -23,9 +23,8 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="Dashboard.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="Projects.html"><i class="fas fa-list"></i><span>Projects</span></a></li>
-                </ul>
+                    <li class="nav-item"><a class="nav-link active" href="/dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/project"><i class="fas fa-list"></i><span>Projects</span></a></li>                </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
@@ -42,7 +41,7 @@
                         </ul>
                     </div>
                 </nav>
-                <div class="container-fluid" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;"><a class="btn btn-primary pull-right" role="button" href="NewProject.html" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;background: #858c9f;"><i class="fa fa-plus"></i>&nbsp;New Project</a>
+                <div class="container-fluid" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;"><a class="btn btn-primary pull-right" role="button" href="/project/new" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;background: #858c9f;"><i class="fa fa-plus"></i>&nbsp;New Project</a>
                     <h3 class="text-dark mb-4" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">Projects</h3>
                     <div class="card shadow">
                         <div class="card-header py-3">
@@ -74,20 +73,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Project 1</td>
-                                            <td>This is project 1.</td>
-                                            <td>Completed</td>
-                                            <td>2023/03/15</td>
-                                            <td><a href="Tasks.html"><i class="fa fa-eye"></i></a><a href="NewProject.html"><i class="fa fa-edit" style="margin-right: 24px;padding-left: 19px;"></i></a><i class="fa fa-trash" style="font-size: 15px;padding-left: 9px;margin-right: -28px;padding-right: 0px;margin-left: -15px;"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Project 2</td>
-                                            <td>This is project 2.</td>
-                                            <td>In Progress</td>
-                                            <td>2023/03/20</td>
-                                            <td><a href="Tasks.html"><i class="fa fa-eye"></i></a><a href="NewProject.html"><i class="fa fa-edit" style="margin-right: 24px;padding-left: 19px;"></i> <i class="fa fa-trash" style="font-size: 15px;margin-right: -28px;padding-right: 0px;margin-left: -15px;padding-left: 6px;"></i></a></td>
-                                        </tr>
+                                        <% for(var i=0; i < projects .length; i++) { %>
+                                            <tr>
+                                                <td> <%= projects [i].projectName %></td>
+                                                <td><%= projects [i].description %></td>
+                                                <td><%= projects [i].status %></td>
+                                                <td><%= projects [i].endDate %></td>
+                                                <td><a href="/project/<%= projects [i]._id %>"><i class="fa fa-eye"></i></a><a href="/project/delete/<%= projects [i]._id %>"><i class="fa fa-trash" style="margin-right: 24px;padding-left: 19px;"></i></a></td>
+
+                                            <% } %>
+
                                     </tbody>
                                     <tfoot>
                                         <tr>
@@ -122,8 +117,8 @@
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/theme.js"></script>
+    <script src="/Dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Dashboard/assets/js/theme.js"></script>
 </body>
 
 </html>
