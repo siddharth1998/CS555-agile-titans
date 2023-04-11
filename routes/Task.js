@@ -2,41 +2,57 @@ import express from "express";
 import { attachmentModel } from "../models/attachment.js";
 import { commentModel } from "../models/comment.js";
 import { taskModel } from "../models/Task.js";
+import { userModel } from "../models/user.js";
 
 const router = express.Router();
 
-router.post("/tasks", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
+    console.log(req.body);
     const task = new taskModel(req.body);
     await task.save();
-    res.json(task);
+    res.render("Dashboard/NewTask.ejs", {
+      task,
+      message: "Task Added successfully",
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server error");
   }
 });
 
-router.get("/tasks", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const tasks = await taskModel.find().populate("taskAssign");
-    res.json(tasks);
+    return res.render("Dashboard/Tasks.ejs", { tasks });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server error");
   }
 });
 
-router.get("/tasks/:id", async (req, res) => {
+router.get("/new", async (req, res) => {
+  try {
+    res.render("Dashboard/NewTask.ejs", { task: "" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server Error");
+  }
+});
+
+router.get("/:id", async (req, res) => {
   try {
     const task = await taskModel
       .findById(req.params.id)
+      .populate("project")
       .populate("taskAssign")
       .populate("collabrators")
       .populate("comments.createdBy");
     if (!task) {
       return res.status(404);
     }
-    res.json(task);
+    console.log(task);
+    return res.render("Dashboard/TaskDetails.ejs", { task });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server error");
