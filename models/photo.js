@@ -24,7 +24,7 @@ const photoUpload= new mongoose.Schema(
         operation:{
             type:String,
             required:true
-        }    
+        }
     },
 
     { timestamps: true }
