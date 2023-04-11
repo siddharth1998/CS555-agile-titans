@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Tickets</title>
+    <link rel="stylesheet" href="/Salesperson/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Salesperson/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/Salesperson/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/Salesperson/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/Salesperson/assets/css/styles.css">
+    <link rel="stylesheet" href="/Salesperson/assets/css/Table-With-Search-search-table.css">
+    <link rel="stylesheet" href="/Salesperson/assets/css/Table-With-Search.css">
+
+    <style>
+        .unresolved{
+            color: red !important;
+            font-weight: bold;
+        }
+
+        .resolved {
+            color: green;
+            font-weight: bold;
+        }
+        
+        .high {
+            color: red !important;
+            font-weight: bold;
+        }
+
+        .medium {
+            color: yellow;
+            font-weight: bold;
+        }
+
+        .low {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="col-md-12 search-table-col">
+    <h1><center>All Tickets</center></h1>
+
+    <div class="alert alert-success" role="alert">
+        <%= message %> <a href="/api/form/"> <button type="button" class="btn btn-primary">Create Ticket</button> </a>
+        <a href="/api/form/ticketChangeDashboard"> <button type="button" class="btn btn-danger">Change Status</button> </a> 
+    </div>
+
+         
+    </div>
+        <div class="form-group pull-right col-lg-4"><input type="text" class="search form-control" placeholder="Search by typing here.."></div><span class="counter pull-right"></span>
+        <div class="table-responsive table table-hover table-bordered results">
+            <table class="table table-hover table-bordered">
+                <thead class="bill-header cs">
+                    <tr>
+                        <th id="trs-hd-1" class="col-lg-1">User Id</th>
+                        <th id="trs-hd-3" class="col-lg-3">E-Mail</th>
+                        <th id="trs-hd-4" class="col-lg-2">Description</th>
+                        <th id="trs-hd-5" class="col-lg-2">Status</th>
+                        <th id="trs-hd-6" class="col-lg-2">Priority</th>
+                        <th id="trs-hd-6" class="col-lg-2">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="warning no-result">
+                        <td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <% for(var i=0; i < requests.length; i++) { %>
+                        <tr>
+                            <td><%= requests[i].userId %></td>
+                            <td><%= requests[i].email %></td>
+                            <td><%= requests[i].description %></td>
+                            <td class=<%= requests[i].status %>><%= requests[i].status %></td>
+                            <td class=<%= requests[i].priority %>><%= requests[i].priority %></td>
+                            <td><%= requests[i].createdAt %></td>
+                        </tr>
+                    <% } %>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="/Salesperson/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Salesperson/assets/js/Table-With-Search-search-table.js"></script>
+</body>
+
+</html>

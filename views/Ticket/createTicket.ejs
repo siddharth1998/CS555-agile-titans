@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</head>
+<!-- <script type="module" src="./app.js"></script> -->
+<style>
+    .main{
+        display: flex;
+        padding: 5%;
+        width: auto;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<body>
+
+    <h1 style = "text-align: center; margin-top: 2%;"> Customer Care Executive Portal </h1>
+    <div class="main">
+        <form class="row g-3" action="/api/form/issue" method="POST" >
+
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">User ID</label>
+                <input type="number" class="form-control" name="userId" required>
+            </div>
+
+            <div class="col-md-6">
+              <label for="inputEmail4" class="form-label">Email</label>
+              <input type="email" class="form-control" id="inputEmail4" name="email" required>
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text">Description</span>
+                <textarea class="form-control" aria-label="With textarea" name="description" required></textarea>
+            </div>
+
+            <div class="col-md-4">
+              <label for="inputState" class="form-label">Issue Status</label>
+              <select id="inputState" class="form-select" name="status" required>
+                <option selected value="unresolved">1. Unresolved</option>
+                <option value="resolved">2. Resolved</option>
+              </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">Priority</label>
+                <select id="inputState" class="form-select" name="priority" required>
+                  <option selected value="high">1. High</option>
+                  <option value="medium">2. Medium</option>
+                  <option value="low">3. Low</option>
+                </select>
+            </div>
+
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                <label class="form-check-label" for="gridCheck">
+                  The above information is true and is same as provided by the customer.
+                </label>
+              </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Submit Status/ Generate Ticket</button>
+              <a href="/api/form/ticketDashboard"> <button type="button" class="btn btn-primary">View All Tickets</button> </a>
+            </div>
+          </form>
+    </div>
+
+</form>
+</body>
+</html>

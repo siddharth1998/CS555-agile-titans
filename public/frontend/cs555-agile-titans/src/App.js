@@ -41,10 +41,10 @@ function App() {
       path: "/hello",
       element: <div>Not world!</div>,
     },
-    {
-      path: "/ticket",
-      element: <Issue></Issue>,
-    },
+    // {
+    //   path: "/ticket",
+    //   element: <Issue></Issue>,
+    // },
     {
       path: "/customerCare",
       element: <CustomerCare></CustomerCare>,
