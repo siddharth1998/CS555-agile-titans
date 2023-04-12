@@ -1,16 +1,18 @@
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { fetchSomething } from "../services/fetchService";
 
 const CreateContract = () => {
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const [jump, setJump] = useState(false);
   const contractNoRef = useRef();
   const contractTypeRef = useRef();
   const entityTypeRef = useRef();
   const firstPartyRef = useRef();
 
-  const postContract =  () => {
+  const localUser = JSON.parse(localStorage.getItem("user"));
+
+  const postContract = async () => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -28,20 +30,29 @@ const CreateContract = () => {
       redirect: "follow",
     };
 
-    fetchSomething(`api/contract/create`, requestOptions, res => console.log(res), err => console.log("error", err));
+    fetchSomething(`api/contract/create`, requestOptions, 
+    (res) => {
+      console.log(res);
+      setJump(true);
+    }, 
+    (err) => {
+      console.log("error", err);
+      setError(err.message);
+    });
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      setError("");
-      postContract();
-      navigate("/contract/details");
-    } catch {
-      setError("Failed to Create a contract!");
-    }
+    setError("");
+    setJump(false);
+
+    await postContract();
   };
+
+  if (jump) {
+    return <Navigate to="/contract/details" />;
+  }
 
   return (
     <div>
@@ -74,6 +85,8 @@ const CreateContract = () => {
               className="form-control"
               id="firstParty"
               ref={firstPartyRef}
+              value={`${localUser.firstName}${localUser.lastName}`}
+              readOnly
             />
           </div>
         </div>

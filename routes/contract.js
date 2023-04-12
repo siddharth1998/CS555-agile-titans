@@ -8,6 +8,8 @@ import {
   updateSecondPartySignature,
   updateSecondParty,
   findInProgressContracts,
+  deleteContractBeforeSigned,
+  terminateContractAtWill,
 } from "../services/contract.js";
 
 const router = express.Router();
@@ -56,21 +58,27 @@ router.post("/create", async (req, res) => {
   }
 });
 
-/** /contract/details/:contractNo */
-router.get("/details/:contractNo", async (req, res) => {
+/** /contract/content/:contractNo */
+router.get("/content/:contractNo", async (req, res) => {
   try {
     let contractNo = req.params.contractNo;
     let contractContent = await getContractContentByContractNo(contractNo);
-    return res.status(200).json({ status: 'success', message: 'Get contract content successfully', contractContent });
+    return res
+      .status(200)
+      .json({
+        status: "success",
+        message: "Get contract content successfully",
+        contractContent,
+      });
   } catch (err) {
     console.error(`Error while getting contract content`);
     console.error(err);
-    return res.status(500).json({ status : 'error', message : err.message });
+    return res.status(500).json({ status: "error", message: err.message });
   }
 });
 
-/** /contract/details/:contractNo */
-router.post("/details/:contractNo", async (req, res) => {
+/** /contract/content/:contractNo */
+router.post("/content/:contractNo", async (req, res) => {
   try {
     let contractNo = req.params.contractNo;
     let secondParty = req.body.secondPartySignature;
@@ -84,7 +92,7 @@ router.post("/details/:contractNo", async (req, res) => {
   } catch (err) {
     console.error(`Error while updating second party signature`);
     console.error(err);
-    return res.status(500).json({ status : 'error', message : err.message });
+    return res.status(500).json({ status: "error", message: err.message });
   }
 });
 
@@ -105,6 +113,40 @@ router.post("/details/create", async (req, res) => {
     console.error(`Error while creating the contract content`);
     console.error(err);
     return res.status(500).json({ status : 'error', message : err.message });
+  }
+});
+
+/** /contract/delete/:contractNo */
+router.post("/delete/:contractNo", async (req, res) => {
+  try {
+    let contractNo = req.params.contractNo;
+    let deleteResult = await deleteContractBeforeSigned(contractNo);
+    return res.status(200).json({
+      status: "success",
+      message: "Delete contract successfully",
+      deleteResult,
+    });
+  } catch (err) {
+    console.error(`Error while deleting contract`);
+    console.error(err);
+    return res.status(500).json({ status: "error", message: err.message });
+  }
+});
+
+/** /contract/terminate/:contractNo */
+router.post("/terminate/:contractNo", async (req, res) => {
+  try {
+    let contractNo = req.params.contractNo;
+    let terminateResult = await terminateContractAtWill(contractNo);
+    return res.status(200).json({
+      status: "success",
+      message: "Terminate contract successfully",
+      terminateResult,
+    });
+  } catch (err) {
+    console.error(`Error while terminating contract`);
+    console.error(err);
+    return res.status(500).json({ status: "error", message: err.message });
   }
 });
 
