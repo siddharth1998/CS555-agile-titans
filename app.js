@@ -37,6 +37,13 @@ app.use(morgan("dev")); // middleware to send each reponse via middleware for LO
 
 app.use(express.static("public"));
 
+/** Contact Us page should be visible to everyone, even though they are not logged in */
+app.get("/contactUs", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
+app.use("/api/contactUs", contactUsRouter);
+
+/** All the pages listed below can only be accessed if the user is logged in */
+app.use(validate);
+
 app.use("/dashboard", dashboardRouter);
 app.use("/salesperson", contactUsRouter);
 app.use("/project", projectRouter);
@@ -46,12 +53,6 @@ app.use("/photoUpload", phtoUploadRouter);
 
 /** This is where we can put our React app or normal HTML, CSS, JS website inside the public folder. */
 app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`)); // route
-
-/** Contact Us page should be visible to everyone, even though they are not logged in */
-app.get("/contactUs", (req, res) =>
-  res.sendFile(`${__dirname}/public/index.html`)
-);
-app.use("/api/contactUs", contactUsRouter);
 
 /** If it is not an API then we redirect to index.html, where react router will take care of which component to render based on URL */
 app.use((req, res, next) =>
