@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Table - Brand</title>
+    <title>Solar EPC - Dashboard</title>
     <link rel="stylesheet" href="/Dashboard/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="/Dashboard/assets/fonts/fontawesome-all.min.css">
@@ -23,6 +23,10 @@
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link active" href="/dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/project"><i class="fas fa-list"></i><span>Projects</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/salesperson"><i class="fas fa-user"></i><span>Sales</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/support"><i class="fab fa-wpforms"></i><span>Support</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/api/photoUpload/dashboard"><i class="fas fa-photo-video"></i><span>Photo Upload</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contract"><i class="fas fa-file-contract"></i><span>Contracts</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -40,7 +44,86 @@
                         </ul>
                     </div>
                 </nav>
-                These are all the users in our database
+                <div class="container-fluid">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark mb-0">Dashboard</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <a href="/project" style="text-decoration:auto;">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                            <div class="col me-2">
+                                                <div class="text-dark fw-bold h5 mb-0"><span>Projects</span></div>
+                                            </div>
+                                            <div class="col-auto"><i class="fas fa-list fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <a href="/salesperson" style="text-decoration:auto;">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-dark fw-bold h5 mb-0"><span>Sales</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-user fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <a href="/support" style="text-decoration:auto;">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-dark fw-bold h5 mb-0"><span>Support</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fab fa-wpforms fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <a href="/api/photoUpload/dashboard" style="text-decoration:auto;">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-dark fw-bold h5 mb-0"><span>Photo Upload</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-photo-video fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <a href="/contract" style="text-decoration:auto;">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-dark fw-bold h5 mb-0"><span>Contracts</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-file-contract fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!--
+These are all the users in our database
                 <table>
                     <% for(var i=0; i < users.length; i++) { %>
                         <tr>
@@ -51,6 +134,7 @@
                         </tr>
                     <% } %>
                 </table>
+             -->   
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>

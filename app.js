@@ -41,6 +41,8 @@ app.use("/dashboard", dashboardRouter);
 app.use("/salesperson", contactUsRouter);
 app.use("/project", projectRouter);
 app.use("/task", taskRouter);
+app.use("/support", ticketRouter);
+app.use("/photoUpload", phtoUploadRouter);
 
 /** This is where we can put our React app or normal HTML, CSS, JS website inside the public folder. */
 app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`)); // route
@@ -76,6 +78,6 @@ app.use("/api/photoUpload", phtoUploadRouter);
 
 app.use("/user", userRouter);
 app.use("/task", taskRouter);
-app.use("/project",projectRouter);
+app.use("/project", projectRouter);
 
 export default app;
