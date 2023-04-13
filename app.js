@@ -41,25 +41,8 @@ app.use(express.static("public"));
 app.get("/contactUs", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 app.use("/api/contactUs", contactUsRouter);
 
-/** All the pages listed below can only be accessed if the user is logged in */
-app.use(validate);
-
-app.use("/dashboard", dashboardRouter);
-app.use("/salesperson", contactUsRouter);
-app.use("/project", projectRouter);
-app.use("/task", taskRouter);
-app.use("/support", ticketRouter);
-app.use("/photoUpload", phtoUploadRouter);
-
 /** This is where we can put our React app or normal HTML, CSS, JS website inside the public folder. */
-app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`)); // route
-
-/** If it is not an API then we redirect to index.html, where react router will take care of which component to render based on URL */
-app.use((req, res, next) =>
-  req.url.includes("api/")
-    ? next()
-    : validate(req, res, () => res.sendFile(`${__dirname}/public/index.html`))
-);
+app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
 /**
  * All the other requests that are not auth paths are validated with their JWT tokens
@@ -71,6 +54,24 @@ app.use((req, res, next) =>
 );
 
 app.use("/api/user", userRouter);
+
+/** All the pages listed below can only be accessed if the user is logged in */
+app.use(validate);
+
+app.use("/dashboard", dashboardRouter);
+app.use("/salesperson", contactUsRouter);
+app.use("/project", projectRouter);
+app.use("/task", taskRouter);
+app.use("/support", ticketRouter);
+app.use("/photoUpload", phtoUploadRouter);
+
+/** If it is not an API then we redirect to index.html, where react router will take care of which component to render based on URL */
+app.use((req, res, next) =>
+  req.url.includes("api/")
+    ? next()
+    : validate(req, res, () => res.sendFile(`${__dirname}/public/index.html`))
+);
+
 app.use("/api/task", taskRouter);
 app.use("/api/form", ticketRouter);
 app.use("/api/contract", contractRouter);
