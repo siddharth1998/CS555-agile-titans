@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/siddharth1998/CS555-agile-titans#readme",
   "dependencies": {
-    "aws-sdk": "^2.1329.0",
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",

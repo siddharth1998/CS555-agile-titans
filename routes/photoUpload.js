@@ -1,7 +1,5 @@
-import express, { response } from "express";
-import mongoose, { isObjectIdOrHexString, ObjectId } from "mongoose";
+import express from "express";
 import multer from "multer";
-import { uploadFiles } from "../services/s3.js";
 import { photoUploadModel } from '../models/photo.js';
 
 let storage = multer.diskStorage({
