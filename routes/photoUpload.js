@@ -34,6 +34,11 @@ router.post("/",upload.single('image'),async (req,res)=>{
 }
 );
 
+router.get("/",upload.single('image'),async (req,res)=>{
+    return res.render("PhotoInspection/createPhoto.ejs"); 
+}
+);
+
 router.get("/dashboard", async (req,res)=>{
 
     try {
