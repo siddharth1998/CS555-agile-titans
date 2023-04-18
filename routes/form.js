@@ -37,7 +37,13 @@ router.post("/issue", async (req, res) => {
 
 router.get("/ticketDashboard", async (req, res) => {
     try {
-        const tickets = await ticketModel.find();
+        const tickets = await ticketModel.find().sort({createdAt:1});
+
+        // const tickets = await ticketModel.find().sort(function(a, b) {
+        //     const statusOrder = { "high": 0, "medium": 1, "low": 2 };
+        //     return statusOrder[a.priority] - statusOrder[b.priority];
+        // });
+
         return res.render("Ticket/ticket.ejs", { requests: tickets, message: ""}); 
     } catch (err) {
         console.error(err);
@@ -47,7 +53,12 @@ router.get("/ticketDashboard", async (req, res) => {
 
 router.get("/ticketChangeDashboard", async (req, res) => {
     try {
-        const tickets = await ticketModel.find();
+        const tickets = await ticketModel.find().sort({createdAt:1});
+        // const tickets = await ticketModel.find().sort(function(a, b) {
+        //     const statusOrder = { "high": 0, "medium": 1, "low": 2 };
+
+        //     return statusOrder[a.priority] - statusOrder[b.priority];
+        // });
         return res.render("Ticket/changeTicket.ejs", { requests: tickets}); 
     } catch (err) {
         console.error(err);
