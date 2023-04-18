@@ -35,14 +35,19 @@ app.listen(PORT, () => console.log(`Server has started on port : ${PORT}`)); // 
 
 app.use(morgan("dev")); // middleware to send each reponse via middleware for LOGGING
 
+
+app.get("/", (req, res) => res.render('LandingPage/LandingPage.ejs'));
+app.get("/aboutUs", (req, res) => res.render('AboutUs/AboutUs.ejs'));
+
 app.use(express.static("public"));
 
 /** Contact Us page should be visible to everyone, even though they are not logged in */
 app.get("/contactUs", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 app.use("/api/contactUs", contactUsRouter);
 
+
 /** This is where we can put our React app or normal HTML, CSS, JS website inside the public folder. */
-app.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
+app.get("/auth", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
 /**
  * All the other requests that are not auth paths are validated with their JWT tokens

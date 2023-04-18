@@ -20,11 +20,10 @@
             <table class="table table-hover table-bordered">
                 <thead class="bill-header cs">
                     <tr>
-                        <th id="trs-hd-1" class="col-lg-1">ID.NO</th>
+                        <th id="trs-hd-1" class="col-lg-1">E-Mail</th>
                         <th id="trs-hd-3" class="col-lg-3">Customer Name</th>
-                        <th id="trs-hd-4" class="col-lg-2">E-Mail</th>
                         <th id="trs-hd-5" class="col-lg-2">Query Asked</th>
-                        <th id="trs-hd-6" class="col-lg-2">Action</th>
+                        <th id="trs-hd-6" class="col-lg-2">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,7 +36,7 @@
                     <% for(var i=0; i < requests.length; i++) { %>
                         <tr>
                             <td><%= requests[i].email %></td>
-                            <td><%= requests[i].fullName %></td>
+                            <td><%= requests[i].name %></td>
                             <td><%= requests[i].message %></td>
                             <td><%= requests[i].status %></td>
                         </tr>

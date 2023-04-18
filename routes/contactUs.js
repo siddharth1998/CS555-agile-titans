@@ -28,6 +28,7 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
     try {
         let contactUsRequests = await getAll();
+        contactUsRequests = JSON.parse(JSON.stringify(contactUsRequests));
         
         for (let i = 0; i < contactUsRequests.length; i++) {
             contactUsRequests[i].status = contactUsRequests[i].status ? "Done" : "Pending";
