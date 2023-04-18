@@ -18,7 +18,7 @@ import Projects from "./components/Projects";
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/auth",
       element: <Auth></Auth>,
     },
     {
