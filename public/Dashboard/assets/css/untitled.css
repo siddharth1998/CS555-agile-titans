@@ -1,11 +1,31 @@
-.page-link.active, .active > .page-link {
-  z-index: 3;
-  color: var(--bs-pagination-active-color);
-  background-color: #858c9f;
-  border-color: #858c9f;
+.page-link.active,
+.active>.page-link {
+	z-index: 3;
+	color: var(--bs-pagination-active-color);
+	background-color: #858c9f;
+	border-color: #858c9f;
 }
 
 .page-link {
-  color: #858c9f;
+	color: #858c9f;
 }
 
+@media only screen and (max-width: 768px) {
+	.desktop-table {
+		display: none;
+	}
+
+	.mobile-table {
+		display: block;
+	}
+}
+
+@media only screen and (min-width: 769px) {
+	.desktop-table {
+		display: block;
+	}
+
+	.mobile-table {
+		display: none;
+	}
+}

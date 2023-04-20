@@ -88,7 +88,7 @@
                             Status</button></a>
                     
                     <h3 class="text-dark mb-4" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">Support Tickets</h3>
-                    <div class="card shadow">
+                    <div class="card shadow desktop-table">
                         <div class="card-header py-3">
                             <p class="text-primary m-0 fw-bold">Tickets</p>
                         </div>
@@ -159,6 +159,28 @@
                                 </div> -->
                             </div>
                         </div>
+                    </div>
+                    <div class="mobile-table">
+                        <% for(var i=0; i < requests .length; i++) { %>
+                            <div class="shadow card border mb-3 p-2">
+                                <div class="project-name h3">
+                                    <%= requests[i].userId %>
+                                </div>
+                                <div class="project-description">
+                                    <%= requests[i].email %>
+                                </div>
+                                <div class="project-status">
+                                    Description: <%= requests[i].description %>
+                                </div>
+                                <div class=<%=requests[i].status %>>Status: <%= requests[i].status %>
+                                </div>
+                                <div class=<%=requests[i].priority %>>Priority: <%= requests[i].priority %>
+                                </div>
+                                <div class="text-truncate">
+                                    <%= requests[i].createdAt %>
+                                </div>
+                            </div>
+                        <% } %>
                     </div>
                 </div>
             </div>
