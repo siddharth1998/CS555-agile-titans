@@ -284,5 +284,12 @@
         });
       }
     </script>
+    <script>
+      const setUserName = () => {
+          let user = JSON.parse(localStorage.getItem('user'));
+          document.getElementById("userName").innerText = user.userName;
+      };
+      setUserName();
+  </script>
   </body>
 </html>
