@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { fetchSomething } from "../services/fetchService";
 
 const ContractContent = () => {
   const [contractContent, setContractContent] = useState({});
   let { contractNo } = useParams();
+  const navigate = useNavigate();
   const secondPartySignedRef = useRef();
 
   useEffect(() => {
@@ -152,11 +153,6 @@ const ContractContent = () => {
             {!contractContent.secondPartySignature && (
               <div className="col-md-4">
                 <form>
-                  {/* {error && (
-                    <div classNameName="alert alert-danger" role="alert">
-                      {error}
-                    </div>
-                  )} */}
                   <div className="mb-3 row">
                     <label
                       htmlFor="secondPartySignature"
@@ -179,6 +175,7 @@ const ContractContent = () => {
                     onClick={(e) => {
                       e.preventDefault();
                       postSecondParty();
+                      window.location.reload();
                     }}
                   >
                     Party B Sign
@@ -186,6 +183,30 @@ const ContractContent = () => {
                 </form>
               </div>
             )}
+            <div className="col-md-2">
+              {contractContent.secondPartySignature && (
+                <button
+                  type="button"
+                  className="btn btn-primary mt-2"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(`/contract/update/${contractNo}`);
+                  }}
+                >
+                  Update
+                </button>
+              )}
+              <button
+                type="button"
+                className="btn btn-primary mt-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/contract");
+                }}
+              >
+                Back to Contracts
+              </button>
+            </div>
           </div>
         </div>
       </div>

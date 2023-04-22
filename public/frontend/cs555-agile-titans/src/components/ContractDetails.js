@@ -194,6 +194,7 @@ const ContractDetails = () => {
                   e.preventDefault();
                   postContractDetails();
                   navigate("/contract");
+                  window.location.reload();
                 }}>Party A Sign</button>
               </div>
             </div>
