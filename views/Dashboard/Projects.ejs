@@ -53,18 +53,7 @@
                             <p class="text-primary m-0 fw-bold">Project Info</p>
                         </div>
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6 text-nowrap">
-                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Show&nbsp;<select class="d-inline-block form-select form-select-sm">
-                                                <option value="10" selected="">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select>&nbsp;</label></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"></label></div>
-                                </div>
+            
                             </div>
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                                 <table class="table my-0" id="dataTable">
@@ -84,8 +73,22 @@
                                                 <td><%= projects [i].description %></td>
                                                 <td><%= projects [i].status %></td>
                                                 <td><%= projects [i].endDate %></td>
-                                                <td><a href="/project/<%= projects [i]._id %>"><i class="fa fa-eye"></i></a><a href="/project/delete/<%= projects [i]._id %>"><i class="fa fa-trash" style="margin-right: 24px;padding-left: 19px;"></i></a></td>
-
+                                                <td><a href="/project/<%= projects [i]._id %>"><i class="fa fa-eye"></i></a><button onclick="redirectToUrl('<%= projects [i]._id %>')" style="border: none; background-color: transparent;"><i class="fa fa-trash" style="margin-right: 24px;padding-left: 19px;" id = "<%= projects [i]._id %>"></i></button>
+                                                </td>
+                                            </tr>
+                                            <script>
+                                                function redirectToUrl(url) {
+                                                    fetch('/project/delete/' + url)
+                                                        .then(response => {
+                                                        if (response.ok) {
+                                                            window.location.href = "/project";
+                                                        } else {
+                                                            console.log('Error fetching data');
+                                                        }
+                                                        })
+                                                        .catch(error => console.log(error));
+                                                }
+                                                  </script>  
                                             <% } %>
 
                                     </tbody>
@@ -100,6 +103,7 @@
                                     </tfoot>
                                 </table>
                             </div>
+                        
                             
                             <div class="row">
                                 <div class="col-md-6 align-self-center">
