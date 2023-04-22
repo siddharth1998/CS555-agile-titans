@@ -69,6 +69,7 @@ app.use("/project", projectRouter);
 app.use("/task", taskRouter);
 app.use("/support", ticketRouter);
 app.use("/photoUpload", phtoUploadRouter);
+app.get("/contractHome", (req, res) => res.render("Contracts/Contract.ejs"));
 
 /** If it is not an API then we redirect to index.html, where react router will take care of which component to render based on URL */
 app.use((req, res, next) =>
