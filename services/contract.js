@@ -20,6 +20,10 @@ const getContractContentByContractNo = async (contractNo) => {
   return contractDetailsModel.findOne({ contractNo: contractNo });
 }
 
+const getContractListByContractNo = async (contractNo) => {
+  return contractListModel.findOne({ contractNo: contractNo });
+};
+
 const updateContractList = async (
   contractNo,
   startDate,
@@ -106,4 +110,5 @@ export {
   findInProgressContracts,
   deleteContractBeforeSigned,
   terminateContractAtWill,
+  getContractListByContractNo,
 };

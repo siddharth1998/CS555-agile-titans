@@ -3,6 +3,7 @@ import ContractList from "./components/ContractList";
 import CreateContract from "./components/CreateContract";
 import ContractDetails from "./components/ContractDetails";
 import ContractContent from './components/ContractContent';
+import ContractUpdate from './components/ContractUpdate';
 import Auth from "./components/Auth";
 import Dashboard from "./components/Dashboard";
 import Issue from "./components/Issue";
@@ -36,6 +37,10 @@ function App() {
     {
       path: "contract/details",
       element: <ContractDetails></ContractDetails>,
+    },
+    {
+      path: "contract/update/:contractNo",
+      element: <ContractUpdate></ContractUpdate>,
     },
     {
       path: "/hello",

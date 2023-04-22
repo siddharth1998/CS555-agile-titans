@@ -19,9 +19,9 @@ const ContractList = () => {
         result.contractList = result.contractList.map((c) => {
           return {
             ...c,
-            dateSigned: new Date(c.dateSigned).toDateString(),
-            startDate: new Date(c.startDate).toDateString(),
-            endDate: new Date(c.endDate).toDateString(),
+            dateSigned: String(c.dateSigned).substring(0, 10),
+            startDate: String(c.startDate).substring(0, 10),
+            endDate: String(c.endDate).substring(0, 10),
           };
         });
         setContractList(result.contractList);
@@ -77,15 +77,16 @@ const ContractList = () => {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Contract No.</th>
-            <th scope="col">Contract Type</th>
+            <th scope="col">Type</th>
             <th scope="col">Entity</th>
             <th scope="col">Start Date</th>
             <th scope="col">End Date</th>
             <th scope="col">Date Signed</th>
             <th scope="col">Party A</th>
             <th scope="col">Party B</th>
-            <th scope="col">Contract Status</th>
+            <th scope="col">Status</th>
             <th scope="col">Function</th>
+            <th scope="col">Additional Info</th>
           </tr>
         </thead>
         <tbody>
@@ -115,6 +116,7 @@ const ContractList = () => {
                         onClick={(e) => {
                           e.preventDefault();
                           deleteContract(data.contractNo);
+                          window.location.reload();
                         }}
                       >
                         Delete
@@ -122,14 +124,20 @@ const ContractList = () => {
                     )}
                     {data.secondParty &&
                       data.contractStatus !== "Terminate" && (
-                        <button type="button" className="btn btn-primary" onClick={(e) => {
-                          e.preventDefault();
-                          terminateContract(data.contractNo);
-                        }}>
+                        <button
+                          type="button"
+                          className="btn btn-primary"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            terminateContract(data.contractNo);
+                            window.location.reload();
+                          }}
+                        >
                           Terminate
                         </button>
                       )}
                   </td>
+                  <td>{data.additionalInformation}</td>
                 </tr>
               );
             })}
