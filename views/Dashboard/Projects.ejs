@@ -48,7 +48,7 @@
                 </nav>
                 <div class="container-fluid" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;"><a class="btn btn-primary pull-right" role="button" href="/project/new" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;background: #858c9f;"><i class="fa fa-plus"></i>&nbsp;New Project</a>
                     <h3 class="text-dark mb-4" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">Projects</h3>
-                    <div class="card shadow">
+                    <div class="card shadow desktop-table">
                         <div class="card-header py-3">
                             <p class="text-primary m-0 fw-bold">Project Info</p>
                         </div>
@@ -104,8 +104,40 @@
                                 </table>
                             </div>
                         
+                            
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="mobile-table">
+                        <% for(var i=0; i < projects .length; i++) { %>
+                            <div class="shadow card border mb-3 p-2">
+                                <div class="project-name h3">
+                                    <%= projects [i].projectName %>
+                                </div>
+                                <div class="project-description">
+                                    <%= projects [i].description %>
+                                </div>
+                                <div class="project-status">Status: <%= projects [i].status %>
+                                </div>
+                                <div class="project-end-date text-truncate">End Date: <%= projects [i].endDate %>
+                                </div>
+                            </div>
+                        <% } %>
                     </div>
                 </div>
             </div>
