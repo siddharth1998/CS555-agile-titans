@@ -61,6 +61,13 @@
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/Table-With-Search-search-table.js"></script>
+    <script>
+        const setUserName = () => {
+            let user = JSON.parse(localStorage.getItem('user'));
+            document.getElementById("userName").innerText = user.userName;
+        };
+        setUserName();
+    </script>
 </body>
 
 </html>
