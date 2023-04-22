@@ -74,13 +74,15 @@ router.put("/tasks/:id", async (req, res) => {
   }
 });
 
-router.delete("/tasks/:id", async (req, res) => {
+router.get("/delete/:id", async (req, res) => {
   try {
     const task = await taskModel.findByIdAndDelete(req.params.id);
     if (!task) {
       return res.status(404).send("Task not found");
     }
-    res.json(task);
+    const tasks = await taskModel.find();
+
+    return res.render("Dashboard/Tasks.ejs", { tasks });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server error");
