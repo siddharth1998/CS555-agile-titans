@@ -1,12 +1,28 @@
 import express from "express";
 import { projectModel } from "../models/project.js";
+import { taskModel } from "../models/Task.js";
 
 const router = express.Router();
+
+/*get task based on project id */
+router.get("/:projectId/task", async (req, res) => {
+  try {
+    const projectId = req.params.projectId;
+    const tasks = await taskModel
+      .find({ project: projectId })
+      .populate("taskAssign")
+      .populate("project");
+    console.log("tasks", tasks);
+    return res.render("Dashboard/Tasks.ejs", { tasks });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
+});
 
 router.get("/", async (req, res) => {
   try {
     const projects = await projectModel.find();
-    console.log("Projects::::::::", projects);
     return res.render("Dashboard/Projects.ejs", { projects });
   } catch (error) {
     console.error(error);
