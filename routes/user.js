@@ -102,6 +102,14 @@ router.post("/auth/login", async (req, res) => {
   }
 });
 
+/**
+ * @name /user/auth/logout
+ */
+router.get("/auth/logout", async (req, res) => {
+  res.clearCookie('Auth');
+  return res.redirect("/");
+});
+
 router.get("/users", async (req, res) => {
   try {
     const users = await userModel.find();

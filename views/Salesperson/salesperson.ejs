@@ -1,52 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>salesperson</title>
-    <link rel="stylesheet" href="/Salesperson/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/Salesperson/assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="/Salesperson/assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="/Salesperson/assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="/Salesperson/assets/css/styles.css">
-    <link rel="stylesheet" href="/Salesperson/assets/css/Table-With-Search-search-table.css">
-    <link rel="stylesheet" href="/Salesperson/assets/css/Table-With-Search.css">
+    <title>SOLAR EPC</title>
+    <link rel="stylesheet" href="/Dashboard/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="/Dashboard/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/Dashboard/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/Dashboard/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/Dashboard/assets/css/Pretty-Registration-Form-.css">
+    <link rel="stylesheet" href="/Dashboard/assets/css/untitled.css">
+    <style>
+        .message-td {
+            max-width: 200px !important;
+        }
+    </style>
 </head>
 
-<body>
-    <div class="col-md-12 search-table-col">
-        <div class="table-responsive table table-hover table-bordered results">
-            <table class="table table-hover table-bordered">
-                <thead class="bill-header cs">
-                    <tr>
-                        <th id="trs-hd-1" class="col-lg-1">E-Mail</th>
-                        <th id="trs-hd-3" class="col-lg-3">Customer Name</th>
-                        <th id="trs-hd-5" class="col-lg-2">Query Asked</th>
-                        <th id="trs-hd-6" class="col-lg-2">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="warning no-result">
-                        <td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
-                    </tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <% for(var i=0; i < requests.length; i++) { %>
-                        <tr>
-                            <td><%= requests[i].email %></td>
-                            <td><%= requests[i].name %></td>
-                            <td><%= requests[i].message %></td>
-                            <td><%= requests[i].status %></td>
-                        </tr>
-                    <% } %>
-                </tbody>
-            </table>
-        </div>
+<body id="page-top" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
+    <div id="wrapper" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
+            style="--bs-primary: #31363b;--bs-primary-rgb: 49,54,59;background: #858c9f;">
+            <div class="container-fluid d-flex flex-column p-0"><a
+                    class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"></div>
+                    <div class="sidebar-brand-text mx-3"><span>SOLAR EPC</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link " href="/dashboard"><i
+                                class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/project"><i
+                                class="fas fa-list"></i><span>Projects</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/salesperson"><i
+                                class="fas fa-user"></i><span>Sales</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/support"><i
+                                class="fab fa-wpforms"></i><span>Support</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/api/photoUpload/dashboard"><i
+                                class="fas fa-photo-video"></i><span>Photo Upload</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contract"><i
+                                class="fas fa-file-contract"></i><span>Contracts</span></a></li>
+                    <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
+                            id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper"
+            style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
+            <div id="content" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid">
+                        <ul class="navbar-nav flex-nowrap ms-auto">
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
+                                        aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
+                                            class="d-none d-lg-inline me-2 text-gray-600 small" id="userName">Valerie
+                                            Luna</span></a>
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
+                                            class="dropdown-item" href="api/user/auth/logout"><i
+                                                class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;"><a
+                        class="btn btn-primary pull-right" role="button" href="#"
+                        style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;background: #858c9f;">Update Request
+                        Status</a>
+                    <h3 class="text-dark mb-4" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">Salesperson
+                        Dashboard</h3>
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">Contact Us Requests</p>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <td><strong>Email</strong></td>
+                                            <td><strong>Name</strong></td>
+                                            <td><strong>Message</strong></td>
+                                            <td><strong>Status</strong></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for(var i=0; i < requests.length; i++) { %>
+
+                                            <tr>
+                                                <td>
+                                                    <%= requests[i].email %>
+                                                </td>
+                                                <td>
+                                                    <%= requests[i].name %>
+                                                </td>
+                                                <td class="message-td">
+                                                    <%= requests[i].message %>
+                                                </td>
+                                                <td>
+                                                    <%= requests[i].status %>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>Email</strong></td>
+                                            <td><strong>Name</strong></td>
+                                            <td><strong>Message</strong></td>
+                                            <td><strong>Status</strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-    <script src="/Salesperson/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/Salesperson/assets/js/Table-With-Search-search-table.js"></script>
+    <script src="/Dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Dashboard/assets/js/theme.js"></script>
+    <script>
+        const setUserName = () => {
+            let user = JSON.parse(localStorage.getItem('user'));
+            document.getElementById("userName").innerText = user.userName;
+        };
+        setUserName();
+    </script>
 </body>
 
 </html>
