@@ -3,6 +3,7 @@ import { attachmentModel } from "../models/attachment.js";
 import { commentModel } from "../models/comment.js";
 import { taskModel } from "../models/Task.js";
 import { userModel } from "../models/user.js";
+import { projectModel } from "../models/project.js";
 
 const router = express.Router();
 
@@ -10,9 +11,13 @@ router.post("/", async (req, res) => {
   try {
     console.log(req.body);
     const task = new taskModel(req.body);
+    const users = await userModel.find();
+    const projects = await projectModel.find();
     await task.save();
     res.render("Dashboard/NewTask.ejs", {
       task,
+      users,
+      projects,
       message: "Task Added successfully",
     });
   } catch (error) {
@@ -23,7 +28,11 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const tasks = await taskModel.find().populate("taskAssign");
+    const tasks = await taskModel
+      .find()
+      .populate("taskAssign")
+      .populate("project");
+    console.log("tasks", tasks);
     return res.render("Dashboard/Tasks.ejs", { tasks });
   } catch (error) {
     console.error(error);
@@ -33,7 +42,9 @@ router.get("/", async (req, res) => {
 
 router.get("/new", async (req, res) => {
   try {
-    res.render("Dashboard/NewTask.ejs", { task: "" });
+    const users = await userModel.find();
+    const projects = await projectModel.find();
+    res.render("Dashboard/NewTask.ejs", { task: "", users, projects });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");
