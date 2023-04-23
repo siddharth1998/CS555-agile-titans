@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="/Dashboard/assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="/Dashboard/assets/css/Pretty-Registration-Form-.css">
     <link rel="stylesheet" href="/Dashboard/assets/css/untitled.css">
+    <style>
+        .message-td {
+            max-width: 200px !important;
+        }
+    </style>
 </head>
 
 <body id="page-top" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
@@ -28,9 +33,9 @@
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link " href="/dashboard"><i
                                 class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/project"><i
+                    <li class="nav-item"><a class="nav-link" href="/project"><i
                                 class="fas fa-list"></i><span>Projects</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/salesperson"><i
+                    <li class="nav-item"><a class="nav-link active" href="/salesperson"><i
                                 class="fas fa-user"></i><span>Sales</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/support"><i
                                 class="fab fa-wpforms"></i><span>Support</span></a></li>
@@ -64,8 +69,10 @@
                 </nav>
                 <div class="container-fluid" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;"><a
                         class="btn btn-primary pull-right" role="button" href="#"
-                        style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;background: #858c9f;">Update Request Status</a>
-                    <h3 class="text-dark mb-4" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">Salesperson Dashboard</h3>
+                        style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;background: #858c9f;">Update Request
+                        Status</a>
+                    <h3 class="text-dark mb-4" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">Salesperson
+                        Dashboard</h3>
                     <div class="card shadow">
                         <div class="card-header py-3">
                             <p class="text-primary m-0 fw-bold">Contact Us Requests</p>
@@ -93,7 +100,7 @@
                                                 <td>
                                                     <%= requests[i].name %>
                                                 </td>
-                                                <td>
+                                                <td class="message-td">
                                                     <%= requests[i].message %>
                                                 </td>
                                                 <td>
