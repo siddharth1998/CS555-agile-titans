@@ -4,9 +4,8 @@ import { fetchSomething } from "../services/fetchService";
 
 const ContractContent = () => {
   const [contractContent, setContractContent] = useState({});
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
   let { contractNo } = useParams();
+  const navigate = useNavigate();
   const secondPartySignedRef = useRef();
 
   useEffect(() => {
@@ -16,7 +15,7 @@ const ContractContent = () => {
     };
 
     fetchSomething(
-      `api/contract/details/${contractNo}`,
+      `api/contract/content/${contractNo}`,
       requestOptions,
       (result) => {
         result.contractContent["dateSigned"] = String(
@@ -50,7 +49,7 @@ const ContractContent = () => {
     };
 
     fetchSomething(
-      `api/contract/details/${contractNo}`,
+      `api/contract/content/${contractNo}`,
       requestOptions,
       (res) => {
         console.log(res);
@@ -61,30 +60,18 @@ const ContractContent = () => {
     );
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    try {
-      setError("");
-      postSecondParty();
-      navigate("/contract");
-    } catch {
-      setError("Failed to update second party signature!");
-    }
-  };
-
   return (
     <div>
-      <div class="row">
+      <div className="row">
         <div
-          class="col-md-8"
+          className="col-md-8"
           style={{
             margin: "0 auto",
             textAlign: "left",
             border: "1px solid #000",
           }}
         >
-          <h1 class="text-center my-5">Contract Agreement</h1>
+          <h1 className="text-center my-5">Contract Agreement</h1>
           <p>
             This Contract Agreement (“Agreement”), is made and entered into on [
             <u>{contractContent.dateSigned}</u>], by and between [
@@ -136,8 +123,8 @@ const ContractContent = () => {
             IN WITNESS WHEREOF, the Parties have executed this Agreement as of
             the date first above written.
           </p>
-          <div class="row">
-            <div class="col-md-4">
+          <div className="row">
+            <div className="col-md-4">
               <p>Party A: </p>
               <p
                 style={{
@@ -150,7 +137,7 @@ const ContractContent = () => {
               </p>
             </div>
             {contractContent.secondPartySignature && (
-              <div class="col-md-4">
+              <div className="col-md-4">
                 <p>Party B: </p>
                 <p
                   style={{
@@ -164,24 +151,19 @@ const ContractContent = () => {
               </div>
             )}
             {!contractContent.secondPartySignature && (
-              <div class="col-md-4">
+              <div className="col-md-4">
                 <form>
-                  {error && (
-                    <div className="alert alert-danger" role="alert">
-                      {error}
-                    </div>
-                  )}
-                  <div class="mb-3 row">
+                  <div className="mb-3 row">
                     <label
-                      for="secondPartySignature"
-                      class="col-sm-3 col-form-label"
+                      htmlFor="secondPartySignature"
+                      className="col-sm-3 col-form-label"
                     >
                       Party B:
                     </label>
-                    <div class="col-sm-6">
+                    <div className="col-sm-6">
                       <input
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         id="secondPartySignature"
                         ref={secondPartySignedRef}
                       />
@@ -189,14 +171,42 @@ const ContractContent = () => {
                   </div>
                   <button
                     type="button"
-                    class="btn btn-primary mb-3"
-                    onClick={handleSubmit}
+                    className="btn btn-primary mb-3"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      postSecondParty();
+                      window.location.reload();
+                    }}
                   >
                     Party B Sign
                   </button>
                 </form>
               </div>
             )}
+            <div className="col-md-2">
+              {contractContent.secondPartySignature && (
+                <button
+                  type="button"
+                  className="btn btn-primary mt-2"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(`/contract/update/${contractNo}`);
+                  }}
+                >
+                  Update
+                </button>
+              )}
+              <button
+                type="button"
+                className="btn btn-primary mt-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/contract");
+                }}
+              >
+                Back to Contracts
+              </button>
+            </div>
           </div>
         </div>
       </div>

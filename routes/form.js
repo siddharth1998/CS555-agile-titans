@@ -1,9 +1,18 @@
 import { ticketModel } from "../models/form.js"; 
 import express from "express";
+import {ObjectId} from 'mongodb';
 
 const router = express.Router();
 const create = ticket => new ticketModel(ticket).save();
 
+router.get("/", async (req, res) => {
+    try {
+        return res.render("Ticket/createTicket.ejs")
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ status: "error", message: err.message });
+    }
+});
 
 router.post("/issue", async (req, res) => {
     try {
@@ -14,13 +23,65 @@ router.post("/issue", async (req, res) => {
 
         const form = req.body;
         let ticket = await create(form);
+        const tickets = await ticketModel.find();
+
         return res
         .status(201)
-        .json({ status: "success", message: "ticket created successfully", ticket });
+        .render("Ticket/ticket.ejs", {requests: tickets, message: "Ticket Created Succesfully !"});
     } catch (err) {
         console.error(`Error while creating a new ticket`);
         console.error(err);
         return res.status(500).json({ status: "error", message: err.message });
+    }
+});
+
+router.get("/ticketDashboard", async (req, res) => {
+    try {
+        const tickets = await ticketModel.find().sort({createdAt:1});
+
+        // const tickets = await ticketModel.find().sort(function(a, b) {
+        //     const statusOrder = { "high": 0, "medium": 1, "low": 2 };
+        //     return statusOrder[a.priority] - statusOrder[b.priority];
+        // });
+
+        return res.render("Ticket/ticket.ejs", { requests: tickets, message: ""}); 
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send("Server Error");
+    }
+});
+
+router.get("/ticketChangeDashboard", async (req, res) => {
+    try {
+        const tickets = await ticketModel.find().sort({createdAt:1});
+        // const tickets = await ticketModel.find().sort(function(a, b) {
+        //     const statusOrder = { "high": 0, "medium": 1, "low": 2 };
+
+        //     return statusOrder[a.priority] - statusOrder[b.priority];
+        // });
+        return res.render("Ticket/changeTicket.ejs", { requests: tickets}); 
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send("Server Error");
+    }
+});
+
+router.post("/ticketChangeDashboard", async (req, res) => {
+    // console.log(req.body)
+    try {
+        for (let i = 0; i < req.body.status.length; i++) {
+
+            var id = req.body.no[i]
+            var status = req.body.status[i]
+
+            await ticketModel.findOneAndUpdate({ _id: new ObjectId(id) }, { status: status });
+        }
+        const tickets = await ticketModel.find();
+ 
+        return res.render("Ticket/ticket.ejs", { requests: tickets, message: ""}); 
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send("Server Error");
     }
 });
 

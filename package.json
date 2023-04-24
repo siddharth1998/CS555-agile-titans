@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./tests/*.spec.js --exit",
     "start": "nodemon app.js"
   },
   "repository": {
@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/siddharth1998/CS555-agile-titans#readme",
   "dependencies": {
-    "aws-sdk": "^2.1329.0",
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -29,6 +28,11 @@
     "mongoose": "^7.0.1",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.3"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
   }
 }

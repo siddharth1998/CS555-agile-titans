@@ -20,6 +20,10 @@ const getContractContentByContractNo = async (contractNo) => {
   return contractDetailsModel.findOne({ contractNo: contractNo });
 }
 
+const getContractListByContractNo = async (contractNo) => {
+  return contractListModel.findOne({ contractNo: contractNo });
+};
+
 const updateContractList = async (
   contractNo,
   startDate,
@@ -68,6 +72,30 @@ const updateSecondParty = async (contractNo, secondParty) => {
   );
 };
 
+const deleteContractBeforeSigned = async (contractNo) => {
+  await contractListModel.findOneAndDelete({
+    contractNo: contractNo,
+  });
+  await contractDetailsModel.findOneAndDelete({
+    contractNo: contractNo,
+  });
+  return true;
+}
+
+const terminateContractAtWill = async (contractNo) => {
+  return await contractListModel.findOneAndUpdate(
+    {
+      contractNo: contractNo,
+    },
+    {
+      $set: {
+        endDate: Date(),
+        contractStatus: "Terminate",
+      },
+    }
+  );
+}
+
 const createContractDetail = (contract) =>
   new contractDetailsModel(contract).save();
 
@@ -80,4 +108,7 @@ export {
   updateSecondPartySignature,
   updateSecondParty,
   findInProgressContracts,
+  deleteContractBeforeSigned,
+  terminateContractAtWill,
+  getContractListByContractNo,
 };

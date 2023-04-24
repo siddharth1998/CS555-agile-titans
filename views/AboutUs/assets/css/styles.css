@@ -1,0 +1,6 @@
+body {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient( to right, var(--pink) 0%, pink 50%, var(--warning) 50%, orangered 100% );
+}
+

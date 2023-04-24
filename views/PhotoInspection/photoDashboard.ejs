@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Photo Dashboard</title>
+    <link rel="stylesheet" href="/Salesperson/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Salesperson/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/Salesperson/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/Salesperson/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/Salesperson/assets/css/styles.css">
+    <link rel="stylesheet" href="/Salesperson/assets/css/Table-With-Search-search-table.css">
+    <link rel="stylesheet" href="/Salesperson/assets/css/Table-With-Search.css">
+</head>
+
+<body>
+    <div class="col-md-12 search-table-col"><span class="counter pull-right"></span>
+    <h1><center>Photo Dashboard</center></h1>
+
+        <div class="table-responsive table table-hover table-bordered results">
+            <table class="table table-hover table-bordered">
+                <thead class="bill-header cs">
+                    <tr>
+                        <th id="trs-hd-1" class="col-lg-1">Case ID</th>
+                        <th id="trs-hd-3" class="col-lg-3">customer ID&nbsp;</th>
+                        <!-- <th id="trs-hd-4" class="col-lg-2">E-Mail</th> -->
+                        <th id="trs-hd-5" class="col-lg-2">Comments</th>
+                        <th id="trs-hd-6" class="col-lg-2">Action</th>
+                        <th>Reviewed/Pending</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% for(var i=0; i < requests.length; i++) { %>
+                        <tr>
+                            <td><%= i %></td>
+                            <td><%= requests[i].customerID %></td>
+                            <td><%= requests[i].content %></td>
+                            <td><%= requests[i].operation %></td>
+                            <td><%= requests[i].createdAt %></td>
+                        </tr>
+                    <% } %>
+                   
+                <!-- 
+                    {
+                        _id: new ObjectId("64262fdf0f3c00ec713d8ddc"),
+                        customerID: '112',
+                        fileName: '1680224223959.jpg',
+                        content: 'value is there in the database',
+                        operation: 'inspection',
+                        createdAt: 2023-03-31T00:57:04.019Z,
+                        updatedAt: 2023-03-31T00:57:04.019Z,
+                        __v: 0
+                    } 
+                -->
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/Table-With-Search-search-table.js"></script>
+    <script>
+        const setUserName = () => {
+            let user = JSON.parse(localStorage.getItem('user'));
+            document.getElementById("userName").innerText = user.userName;
+        };
+        setUserName();
+    </script>
+</body>
+
+</html>

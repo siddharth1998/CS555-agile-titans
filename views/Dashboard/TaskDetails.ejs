@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" style="--bs-primary: #858c9f; --bs-primary-rgb: 133, 140, 159">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>SOLAR EPC</title>
+    <link
+      rel="stylesheet"
+      href="/Dashboard/assets/bootstrap/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="/Dashboard/assets/fonts/fontawesome-all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/Dashboard/assets/css/Pretty-Registration-Form-.css"
+    />
+    <link rel="stylesheet" href="/Dashboard/assets/css/untitled.css" />
+  </head>
+
+  <body
+    id="page-top"
+    style="--bs-primary: #858c9f; --bs-primary-rgb: 133, 140, 159"
+  >
+    <div
+      id="wrapper"
+      style="--bs-primary: #858c9f; --bs-primary-rgb: 133, 140, 159"
+    >
+      <nav
+        class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
+        style="
+          --bs-primary: #31363b;
+          --bs-primary-rgb: 49, 54, 59;
+          background: #858c9f;
+        "
+      >
+        <div class="container-fluid d-flex flex-column p-0">
+          <a
+            class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
+            href="#"
+          >
+            <div class="sidebar-brand-icon rotate-n-15"></div>
+            <div class="sidebar-brand-text mx-3"><span>SOLAR EPC</span></div>
+          </a>
+          <hr class="sidebar-divider my-0" />
+          <ul class="navbar-nav text-light" id="accordionSidebar">
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard"
+                ><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/project"
+                ><i class="fas fa-list"></i><span>Projects</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/task"
+                ><i class="fa fa-tasks"></i><span>Tasks</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/salesperson"
+                ><i class="fas fa-user"></i><span>Sales</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/support"
+                ><i class="fab fa-wpforms"></i><span>Support</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/api/photoUpload/dashboard"
+                ><i class="fas fa-photo-video"></i><span>Photo Upload</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contractHome"
+                ><i class="fas fa-file-contract"></i><span>Contracts</span></a
+              >
+            </li>
+          </ul>
+          <div class="text-center d-none d-md-inline">
+            <button
+              class="btn rounded-circle border-0"
+              id="sidebarToggle"
+              type="button"
+            ></button>
+          </div>
+        </div>
+      </nav>
+      <div
+        class="d-flex flex-column"
+        id="content-wrapper"
+        style="--bs-primary: #858c9f; --bs-primary-rgb: 133, 140, 159"
+      >
+        <div
+          id="content"
+          style="--bs-primary: #858c9f; --bs-primary-rgb: 133, 140, 159"
+        >
+        <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+          <div class="container-fluid">
+              <ul class="navbar-nav flex-nowrap ms-auto">
+                  <li class="nav-item dropdown no-arrow">
+                      <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small" id="userName">Valerie Luna</span></a>
+                          <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="api/user/auth/logout"><i
+                                      class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+          <div class="row register-form">
+            <div class="col-md-8 offset-md-2">
+              <form class="custom-form">
+                <h1 style="border-bottom-color: #85869c">Task Details</h1>
+                <div class="row form-group">
+                  <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="name-input-field"
+                      >Task Name</label
+                    >
+                  </div>
+                  <div class="col-sm-6 input-column">
+                    <label class="col-form-label" for="name-input-field"
+                      ><%= task.taskName %>
+                    </label>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="email-input-field"
+                      >Description</label
+                    >
+                  </div>
+                  <div class="col-sm-6 input-column">
+                    <label class="col-form-label" for="name-input-field"
+                      ><%= task.Description %>
+                    </label>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="email-input-field"
+                      >Priority</label
+                    >
+                  </div>
+                  <div class="col-sm-6 input-column">
+                    <label class="col-form-label" for="name-input-field"
+                      ><%= task.priority %>
+                    </label>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="name-input-field"
+                      >Assignee</label
+                    >
+                  </div>
+                  <div class="col-sm-6 input-column">
+                    <% if (task.taskAssign) { %>
+                    <label class="col-form-label" for="name-input-field">
+                      <%= task.taskAssign.firstName %> <%=
+                      task.taskAssign.lastName %>
+                    </label>
+                    <% } else { %>
+                    <label class="col-form-label" for="name-input-field"
+                      >N/A</label
+                    >
+                    <% } %>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="dropdown-input-field"
+                      >Due Date</label
+                    >
+                  </div>
+                  <div class="col-sm-4 col-xl-6 input-column">
+                    <label class="col-form-label" for="name-input-field"
+                      ><%= task.dueDate %></label
+                    >
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="pawssword-input-field"
+                      >Project Name</label
+                    >
+                  </div>
+                  <div class="col-sm-6 input-column">
+                    <% if (task.project) { %>
+                    <label class="col-form-label" for="name-input-field"></label>
+                      <%= task.project.projectName %>
+                    </label>
+                    <% } else { %>
+                    <label class="col-form-label" for="name-input-field">
+                      N/A
+                    </label>
+                    <% } %>
+                  </div>
+                </div>
+                <!--<a class="btn btn-light submit-button" role="button" href="NewTask.html" style="background: #858c9f;">Edit Details</a>-->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="border rounded d-inline scroll-to-top" href="#page-top"
+        ><i class="fas fa-angle-up"></i
+      ></a>
+    </div>
+    <script src="/Dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Dashboard/assets/js/theme.js"></script>
+    <script>
+      const setUserName = () => {
+          let user = JSON.parse(localStorage.getItem('user'));
+          document.getElementById("userName").innerText = user.userName;
+      };
+      setUserName();
+  </script>
+  </body>
+</html>

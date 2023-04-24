@@ -34,6 +34,10 @@ const contractListSchema = new mongoose.Schema(
       type: String,
       default: "Not Signed",
     },
+    additionalInformation: {
+      type: String,
+      default: "",
+    }
   },
   { timestamps: true }
 );

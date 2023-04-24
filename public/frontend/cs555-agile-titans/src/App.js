@@ -3,6 +3,7 @@ import ContractList from "./components/ContractList";
 import CreateContract from "./components/CreateContract";
 import ContractDetails from "./components/ContractDetails";
 import ContractContent from './components/ContractContent';
+import ContractUpdate from './components/ContractUpdate';
 import Auth from "./components/Auth";
 import Dashboard from "./components/Dashboard";
 import Issue from "./components/Issue";
@@ -18,7 +19,7 @@ import Projects from "./components/Projects";
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/auth",
       element: <Auth></Auth>,
     },
     {
@@ -30,7 +31,7 @@ function App() {
       element: <CreateContract></CreateContract>,
     },
     {
-      path: "/contract/details/:contractNo",
+      path: "/contract/content/:contractNo",
       element: <ContractContent></ContractContent>,
     },
     {
@@ -38,13 +39,17 @@ function App() {
       element: <ContractDetails></ContractDetails>,
     },
     {
+      path: "contract/update/:contractNo",
+      element: <ContractUpdate></ContractUpdate>,
+    },
+    {
       path: "/hello",
       element: <div>Not world!</div>,
     },
-    {
-      path: "/ticket",
-      element: <Issue></Issue>,
-    },
+    // {
+    //   path: "/ticket",
+    //   element: <Issue></Issue>,
+    // },
     {
       path: "/customerCare",
       element: <CustomerCare></CustomerCare>,

@@ -1,7 +1,5 @@
-import express, { response } from "express";
-import mongoose, { isObjectIdOrHexString, ObjectId } from "mongoose";
+import express from "express";
 import multer from "multer";
-import { uploadFiles } from "../services/s3.js";
 import { photoUploadModel } from '../models/photo.js';
 
 let storage = multer.diskStorage({
@@ -26,12 +24,30 @@ router.post("/",upload.single('image'),async (req,res)=>{
         customerID:req.body.customerID,
         fileName:file.filename,
         content: req.body.CommentContent,
+        email: req.body.email,
         operation: req.body.operation
     });
    
     let variable= result_json._id.toString()
     await result_json.save();
     res.send(result_json.fileName);
+}
+);
+
+router.get("/",upload.single('image'),async (req,res)=>{
+    return res.render("PhotoInspection/createPhoto.ejs"); 
+}
+);
+
+router.get("/dashboard", async (req,res)=>{
+
+    try {
+        const file = await photoUploadModel.find();
+        return res.render("PhotoInspection/photoDashboard.ejs", { requests: file}); 
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send("Server Error");
+    }
 }
 );
 

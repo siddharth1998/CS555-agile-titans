@@ -1,0 +1,345 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Tickets</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Tickets</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="/Salesperson/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Salesperson/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/Salesperson/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/Salesperson/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/Salesperson/assets/css/styles.css">
+    <link rel="stylesheet" href="/Salesperson/assets/css/Table-With-Search-search-table.css">
+    <link rel="stylesheet" href="/Salesperson/assets/css/Table-With-Search.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <style>
+        .unresolved{
+                color: red !important;
+                font-weight: bold;
+            }
+
+            .resolved {
+                color: green;
+                font-weight: bold;
+            }
+
+            .high {
+                color: red !important;
+                font-weight: bold;
+            }
+
+            .medium {
+                color: yellow;
+                font-weight: bold;
+            }
+
+            .low {
+                color: green;
+                font-weight: bold;
+            }
+            #no {
+                display: none;
+            }
+    </style>
+</head>
+
+
+    <div class="col-md-12 search-table-col">
+    <form action="/api/form/ticketChangeDashboard" method="post">
+            <h1><center>All Tickets</center></h1>
+    <center> 
+         <a href="/api/form/ticketDashboard">
+        <button type="submit" class="btn btn-success" >All Tickets</button>
+        </a> 
+        <button type="submit" class="btn btn-warning">Update Status</button>
+    </center>
+        <div class="form-group pull-right col-lg-4"><input type="text" class="search form-control" placeholder="Search by typing here.."></div><span class="counter pull-right"></span>
+        <div class="table-responsive table table-hover table-bordered results">
+            <table class="table table-hover table-bordered">
+                <thead class="bill-header cs">
+                    <tr>
+                        <th id="trs-hd-1" class="col-lg-1">User Id</th>
+                        <th id="trs-hd-3" class="col-lg-3">E-Mail</th>
+                        <th id="trs-hd-4" class="col-lg-2">Description</th>
+                        <th id="trs-hd-5" class="col-lg-2">Status</th>
+                        <th id="trs-hd-6" class="col-lg-2">Priority</th>
+                        <th id="trs-hd-7" class="col-lg-2">Date</th>
+                        <th id="trs-hd-8" class="col-lg-2">Change Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <% for(var i=0; i < requests.length; i++) { %>
+                        <tr>
+                            <input type="text" id="no" name="no" value = <%= requests[i]._id %> readonly>
+                            <td><%= requests[i].userId %></td>
+                            <td><%= requests[i].email %></td>
+                            <td><%= requests[i].description %></td>
+                            <td class=<%= requests[i].status %>><%= requests[i].status %></td>
+                            <td class=<%= requests[i].priority %>><%= requests[i].priority %></td>
+                            <td><%= requests[i].createdAt %></td>
+                            <td> <select id="inputState" className="form-select" name="status" required>
+                                <option selected value="unresolved">Unresolved</option>
+                                <option value="resolved">Resolved</option>
+                            </select>
+                            </td>
+                        </tr>
+                    <% } %>
+
+                </tbody>
+            
+            </table>
+            
+        </div>
+
+    </form>
+    
+    </div>
+    
+    <script src="/Salesperson/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Salesperson/assets/js/Table-With-Search-search-table.js"></script>
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>SOLAR EPC</title>
+    <link rel="stylesheet" href="/Dashboard/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="/Dashboard/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/Dashboard/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/Dashboard/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/Dashboard/assets/css/Pretty-Registration-Form-.css">
+    <link rel="stylesheet" href="/Dashboard/assets/css/untitled.css">
+    <style>
+        .unresolved {
+            color: red !important;
+            font-weight: bold;
+        }
+
+        .resolved {
+            color: green;
+            font-weight: bold;
+        }
+
+        .high {
+            color: red !important;
+            font-weight: bold;
+        }
+
+        .medium {
+            color: blue;
+            font-weight: bold;
+        }
+
+        .low {
+            color: green;
+            font-weight: bold;
+        }
+
+        #no {
+            display: none;
+        }
+    </style>
+</head>
+
+<body id="page-top" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
+
+    <form action="/api/form/ticketChangeDashboard" method="post">
+
+    <div id="wrapper" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
+            style="--bs-primary: #31363b;--bs-primary-rgb: 49,54,59;background: #858c9f;">
+            <div class="container-fluid d-flex flex-column p-0"><a
+                    class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"></div>
+                    <div class="sidebar-brand-text mx-3"><span>SOLAR EPC</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link " href="/dashboard"><i
+                                class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="/project"><i
+                                class="fas fa-list"></i><span>Projects</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/task"><i 
+                        class="fa fa-tasks"></i><span>Tasks</span></a>
+                                  </li>
+                    <li class="nav-item"><a class="nav-link" href="/salesperson"><i
+                                class="fas fa-user"></i><span>Sales</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/support"><i
+                                class="fab fa-wpforms"></i><span>Support</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/api/photoUpload/dashboard"><i
+                                class="fas fa-photo-video"></i><span>Photo Upload</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contractHome"><i
+                                class="fas fa-file-contract"></i><span>Contracts</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
+                        id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper"
+            style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
+            <div id="content" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid">
+                        <ul class="navbar-nav flex-nowrap ms-auto">
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
+                                        aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
+                                            class="d-none d-lg-inline me-2 text-gray-600 small" id="userName">Valerie Luna</span></a>
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="api/user/auth/logout"><i
+                                                class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;"><button
+                        class="btn btn-primary pull-right" type="submit"
+                        style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;background: #858c9f;">Update
+                        Status</button>
+                    <div class="container-fluid" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">
+                        <h3 class="text-dark mb-4" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">Support
+                            Tickets</h3>
+                        <div class="card shadow">
+                            <div class="card-header py-3">
+                                <p class="text-primary m-0 fw-bold">Tickets</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 text-nowrap">
+                                        <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
+                                            <!-- <label class="form-label">Show&nbsp;<select
+                                                    class="d-inline-block form-select form-select-sm">
+                                                    <option value="10" selected="">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                </select>&nbsp;</label></div> -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-md-end dataTables_filter" id="dataTable_filter"><label
+                                                class="form-label"></label></div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                    aria-describedby="dataTable_info">
+                                    <table class="table my-0" id="dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>User ID</th>
+                                                <th>E-mail</th>
+                                                <th>Description</th>
+                                                <th>Status</th>
+                                                <th>Priority</th>
+                                                <th>Date</th>
+                                                <th>Change Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                            <% for(var i=0; i < requests .length; i++) { %>
+                                                <input type="text" id="no" name="no" value = <%= requests[i]._id %> readonly>
+                                                <tr>
+                                                    <td>
+                                                        <%= requests[i].userId %>
+                                                    </td>
+                                                    <td>
+                                                        <%= requests[i].email %>
+                                                    </td>
+                                                    <td>
+                                                        <%= requests[i].description %>
+                                                    </td>
+                                                    <td class=<%=requests[i].status %>><%= requests[i].status %>
+                                                    </td>
+                                                    <td class=<%=requests[i].priority %>><%= requests[i].priority %>
+                                                    </td>
+                                                    <td>
+                                                        <%= requests[i].createdAt %>
+                                                        <span><%= requests[i].status %></span>
+
+                                                    </td>
+                                                    <td> <select id="inputState" className="form-select" name="status"
+                                                            required>
+
+                                                            <% if(requests[i].status == "unresolved"){ %>
+                                                                <option selected value="unresolved">Unresolved</option>
+                                                                <option value="resolved">Resolved</option>
+                                                            <% } else{ %>  
+                                                                <option selected value="resolved">Resolved</option>
+                                                                <option value="unresolved">Unresolved</option>
+                                                            <% } %>
+
+                                                        </select>
+                                                    </td>
+                                                    <% } %>
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td><strong>User ID</strong></td>
+                                                <td><strong>E-mail</strong></td>
+                                                <td><strong>Description</strong></td>
+                                                <td><strong>Status</strong></td>
+                                                <td><strong>Priority</strong></td>
+                                                <td><strong>Date</strong></td>
+                                                <th>Change Status</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                    <!-- <div class="col-md-6 align-self-center">
+                                        <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">
+                                            Showing 1 to 10 of 27</p>
+                                    </div> -->
+                                    <div class="col-md-6">
+                                        <nav
+                                            class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                            <ul class="pagination">
+                                                <li class="page-item disabled"><a class="page-link"
+                                                        href="#">Previous</a></li>
+                                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                <li class="page-item"><a class="page-link" aria-label="Next"
+                                                        href="#"><span aria-hidden="true">»</span></a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        </div>
+        <script src="/Dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/Dashboard/assets/js/theme.js"></script>
+        <script>
+            const setUserName = () => {
+                let user = JSON.parse(localStorage.getItem('user'));
+                document.getElementById("userName").innerText = user.userName;
+            };
+            setUserName();
+        </script>
+    </form>
+
+</body>
+
+</html>
