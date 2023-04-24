@@ -99,6 +99,10 @@ router.post("/content/:contractNo", async (req, res) => {
   try {
     let contractNo = req.params.contractNo;
     let secondParty = req.body.secondPartySignature;
+    if (!secondParty) res.status(400).json({
+      status: "error",
+      message: "Signature should not be empty",
+    });
     await updateSecondPartySignature(contractNo, secondParty);
     let updatedContent = await updateSecondParty(contractNo, secondParty);
     return res.status(200).json({
@@ -175,7 +179,7 @@ router.post("/terminate/:contractNo", async (req, res) => {
   }
 });
 
-/** /contract/terminate/:contractNo */
+/** /contract/update/:contractNo */
 router.post("/update/:contractNo", async (req, res) => {
   try {
     let contractNo = req.params.contractNo;
@@ -183,7 +187,7 @@ router.post("/update/:contractNo", async (req, res) => {
     if (!req.body)
       res
         .status(400)
-        .json({ status: "error", message: "No contract content sent" });
+        .json({ status: "error", message: "No new contract content sent" });
     let newContract = await createContractDetail(req.body);
     let oldListItem = await getContractListByContractNo(contractNo);
     let newListItem = {
@@ -199,7 +203,7 @@ router.post("/update/:contractNo", async (req, res) => {
     let newContractList = await createContractList(newListItem);
     return res.status(200).json({
       status: "success",
-      message: "Terminate contract successfully",
+      message: "Update contract successfully",
       newContract,
       newContractList,
     });

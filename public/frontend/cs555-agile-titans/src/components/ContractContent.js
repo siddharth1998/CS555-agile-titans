@@ -4,6 +4,7 @@ import { fetchSomething } from "../services/fetchService";
 
 const ContractContent = () => {
   const [contractContent, setContractContent] = useState({});
+  const [error, setError] = useState("");
   let { contractNo } = useParams();
   const navigate = useNavigate();
   const secondPartySignedRef = useRef();
@@ -29,7 +30,10 @@ const ContractContent = () => {
         ).substring(0, 10);
         setContractContent(result.contractContent);
       },
-      (err) => console.log("error", err)
+      (err) => {
+        console.log("error", err);
+        setError(err.massage);
+      }
     );
   }, [contractNo]);
 
@@ -55,7 +59,8 @@ const ContractContent = () => {
         console.log(res);
       },
       (err) => {
-        console.log(err);
+        console.log("error", err);
+        setError(err.massage);
       }
     );
   };
@@ -152,6 +157,11 @@ const ContractContent = () => {
             )}
             {!contractContent.secondPartySignature && (
               <div className="col-md-4">
+                {error && (
+                  <div className="alert alert-danger" role="alert">
+                    {error}
+                  </div>
+                )}
                 <form>
                   <div className="mb-3 row">
                     <label
