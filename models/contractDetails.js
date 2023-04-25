@@ -37,6 +37,7 @@ const contractDetailsSchema = new mongoose.Schema(
     },
     firstPartySignature: {
       type: String,
+      required: true,
     },
     secondPartySignature: {
       type: String,

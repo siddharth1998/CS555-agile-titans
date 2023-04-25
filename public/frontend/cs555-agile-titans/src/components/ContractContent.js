@@ -4,7 +4,9 @@ import { fetchSomething } from "../services/fetchService";
 
 const ContractContent = () => {
   const [contractContent, setContractContent] = useState({});
-  let { contractNo } = useParams();
+  const [error, setError] = useState("");
+  const [jump, setJump] = useState(false);
+  const { contractNo } = useParams();
   const navigate = useNavigate();
   const secondPartySignedRef = useRef();
 
@@ -29,7 +31,10 @@ const ContractContent = () => {
         ).substring(0, 10);
         setContractContent(result.contractContent);
       },
-      (err) => console.log("error", err)
+      (err) => {
+        console.log("error", err);
+        setError(err.massage);
+      }
     );
   }, [contractNo]);
 
@@ -53,12 +58,27 @@ const ContractContent = () => {
       requestOptions,
       (res) => {
         console.log(res);
+        setJump(true);
       },
       (err) => {
-        console.log(err);
+        console.log("error", err);
+        setError(err.message);
       }
     );
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setError("");
+    setJump(false);
+
+    postSecondParty();
+  };
+
+  if (jump) {
+    window.location.reload();
+  }
 
   return (
     <div>
@@ -152,6 +172,11 @@ const ContractContent = () => {
             )}
             {!contractContent.secondPartySignature && (
               <div className="col-md-4">
+                {error && (
+                  <div className="alert alert-danger" role="alert">
+                    {error}
+                  </div>
+                )}
                 <form>
                   <div className="mb-3 row">
                     <label
@@ -172,11 +197,7 @@ const ContractContent = () => {
                   <button
                     type="button"
                     className="btn btn-primary mb-3"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      postSecondParty();
-                      window.location.reload();
-                    }}
+                    onClick={handleSubmit}
                   >
                     Party B Sign
                   </button>
@@ -212,6 +233,7 @@ const ContractContent = () => {
       </div>
     </div>
   );
+
 };
 
 export default ContractContent;
