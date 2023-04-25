@@ -120,14 +120,32 @@
             <div class="container-fluid">
               <ul class="navbar-nav flex-nowrap ms-auto">
                 <li class="nav-item dropdown no-arrow">
-                   <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small" id="userName">Valerie Luna</span></a>
-                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="api/user/auth/logout"><i
-                                                class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a></div>
-                                </div>
+                  <div class="nav-item dropdown no-arrow">
+                    <a
+                      class="dropdown-toggle nav-link"
+                      aria-expanded="false"
+                      data-bs-toggle="dropdown"
+                      href="#"
+                      ><span
+                        class="d-none d-lg-inline me-2 text-gray-600 small"
+                        id="userName"
+                        >Valerie Luna</span
+                      ></a
+                    >
+                    <div
+                      class="dropdown-menu shadow dropdown-menu-end animated--grow-in"
+                    >
+                      <a class="dropdown-item" href="api/user/auth/logout"
+                        ><i
+                          class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"
+                        ></i
+                        >&nbsp;Logout</a
+                      >
+                    </div>
+                  </div>
                 </li>
               </ul>
             </div>
-
           </nav>
           <div
             class="container-fluid"
@@ -144,6 +162,40 @@
               "
               ><i class="fa fa-plus"></i>&nbsp;New Project</a
             >
+            <button
+              id="downloadProjects"
+              class="btn btn-primary pull-right"
+              style="
+                --bs-primary: #858c9f;
+                --bs-primary-rgb: 133, 140, 159;
+                background: #858c9f;
+                margin-right: 20px;
+              "
+            >
+              Download Projects
+            </button>
+            <br />
+            <br />
+            <script>
+              const downloadProjects = async () => {
+                const response = await fetch("/project/download");
+                const blob = await response.blob();
+                const filename = response.headers
+                  .get("content-disposition")
+                  .split("filename=")[1];
+                const url = window.URL.createObjectURL(new Blob([blob]));
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", filename);
+                document.body.appendChild(link);
+                link.click();
+              };
+
+              document
+                .getElementById("downloadProjects")
+                .addEventListener("click", downloadProjects);
+            </script>
+
             <h3
               class="text-dark mb-4"
               style="--bs-primary: #858c9f; --bs-primary-rgb: 133, 140, 159"
@@ -180,14 +232,23 @@
                         <td><%= projects [i].endDate %></td>
                         <td>
                           <a href="/project/<%= projects [i]._id %>"
-                            ><i class="fa fa-eye"></i></a
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                          <a
+                            href="/project/edit/<%= projects [i]._id %>"
+                            style="color: #28a745; margin-left: 20px"
+                            ><i class="fas fa-edit"></i></a
                           ><button
                             onclick="redirectToUrl('<%= projects [i]._id %>')"
                             style="border: none; background-color: transparent"
                           >
                             <i
                               class="fa fa-trash"
-                              style="margin-right: 24px; padding-left: 19px"
+                              style="
+                                margin-right: 24px;
+                                padding-left: 19px;
+                                color: #dc3444;
+                              "
                               id="<%= projects [i]._id %>"
                             ></i>
                           </button>
@@ -218,7 +279,6 @@
                       </tr>
                     </tfoot>
                   </table>
-
                 </div>
               </div>
             </div>
@@ -247,13 +307,11 @@
     <script src="/Dashboard/assets/js/theme.js"></script>
 
     <script>
-        const setUserName = () => {
-            let user = JSON.parse(localStorage.getItem('user'));
-            document.getElementById("userName").innerText = user.userName;
-        };
-        setUserName();
+      const setUserName = () => {
+        let user = JSON.parse(localStorage.getItem("user"));
+        document.getElementById("userName").innerText = user.userName;
+      };
+      setUserName();
     </script>
-</body>
-
+  </body>
 </html>
-
