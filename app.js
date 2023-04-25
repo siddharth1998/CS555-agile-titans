@@ -1,3 +1,4 @@
+import "./env.js";
 import express from "express"; // http web server
 import cookieParser from "cookie-parser";
 import { PORT } from "./config.js";
