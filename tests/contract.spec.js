@@ -4,7 +4,7 @@ import { contractListModel } from "../models/contractList.js";
 import { contractDetailsModel } from "../models/contractDetails.js";
 
 const testContractListData = {
-  contractNo: "LEASE0001",
+  contractNo: "LEASE0101",
   contractType: "lease",
   entity: "company",
   startDate: "2023-04-01",
@@ -15,7 +15,7 @@ const testContractListData = {
 };
 
 const testContractDetailData = {
-  contractNo: "LEASE0001",
+  contractNo: "LEASE0101",
   dateSigned: "2023-04-01",
   firstParty: "mickyz",
   secondParty: "amd",
@@ -69,7 +69,7 @@ describe("Contract APIs Testing", () => {
   describe("create new contract list route", () => {
     it("POST /contract/create should create a new contract list", (done) => {
       const newContractListData = {
-        contractNo: "LEASE0002",
+        contractNo: "LEASE0102",
         contractType: "sale",
         entity: "company",
         firstParty: "mickyz",
@@ -114,9 +114,9 @@ describe("Contract APIs Testing", () => {
   });
 
   describe("create a new contract content", () => {
-    it("POST /contract/details/create should create a new contract content", (done) => {
+    it("POST /contract/details/create/:contractNo should create a new contract content", (done) => {
       const newContractContentData = {
-        contractNo: "LEASE0002",
+        contractNo: "LEASE0102",
         dateSigned: "2023-04-01",
         firstParty: "mickyz",
         secondParty: "amd",
@@ -140,7 +140,7 @@ describe("Contract APIs Testing", () => {
   describe("update a contract", () => {
     it("POST /contract/update/:contractNo should terminate the original contract and create a new one", (done) => {
       const newContractContentData = {
-        contractNo: "LEASE0003",
+        contractNo: "LEASE0103",
         dateSigned: "2023-05-01",
         firstParty: "mickyz",
         secondParty: "amd",
@@ -164,7 +164,7 @@ describe("Contract APIs Testing", () => {
   describe("delete a contract before signed", () => {
     it("POST /contract/delete/:contractNo should delete a contract", (done) => {
       request(app)
-        .post("/contract/delete/LEASE0002")
+        .post("/contract/delete/LEASE0102")
         .expect(200)
         .expect("Content-Type", "text/html")
         .end((err, res) => {
@@ -179,7 +179,7 @@ describe("Contract APIs Testing", () => {
         secondPartySignature: "amd",
       };
       request(app)
-        .post("/contract/delete/LEASE0003")
+        .post("/contract/content/LEASE0103")
         .send(secondPartySignatureData)
         .expect(200)
         .expect("Content-Type", "text/html")
@@ -192,7 +192,7 @@ describe("Contract APIs Testing", () => {
   describe("terminate a contract after signed", () => {
     it("POST /contract/terminate/:contractNo should terminate a contract", (done) => {
       request(app)
-        .post("/contract/terminate/LEASE0003")
+        .post("/contract/terminate/LEASE0103")
         .expect(200)
         .expect("Content-Type", "text/html")
         .end((err, res) => {

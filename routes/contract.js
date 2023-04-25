@@ -117,7 +117,7 @@ router.post("/content/:contractNo", async (req, res) => {
 });
 
 /** /contract/details/create  */
-router.post("/details/create", async (req, res) => {
+router.post("/details/create/:contractNo", async (req, res) => {
   try {
     if (!req.body)
       return res
@@ -134,13 +134,11 @@ router.post("/details/create", async (req, res) => {
       req.body.endDate,
       req.body.dateSigned
     );
-    return res
-      .status(200)
-      .json({
-        status: "success",
-        message: "Contract content created successfully",
-        contract,
-      });
+    return res.status(200).json({
+      status: "success",
+      message: "Contract content created successfully",
+      contract,
+    });
   } catch (err) {
     console.error(`Error while creating the contract content`);
     console.error(err);

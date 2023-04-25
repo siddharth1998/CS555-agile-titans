@@ -1,11 +1,12 @@
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { fetchSomething } from "../services/fetchService";
 
 const ContractDetails = () => {
   const [error, setError] = useState("");
   const [jump, setJump] = useState(false);
   const navigate = useNavigate();
+  const { contractNo } = useParams();
   const contractNoRef = useRef();
   const dateSignedRef = useRef();
   const firstPartyRef = useRef();
@@ -42,7 +43,7 @@ const ContractDetails = () => {
     };
 
     fetchSomething(
-      `api/contract/details/create`,
+      `api/contract/details/create/${contractNo}`,
       requestOptions,
       (res) => {
         console.log(res);
@@ -98,6 +99,7 @@ const ContractDetails = () => {
                   className="form-control"
                   id="contractNo"
                   ref={contractNoRef}
+                  value={contractNo}
                 />
               </div>
             </div>
@@ -113,7 +115,7 @@ const ContractDetails = () => {
                     className="form-control"
                     id="dateSigned"
                     ref={dateSignedRef}
-                    value="2023-01-01"
+                    defaultValue="2023-01-01"
                   />
                 </div>
                 <div className="col-sm-3">, by and between</div>
@@ -168,7 +170,7 @@ const ContractDetails = () => {
                   className="form-control"
                   id="paymentAmount"
                   ref={paymentAmountRef}
-                  value="100000"
+                  defaultValue="100000"
                 />
               </div>
               <div className="col-sm-5">
@@ -190,7 +192,7 @@ const ContractDetails = () => {
                   className="form-control"
                   id="noticePeriod"
                   ref={noticePeriodRef}
-                  value="30"
+                  defaultValue="30"
                 />
               </div>
               <div className="col-sm-5">
@@ -211,7 +213,7 @@ const ContractDetails = () => {
                     className="form-control"
                     id="startDate"
                     ref={startDateRef}
-                    value="2023-01-01"
+                    defaultValue="2023-01-01"
                   />
                 </div>
                 <div className="col-sm-4">, and shall continue until</div>
@@ -226,7 +228,7 @@ const ContractDetails = () => {
                     className="form-control"
                     id="endDate"
                     ref={endDateRef}
-                    value="2023-12-31"
+                    defaultValue="2023-12-31"
                   />
                 </div>
                 <div className="col-sm-9">
