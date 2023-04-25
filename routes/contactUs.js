@@ -1,8 +1,11 @@
-import { create, getAll } from "../services/contactUs.js";
+import { create, getAll, contactUsModel } from "../services/contactUs.js";
 import { isValidString } from "../services/helpers.js";
 import express from "express";
+import {ObjectId} from 'mongodb';
+
 
 const router = express.Router();
+//const create = request => new contactUsModel(request).save();
 
 router.post("/", async (req, res) => {
     try {
@@ -38,5 +41,51 @@ router.get("/", async (req, res) => {
         return res.status(500).json({ status: "error", message: "Uh! Oh Something went wrong on our side, we will fix it :)" });
     }
 });
+
+router.get("/chageSalesStatus", async (req, res) => {
+    try {
+        let contactUsRequests = await getAll();
+        contactUsRequests = JSON.parse(JSON.stringify(contactUsRequests));
+        
+        for (let i = 0; i < contactUsRequests.length; i++) {
+            contactUsRequests[i].status = contactUsRequests[i].status ? "Done" : "Pending";
+        }
+        return res.render("Salesperson/updateSalesPerson.ejs", { requests: contactUsRequests });
+    } catch (err) {
+        return res.status(500).json({ status: "error", message: "Uh! Oh Something went wrong on our side, we will fix it :)" });
+    }
+})
+
+router.post("/chageSalesStatus/changeAll", async(req, res) => {
+    //console.log(req.body);
+    try {
+        for (let i = 0; i < req.body.status.length; i++) {
+
+            var id = req.body.user_id[i]
+            if (req.body.status[i] == 'Pending'){
+                var status = false;
+            }else {
+                var status = true;
+            }
+
+            await contactUsModel.findOneAndUpdate({ _id: new ObjectId(id) }, { status: status });
+        }
+
+        try {
+            let contactUsRequests = await getAll();
+            contactUsRequests = JSON.parse(JSON.stringify(contactUsRequests));
+            
+            for (let i = 0; i < contactUsRequests.length; i++) {
+                contactUsRequests[i].status = contactUsRequests[i].status ? "Done" : "Pending";
+            }
+            return res.render("Salesperson/salesperson.ejs", { requests: contactUsRequests });
+        } catch (err) {
+            return res.status(500).json({ status: "error", message: "Uh! Oh Something went wrong on our side, we will fix it :)" });
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send("Server Error");
+    }
+})
 
 export { router };

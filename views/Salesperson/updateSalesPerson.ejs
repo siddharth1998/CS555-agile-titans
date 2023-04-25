@@ -17,12 +17,6 @@
         .message-td {
             max-width: 200px !important;
         }
-        .Pending {
-            color: red;
-        }
-        .Done {
-            color: green;
-        }
     </style>
 </head>
 
@@ -73,10 +67,11 @@
                         </ul>
                     </div>
                 </nav>
-                <div class="container-fluid" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;"><a
-                        class="btn btn-primary pull-right" role="button" href="/salesperson/chageSalesStatus"
-                        style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;background: #858c9f;"> Go to Update
-                        Status</a>
+                <form action="/salesperson/chageSalesStatus/changeAll" method="post">
+                <div class="container-fluid" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;"><button
+                    class="btn btn-primary pull-right" type="submit"
+                    style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;background: #858c9f;">Update
+                    Status</button>
                     <h3 class="text-dark mb-4" style="--bs-primary: #858c9f;--bs-primary-rgb: 133,140,159;">Salesperson
                         Dashboard</h3>
                     <div class="card shadow">
@@ -100,6 +95,7 @@
                                         <% for(var i=0; i < requests.length; i++) { %>
 
                                             <tr>
+                                                <input type="text" name="user_id" hidden value=<%= requests[i]._id %>>
                                                 <td>
                                                     <%= requests[i].email %>
                                                 </td>
@@ -109,9 +105,19 @@
                                                 <td class="message-td">
                                                     <%= requests[i].message %>
                                                 </td>
-                                                <td class=<%= requests[i].status %>>
-                                                    <%= requests[i].status %>
-                                                </td>
+                                                <td> <select id="inputState" className="form-select" name="status"
+                                                    required>
+
+                                                    <% if(requests[i].status == "Pending"){ %>
+                                                        <option selected value="Pending">Pending</option>
+                                                        <option value="Done">Done</option>
+                                                    <% } else{ %>  
+                                                        <option selected value="Done">Done</option>
+                                                        <option value="Pending">Pending</option>
+                                                    <% } %>
+
+                                                </select>
+                                            </td>
                                             </tr>
                                             <% } %>
 
@@ -130,6 +136,7 @@
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
