@@ -4,4 +4,4 @@ const create = request => new contactUsModel(request).save();
 
 const getAll = () => contactUsModel.find({});
 
-export { create, getAll };
+export { create, getAll, contactUsModel };
