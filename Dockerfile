@@ -16,6 +16,8 @@ RUN cp -R * ../../../
 
 WORKDIR /src
 
+RUN mkdir public/uploads
+
 RUN npm install
 
 CMD npm start
