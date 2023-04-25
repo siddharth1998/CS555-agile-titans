@@ -234,7 +234,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <% for(var i=0; i < requests .length; i++) { %>
+                      <% for(var i=0; i < requests.length; i++) { %>
                       <tr>
                         <td><%= requests[i].userId %></td>
                         <td><%= requests[i].email %></td>
@@ -242,7 +242,7 @@
                         <td class=<%= requests[i].status %>
                           ><%= requests[i].status %>
                         </td>
-                        <td class=<%= requests[i].priority %>
+                        <td class= <%= requests[i].priority %>
                           ><%= requests[i].priority %>
                         </td>
                         <td><%= requests[i].createdAt %></td>
@@ -288,7 +288,7 @@
                 <div class="project-status">
                   Description: <%= requests[i].description %>
                 </div>
-                <div class=<%= requests[i].status %>
+                <div class= <%= requests[i].status %>
                   >Status: <%= requests[i].status %>
                 </div>
                 <div class=<%= requests[i].priority %>

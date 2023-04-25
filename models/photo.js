@@ -13,8 +13,8 @@ const photoUpload= new mongoose.Schema(
             type:String,
             required:true
         },
-        fileName:{
-            type:String, 
+        fileNames:{
+            type:Array, 
             required: true
         },
         content:{
@@ -24,6 +24,10 @@ const photoUpload= new mongoose.Schema(
         operation:{
             type:String,
             required:true
+        },
+        status: {
+            type: Boolean,
+            required: true,
         }
     },
 
