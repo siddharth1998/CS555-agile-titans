@@ -40,10 +40,20 @@
     }
 
     img {
-      width: 30vh;
-      height: 30vh;
-      cursor: pointer;
+        width: 40vh;
+        height: 40vh;
+        cursor: pointer;
+        transition: transform .2s;
+        margin:0 auto;
+        border-radius: 10px;
+        
     }
+    
+/* img:hover{
+    width: 50vh;
+    height: 50vh;
+    transform:scale(1);
+} */
   </style>
 </head>
 
@@ -74,7 +84,7 @@
             <a class="nav-link" href="/salesperson"><i class="fas fa-user"></i><span>Sales</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="/support"><i class="fab fa-wpforms"></i><span>Support</span></a>
+            <a class="nav-link" href="/support"><i class="fab fa-wpforms"></i><span>Support</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/api/photoUpload/dashboard"><i class="fas fa-photo-video"></i><span>Photo
@@ -107,42 +117,37 @@
           </ul>
       </div>
       </nav>
+      <h3 class="text-dark mb-4" style="--bs-primary: #858c9f; --bs-primary-rgb: 133, 140, 159; margin-left: 5px;">
+        Change Photo Status
+        </h3>
+
       <div class="container-fluid" style="--bs-primary: #858c9f; --bs-primary-rgb: 133, 140, 159">
-        <a href="/api/form">
-          <button class="btn btn-primary pull-right" type="submit" style="
-                  --bs-primary: #858c9f;
-                  --bs-primary-rgb: 133, 140, 159;
-                  background: #858c9f;
-                ">
-            Create Ticket
-          </button>
+        <a href=<%="/api/photoUpload/updateStatusImage/" + requests[0]._id +"/" + true %> 
+            <button type="button" class="btn btn-success" style="margin-bottom: 5px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"></path>
+                </svg>
+                Approved
+              </button>
         </a>
-        <a href="/api/form/ticketChangeDashboard"><button class="btn btn-primary pull-right" type="submit" style="
-                  --bs-primary: #858c9f;
-                  --bs-primary-rgb: 133, 140, 159;
-                  background: #858c9f;
-                  margin-right: 2px;
-                ">
-            Change Status
+
+        
+        
+
+        <a href=<%="/api/photoUpload/updateStatusImage/" + requests[0]._id +"/" + false %> <button type="button" class="btn btn-outline-danger" style="margin-bottom: 5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+            </svg>
+            Discard
           </button></a>
 
-        <h3 class="text-dark mb-4" style="--bs-primary: #858c9f; --bs-primary-rgb: 133, 140, 159">
-          Support Tickets
-        </h3>
+        
         <div class="card shadow desktop-table">
           <div class="card-header py-3">
             <p class="text-primary m-0 fw-bold">Tickets</p>
           </div>
           <div class="card-body">
             <div class="row">
-              <!-- <div class="col-md-6 text-nowrap">
-                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Show&nbsp;<select class="d-inline-block form-select form-select-sm">
-                                                <option value="10" selected="">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select>&nbsp;</label></div>
-                                </div> -->
               <div class="col-md-6">
                 <div class="text-md-end dataTables_filter" id="dataTable_filter">
                   <label class="form-label"></label>
@@ -173,11 +178,6 @@
                       <td>
                         <%= requests[i].content %>
                       </td>
-                      <!-- <td><%= requests[i] %></td> -->
-                      <!-- <% for(var j=0; j < requests[i].fileNames.length; j++) { %>
-                                        <td><img src= <%= "/uploads/" + requests[i].fileNames[j] %> alt=""></td>
-                                    <% } %> -->
-
                       <td>
                         <%= requests[i].operation %>
                       </td>
@@ -188,11 +188,9 @@
                       <% for(var i=0; i < requests.length; i++) { %>
                         <tr>
 
-                          <!-- <td><%= requests[i] %></td> -->
                           <% for(var j=0; j < requests[i].fileNames.length; j++) { %>
                             <td><img src=<%="/uploads/" + requests[i].fileNames[j] %> alt=""></td>
                             <% } %>
-
 
                         </tr>
                         <% } %>
@@ -207,7 +205,6 @@
                     <th>Customer ID</th>
                     <th>Content</th>
                     <th>Operation</th>
-                    <th>Created At</th>
 
                   </tr>
 
@@ -237,6 +234,15 @@
               <div class=<%=requests[i].status %>
                 >Status: <%= requests[i].createdAt %>
               </div>
+              <% for(var i=0; i < requests.length; i++) { %>
+                <tr>
+
+                  <% for(var j=0; j < requests[i].fileNames.length; j++) { %>
+                    <td><img src=<%="/uploads/" + requests[i].fileNames[j] %> alt="" style="margin-bottom: 5px;"></td>
+                    <% } %>
+
+                </tr>
+                <% } %>
 
             </div>
             <% } %>

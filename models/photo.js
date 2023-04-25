@@ -24,6 +24,10 @@ const photoUpload= new mongoose.Schema(
         operation:{
             type:String,
             required:true
+        },
+        status: {
+            type: Boolean,
+            required: true,
         }
     },
 

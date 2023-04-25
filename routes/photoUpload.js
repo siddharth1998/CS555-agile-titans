@@ -1,6 +1,7 @@
 import express from "express";
 import multer from "multer";
 import { photoUploadModel } from '../models/photo.js';
+import {ObjectId} from 'mongodb';
 
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -29,7 +30,8 @@ router.post("/", upload.array('imageFile', 20), async (req, res) => {
         fileNames: fileNames,
         content: req.body.comment,
         email: req.body.email,
-        operation: req.body.operation
+        operation: req.body.operation,
+        status: false,
     });
 
     let variable = result_json._id.toString()
@@ -37,6 +39,20 @@ router.post("/", upload.array('imageFile', 20), async (req, res) => {
     return res.redirect("photoUpload/dashboard");
 }
 );
+
+router.get('/updateStatusImage/:id/:status', async (req, res) => {
+    if (!req.params.id) {
+        return res.redirect("photoUpload/dashboard");
+    }
+    
+    let id = req.params.id;
+    let status = req.params.status;
+
+    const file = await photoUploadModel.findOneAndUpdate({ _id: new ObjectId(id) }, { status: status });
+    const files = await photoUploadModel.find();
+    
+    return res.render("PhotoInspection/photoDashboard.ejs", { requests: files });
+})
 
 router.get("/changeStatus/:id", async (req, res) => {
     if (!req.params.id) {

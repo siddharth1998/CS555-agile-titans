@@ -5,6 +5,14 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/Dashboard/assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" />
+  <link rel="stylesheet" href="/Dashboard/assets/fonts/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="/Dashboard/assets/fonts/font-awesome.min.css" />
+  <link rel="stylesheet" href="/Dashboard/assets/fonts/fontawesome5-overrides.min.css" />
+  <link rel="stylesheet" href="/Dashboard/assets/css/Pretty-Registration-Form-.css" />
+  <link rel="stylesheet" href="/Dashboard/assets/css/untitled.css" />
 </head>
 <style>
   @charset "UTF-8";
@@ -129,16 +137,89 @@
 </style>
 
 <body>
+  <div
+      id="wrapper"
+      style="--bs-primary: #858c9f; --bs-primary-rgb: 133, 140, 159"
+    >
+    
+      <nav
+        class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
+        style="
+          --bs-primary: #31363b;
+          --bs-primary-rgb: 49, 54, 59;
+          background: #858c9f;
+        "
+      >
+        <div class="container-fluid d-flex flex-column p-0">
+          <a
+            class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
+            href="#"
+          >
+            <div class="sidebar-brand-icon rotate-n-15"></div>
+            <div class="sidebar-brand-text mx-3"><span>SOLAR EPC</span></div>
+          </a>
+          <hr class="sidebar-divider my-0" />
+          <ul class="navbar-nav text-light" id="accordionSidebar">
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard"
+                ><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/project"
+                ><i class="fas fa-list"></i><span>Projects</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/task"
+                ><i class="fa fa-tasks"></i><span>Tasks</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/salesperson"
+                ><i class="fas fa-user"></i><span>Sales</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/support"
+                ><i class="fab fa-wpforms"></i><span>Support</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/api/photoUpload/dashboard"
+                ><i class="fas fa-photo-video"></i><span>Photo Upload</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contractHome"
+                ><i class="fas fa-file-contract"></i><span>Contracts</span></a
+              >
+            </li>
+          </ul>
+          <div class="text-center d-none d-md-inline">
+            <button
+              class="btn rounded-circle border-0"
+              id="sidebarToggle"
+              type="button"
+            ></button>
+          </div>
+        </div>
+      </nav>
+ 
   <div class="container outerContainer">
-    <form action="/api/photoUpload" method="post" enctype="multipart/form-data">
+    
+    <form action="/api/photoUpload" method="post" enctype="multipart/form-data" class="row g-3 custom-form">
 
       <div class="container centerify">
+        <h3 style="border-bottom-color: #85869c">
+          Upload Photos
+        </h3>
         <div class="row">
           <div class="col-sm-6">
             <label for="customerId" class="centerify">Customer ID</label>
           </div>
           <div class="col-sm-6">
-            <input type="text" class="form-control" id="customerId" name="customerId" />
+            <input type="text" class="form-label" id="customerId" name="customerId" />
           </div>
         </div>
         <div class="row">
@@ -146,7 +227,7 @@
             <label for="email centerify" class="centerify">Email</label>
           </div>
           <div class="col-sm-6">
-            <input type="email" class="form-control" id="email" name="email" />
+            <input type="email" class="form-label" id="email" name="email" />
           </div>
         </div>
         <div class="row" style="
@@ -158,7 +239,7 @@
             <label for="operation" class="centerify">Operation</label>
           </div>
           <div class="col-sm-6">
-            <select name="operation" class="form-control" id="operation">
+            <select name="operation" class="form-select" id="operation">
               <option value="inspection">Inspection</option>
               <option value="support">Support</option>
             </select>
@@ -169,7 +250,7 @@
             <label for="content" class="centerify">Comment</label>
           </div>
           <div class="col-sm-6">
-            <textarea name="comment" class="form-control" id="content" cols="40" rows="5"></textarea>
+            <textarea name="comment" class="form-label" id="content" cols="40" rows="5"></textarea>
           </div>
         </div>
       </div>
@@ -192,6 +273,7 @@
       </div>
     </form>
   </div>
+  </div>
 
   <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -203,7 +285,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-  <!-- <script>
+  <script>
     jQuery(document).ready(function () {
       ImgUpload();
     });
@@ -270,7 +352,7 @@
         $(this).parent().parent().remove();
       });
     }
-  </script> -->
+  </script>
   <script>
     const setUserName = () => {
       let user = JSON.parse(localStorage.getItem('user'));
