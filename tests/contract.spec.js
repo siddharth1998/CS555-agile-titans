@@ -114,7 +114,7 @@ describe("Contract APIs Testing", () => {
   });
 
   describe("create a new contract content", () => {
-    it("POST /contract/details/create should create a new contract content", (done) => {
+    it("POST /contract/details/create/:contractNo should create a new contract content", (done) => {
       const newContractContentData = {
         contractNo: "LEASE0102",
         dateSigned: "2023-04-01",
@@ -179,7 +179,7 @@ describe("Contract APIs Testing", () => {
         secondPartySignature: "amd",
       };
       request(app)
-        .post("/contract/delete/LEASE0103")
+        .post("/contract/content/LEASE0103")
         .send(secondPartySignatureData)
         .expect(200)
         .expect("Content-Type", "text/html")

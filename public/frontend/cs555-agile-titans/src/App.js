@@ -35,7 +35,7 @@ function App() {
       element: <ContractContent></ContractContent>,
     },
     {
-      path: "contract/details",
+      path: "contract/details/:contractNo",
       element: <ContractDetails></ContractDetails>,
     },
     {

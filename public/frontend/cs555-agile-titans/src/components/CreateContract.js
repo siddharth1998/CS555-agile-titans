@@ -1,10 +1,12 @@
 import { useState, useRef } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { fetchSomething } from "../services/fetchService";
 
 const CreateContract = () => {
   const [error, setError] = useState("");
+  const [contractNo, setContractNo] = useState("");
   const [jump, setJump] = useState(false);
+  const navigate = useNavigate();
   const contractNoRef = useRef();
   const contractTypeRef = useRef();
   const entityTypeRef = useRef();
@@ -47,11 +49,12 @@ const CreateContract = () => {
     setError("");
     setJump(false);
 
+    setContractNo(contractNoRef.current.value);
     await postContract();
   };
 
   if (jump) {
-    return <Navigate to="/contract/details" />;
+    return navigate(`/contract/details/${contractNo}`);
   }
 
   return (

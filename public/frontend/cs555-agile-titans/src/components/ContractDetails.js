@@ -1,11 +1,12 @@
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { fetchSomething } from "../services/fetchService";
 
 const ContractDetails = () => {
   const [error, setError] = useState("");
   const [jump, setJump] = useState(false);
   const navigate = useNavigate();
+  const { contractNo } = useParams();
   const contractNoRef = useRef();
   const dateSignedRef = useRef();
   const firstPartyRef = useRef();
@@ -42,7 +43,7 @@ const ContractDetails = () => {
     };
 
     fetchSomething(
-      `api/contract/details/create`,
+      `api/contract/details/create/${contractNo}`,
       requestOptions,
       (res) => {
         console.log(res);
@@ -98,6 +99,7 @@ const ContractDetails = () => {
                   className="form-control"
                   id="contractNo"
                   ref={contractNoRef}
+                  value={contractNo}
                 />
               </div>
             </div>
