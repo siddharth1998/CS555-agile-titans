@@ -58,22 +58,7 @@ async function downloadCSVData(data) {
 router.get("/download", async (req, res) => {
   try {
     const projects = await projectModel.find();
-    // Filter tasks by status
-    const completedProjects = projects.filter(
-      (project) => project.status === "Completed"
-    );
 
-    // Calculate completed task count
-    const completedProjectCount = completedProjects.length;
-
-    // Calculate remaining task count
-    const remainingProjectCount = projects.length - completedProjectCount;
-
-    // Create pie chart data
-    const pieChartData = [
-      { name: "Completed Projects", value: completedProjectCount },
-      { name: "Remaining Projects", value: remainingProjectCount },
-    ];
     const data = projects.map((project) => {
       return {
         projectName: project.projectName,
@@ -82,25 +67,14 @@ router.get("/download", async (req, res) => {
         endDate: project.endDate,
       };
     });
+
     const file = await downloadCSVData(data);
-    // Create pie chart image
-    const pieChartImage = await createPieChartImage(pieChartData);
-
-    // Create zip file containing CSV file and pie chart image
-    const zip = new JSZip();
-    zip.file(filename, data);
-    zip.file("pie-chart.png", pieChartImage, { binary: true });
-
-    // Send zip file as response
-    const zipData = await zip.generateAsync({ type: "nodebuffer" });
-
-    res.setHeader("Content-Type", "application/zip");
+    res.setHeader("Content-Type", "text/csv");
     res.setHeader(
       "Content-Disposition",
       `attachment; filename=${file.filename}`
     );
-
-    res.send(zipData);
+    res.send(file.data);
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");

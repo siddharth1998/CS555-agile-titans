@@ -227,7 +227,10 @@
                       <% for(var i=0; i < projects .length; i++) { %>
                       <tr>
                         <td><%= projects [i].projectName %></td>
-                        <td><%= projects [i].description %></td>
+                        <td>
+                          <% let longString = projects [i].description %> <%=
+                          longString.substring(0, 80) + "..." %>
+                        </td>
                         <td><%= projects [i].status %></td>
                         <td><%= projects [i].endDate %></td>
                         <td>
