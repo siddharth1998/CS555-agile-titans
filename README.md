@@ -14,6 +14,12 @@
 ## Live Demo
 https://titans.vi-sh.tech/
 
+## How to run
+```sh
+npm i
+npm start
+```
+
 ## Asana Board
 https://app.asana.com/0/1203931779391123/board
 
