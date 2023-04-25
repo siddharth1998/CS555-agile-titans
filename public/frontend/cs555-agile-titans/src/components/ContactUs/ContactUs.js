@@ -70,20 +70,19 @@ const ContactUs = () => {
                 {message}
             </div>}
             <section className="py-4 py-xl-5">
-                <div className="carousel slide" data-bs-ride="false" id="carousel-1">
-                    <div className="carousel-inner">
-                        <div className="carousel-item active"></div>
-                        <div className="carousel-item"><img className="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image" /></div>
-                        <div className="carousel-item"><img className="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image" /></div>
+                <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
+                    <div class="container"><a class="navbar-brand" href="/">Solar EPZ</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarResponsive"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarResponsive">
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/contactUs">CONTACT US</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/aboutUs">ABOUT US</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/auth">LOG IN</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div><a className="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span className="carousel-control-prev-icon"></span><span className="visually-hidden">Previous</span></a><a className="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span className="carousel-control-next-icon"></span><span className="visually-hidden">Next</span></a></div>
-                    <ol className="carousel-indicators">
-                        <li data-bs-target="#carousel-1" data-bs-slide-to="0" className="active"></li>
-                        <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
-                        <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
-                    </ol>
-                </div>
-                <div className="container">
+                </nav>
+                <div className="container mt-5">
                     <div className="row mb-5">
                         <div className="col-md-8 col-xl-6 text-center mx-auto">
                             <h2>Get In touch With Us</h2>
