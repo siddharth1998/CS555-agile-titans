@@ -113,7 +113,7 @@ const ContractDetails = () => {
                     className="form-control"
                     id="dateSigned"
                     ref={dateSignedRef}
-                    value="2023-01-01"
+                    defaultValue="2023-01-01"
                   />
                 </div>
                 <div className="col-sm-3">, by and between</div>
@@ -168,7 +168,7 @@ const ContractDetails = () => {
                   className="form-control"
                   id="paymentAmount"
                   ref={paymentAmountRef}
-                  value="100000"
+                  defaultValue="100000"
                 />
               </div>
               <div className="col-sm-5">
@@ -190,7 +190,7 @@ const ContractDetails = () => {
                   className="form-control"
                   id="noticePeriod"
                   ref={noticePeriodRef}
-                  value="30"
+                  defaultValue="30"
                 />
               </div>
               <div className="col-sm-5">
@@ -211,7 +211,7 @@ const ContractDetails = () => {
                     className="form-control"
                     id="startDate"
                     ref={startDateRef}
-                    value="2023-01-01"
+                    defaultValue="2023-01-01"
                   />
                 </div>
                 <div className="col-sm-4">, and shall continue until</div>
@@ -226,7 +226,7 @@ const ContractDetails = () => {
                     className="form-control"
                     id="endDate"
                     ref={endDateRef}
-                    value="2023-12-31"
+                    defaultValue="2023-12-31"
                   />
                 </div>
                 <div className="col-sm-9">
