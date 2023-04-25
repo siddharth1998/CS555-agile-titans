@@ -83,7 +83,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/contract"
+              <a class="nav-link" href="/contractHome"
                 ><i class="fas fa-file-contract"></i><span>Contracts</span></a
               >
             </li>
@@ -106,26 +106,47 @@
           id="content"
           style="--bs-primary: #858c9f; --bs-primary-rgb: 133, 140, 159"
         >
-        <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
-          <div class="container-fluid">
+          <nav
+            class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top"
+          >
+            <div class="container-fluid">
               <ul class="navbar-nav flex-nowrap ms-auto">
-                  <li class="nav-item dropdown no-arrow">
-                      <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small" id="userName">Valerie Luna</span></a>
-                          <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="api/user/auth/logout"><i
-                                      class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a></div>
-                      </div>
-                  </li>
+                <li class="nav-item dropdown no-arrow">
+                  <div class="nav-item dropdown no-arrow">
+                    <a
+                      class="dropdown-toggle nav-link"
+                      aria-expanded="false"
+                      data-bs-toggle="dropdown"
+                      href="#"
+                      ><span
+                        class="d-none d-lg-inline me-2 text-gray-600 small"
+                        id="userName"
+                        >Valerie Luna</span
+                      ></a
+                    >
+                    <div
+                      class="dropdown-menu shadow dropdown-menu-end animated--grow-in"
+                    >
+                      <a class="dropdown-item" href="api/user/auth/logout"
+                        ><i
+                          class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"
+                        ></i
+                        >&nbsp;Logout</a
+                      >
+                    </div>
+                  </div>
+                </li>
               </ul>
-          </div>
-      </nav>
-          <% if(task == '') { %>
-
+            </div>
+          </nav>
           <div class="row register-form">
             <div class="col-md-8 offset-md-2">
-              <form class="custom-form" method="post" action="/task">
-                <h1 style="border-bottom-color: #85869c">Add New Task</h1>
-            
-                  
+              <form
+                class="custom-form"
+                method="POST"
+                action="/task/edit/<%= task._id %>"
+              >
+                <h1 style="border-bottom-color: #85869c">Edit Task Details</h1>
                 <div class="row form-group">
                   <div class="col-sm-4 label-column">
                     <label class="col-form-label" for="name-input-field"
@@ -136,7 +157,7 @@
                     <input
                       class="form-control"
                       type="text"
-                      value=""
+                      value="<%= task.taskName %>"
                       name="taskName"
                       required
                     />
@@ -144,7 +165,7 @@
                 </div>
                 <div class="row form-group">
                   <div class="col-sm-4 label-column">
-                    <label class="col-form-label" for="name-input-field"
+                    <label class="col-form-label" for="email-input-field"
                       >Description</label
                     >
                   </div>
@@ -152,7 +173,7 @@
                     <input
                       class="form-control"
                       type="text"
-                      value=""
+                      value="<%= task.Description %>"
                       name="Description"
                       required
                     />
@@ -160,7 +181,7 @@
                 </div>
                 <div class="row form-group">
                   <div class="col-sm-4 label-column">
-                    <label class="col-form-label" for="name-input-field"
+                    <label class="col-form-label" for="email-input-field"
                       >Priority</label
                     >
                   </div>
@@ -168,7 +189,7 @@
                     <input
                       class="form-control"
                       type="number"
-                      value=""
+                      value="<%= task.priority %>"
                       name="priority"
                       min="0"
                       max="10"
@@ -179,7 +200,7 @@
                 </div>
                 <div class="row form-group">
                   <div class="col-sm-4 label-column">
-                    <label class="col-form-label" for="ame-input-field"
+                    <label class="col-form-label" for="name-input-field"
                       >Assignee</label
                     >
                   </div>
@@ -188,6 +209,8 @@
                       id="taskAssign"
                       name="taskAssign"
                       class="form-control"
+                      value=" <%= task.taskAssign.firstName %> <%=
+                      task.taskAssign.lastName %>"
                       required
                     >
                       <% for(var i=0; i < users.length; i++) { %>
@@ -199,60 +222,58 @@
                   </div>
                 </div>
                 <div class="row form-group">
-                  <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field">Status</label></div>
+                  <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="pawssword-input-field"
+                      >Status</label
+                    >
+                  </div>
                   <div class="col-sm-6 input-column">
-                      <select id="status" name="status" class="form-control" required>
+                    <select
+                      id="status"
+                      name="status"
+                      class="form-control"
+                      value="<%= task.status %>"
+                      required
+                    >
                       <option value="New">New</option>
                       <option value="In Progress">In Progress</option>
                       <option value="Completed">Completed</option>
                     </select>
                   </div>
                 </div>
-                <div class="row form-group">
-                    <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Due Date</label></div>
-                    <div class="col-sm-4 col-xl-6 input-column"><input class="form-control" type="date" value =" " name="dueDate" required></div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-sm-4 label-column">
-                      <label class="col-form-label" for="ame-input-field"
-                        >Project Name</label
-                      >
-                    </div>
-                    <div class="col-sm-6 input-column">
-                      <select
-                        id="project"
-                        name="project"
-                        class="form-control"
-                        required
-                      >
-                        <% for(var i=0; i < projects.length; i++) { %>
-                        <option value="<%= projects[i]._id %>">
-                          <%= projects[i].projectName %> 
-                        </option>
-                        <% } %>
-                      </select>
-                    </div>
-                    
-                <button
-                  class="btn btn-light submit-button"
-                  type="submit"
-                  style="background: #858c9f"
-                >
-                  Submit
-                </button>
-              
-                <% } else { %>
 
-                    <label class="col-form-label col-md-8 offset-md-2">Task Added successfully</label>
-                      <a
-                        class="btn btn-light submit-button"
-                        type="button"
-                        href="/task"
-                        style="background: #858c9f"
-                        >View All Tasks</a
-                      >
-                      <% } %> 
-            </form>
+                <div class="row form-group">
+                  <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="ame-input-field"
+                      >Project Name</label
+                    >
+                  </div>
+                  <div class="col-sm-6 input-column">
+                    <select
+                      id="project"
+                      name="project"
+                      class="form-control"
+                      value="<%= projects.projectName %>"
+                      required
+                    >
+                      <% for(var i=0; i < projects.length; i++) { %>
+
+                      <option value="<%= projects[i]._id %>">
+                        <%= projects[i].projectName %>
+                      </option>
+                      <% } %>
+                    </select>
+                  </div>
+                  <button
+                    class="btn btn-light submit-button"
+                    type="submit"
+                    style="background: #858c9f"
+                  >
+                    Submit
+                  </button>
+                </div>
+                <!--<a class="btn btn-light submit-button" role="button" href="NewTask.html" style="background: #858c9f;">Edit Details</a>-->
+              </form>
             </div>
           </div>
         </div>
@@ -261,14 +282,14 @@
         ><i class="fas fa-angle-up"></i
       ></a>
     </div>
-    <script src="Dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="Dashboard/assets/js/theme.js"></script>
+    <script src="/Dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Dashboard/assets/js/theme.js"></script>
     <script>
       const setUserName = () => {
-          let user = JSON.parse(localStorage.getItem('user'));
-          document.getElementById("userName").innerText = user.userName;
+        let user = JSON.parse(localStorage.getItem("user"));
+        document.getElementById("userName").innerText = user.userName;
       };
       setUserName();
-  </script>
+    </script>
   </body>
 </html>
