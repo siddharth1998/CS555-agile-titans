@@ -4,8 +4,60 @@ import { commentModel } from "../models/comment.js";
 import { taskModel } from "../models/Task.js";
 import { userModel } from "../models/user.js";
 import { projectModel } from "../models/project.js";
+import { createObjectCsvWriter } from "csv-writer";
+import { promisify } from "util";
+import fs from "fs";
 
 const router = express.Router();
+
+async function downloadCSVData(data) {
+  // Create a new CSV writer
+  const writer = createObjectCsvWriter({
+    path: "data.csv",
+    header: Object.keys(data[0]).map((key) => ({ id: key, title: key })),
+  });
+
+  // Write the data to the CSV file
+  await writer.writeRecords(data);
+
+  // Read the CSV file into a buffer
+  const buffer = await promisify(fs.readFile)("data.csv");
+
+  // Return the buffer as a downloadable file
+  return {
+    filename: "data.csv",
+    data: buffer,
+  };
+}
+
+//Backend API for downloading task data in csv, using downloadCSVData function
+router.get("/download", async (req, res) => {
+  try {
+    const tasks = await taskModel.find().populate("taskAssign");
+
+    const data = tasks.map((task) => {
+      return {
+        taskName: task.taskName,
+        taskDescription: task.Description,
+        taskPriority: task.priority,
+        taskAssign: task.taskAssign.firstName,
+        taskDueDate: task.dueDate,
+        taskStatus: task.status,
+      };
+    });
+    console.log("data::::::", data);
+    const file = await downloadCSVData(data);
+    res.setHeader("Content-Type", "text/csv");
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename=${file.filename}`
+    );
+    res.send(file.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
+});
 
 router.post("/", async (req, res) => {
   try {
@@ -51,6 +103,21 @@ router.get("/new", async (req, res) => {
   }
 });
 
+router.get("/edit/:id", async (req, res) => {
+  try {
+    const task = await taskModel
+      .findById(req.params.id)
+      .populate("project")
+      .populate("taskAssign");
+    const users = await userModel.find();
+    const projects = await projectModel.find();
+    res.render("Dashboard/TaskEdit.ejs", { task, users, projects });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server Error");
+  }
+});
+
 router.get("/:id", async (req, res) => {
   try {
     const task = await taskModel
@@ -70,15 +137,19 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.put("/tasks/:id", async (req, res) => {
+router.post("/edit/:id", async (req, res) => {
   try {
-    const task = await taskModel.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+    const task = await taskModel
+      .findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+      })
+      .populate("project")
+      .populate("taskAssign");
+
     if (!task) {
       return res.status(404).send("Task not found");
     }
-    res.json(task);
+    res.render("Dashboard/TaskDetails.ejs", { task });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server error");

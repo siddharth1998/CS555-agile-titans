@@ -114,18 +114,39 @@
           id="content"
           style="--bs-primary: #858c9f; --bs-primary-rgb: 133, 140, 159"
         >
-        <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
-          <div class="container-fluid">
+          <nav
+            class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top"
+          >
+            <div class="container-fluid">
               <ul class="navbar-nav flex-nowrap ms-auto">
-                  <li class="nav-item dropdown no-arrow">
-                      <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small" id="userName">Valerie Luna</span></a>
-                          <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="api/user/auth/logout"><i
-                                      class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a></div>
-                      </div>
-                  </li>
+                <li class="nav-item dropdown no-arrow">
+                  <div class="nav-item dropdown no-arrow">
+                    <a
+                      class="dropdown-toggle nav-link"
+                      aria-expanded="false"
+                      data-bs-toggle="dropdown"
+                      href="#"
+                      ><span
+                        class="d-none d-lg-inline me-2 text-gray-600 small"
+                        id="userName"
+                        >Valerie Luna</span
+                      ></a
+                    >
+                    <div
+                      class="dropdown-menu shadow dropdown-menu-end animated--grow-in"
+                    >
+                      <a class="dropdown-item" href="api/user/auth/logout"
+                        ><i
+                          class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"
+                        ></i
+                        >&nbsp;Logout</a
+                      >
+                    </div>
+                  </div>
+                </li>
               </ul>
-          </div>
-      </nav>
+            </div>
+          </nav>
           <div
             class="container-fluid"
             style="--bs-primary: #858c9f; --bs-primary-rgb: 133, 140, 159"
@@ -141,6 +162,37 @@
               "
               ><i class="fa fa-plus"></i>&nbsp;New Task</a
             >
+            <button
+              id="downloadTasks"
+              class="btn btn-primary pull-right"
+              style="
+                --bs-primary: #858c9f;
+                --bs-primary-rgb: 133, 140, 159;
+                background: #858c9f;
+                margin-right: 20px;
+              "
+            >
+              Download Tasks
+            </button>
+            <script>
+              const downloadTasks = async () => {
+                const response = await fetch("/task/download");
+                const blob = await response.blob();
+                const filename = response.headers
+                  .get("content-disposition")
+                  .split("filename=")[1];
+                const url = window.URL.createObjectURL(new Blob([blob]));
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", filename);
+                document.body.appendChild(link);
+                link.click();
+              };
+
+              document
+                .getElementById("downloadTasks")
+                .addEventListener("click", downloadTasks);
+            </script>
             <h3
               class="text-dark mb-4"
               style="--bs-primary: #858c9f; --bs-primary-rgb: 133, 140, 159"
@@ -192,14 +244,23 @@
                         <% } %>
                         <td>
                           <a href="/task/<%= tasks [i]._id %>"
-                            ><i class="fa fa-eye"></i></a
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                          <a
+                            href="/task/edit/<%= tasks [i]._id %>"
+                            style="color: #28a745; margin-left: 20px"
+                            ><i class="fas fa-edit"></i></a
                           ><button
                             style="background-color: transparent; border: none"
                             onclick="redirectToUrl('<%= tasks [i]._id %>')"
                           >
                             <i
                               class="fa fa-trash"
-                              style="margin-right: 24px; padding-left: 19px"
+                              style="
+                                margin-right: 24px;
+                                padding-left: 19px;
+                                color: #dc3444;
+                              "
                               id="<%= tasks [i]._id %>"
                             ></i>
                           </button>
@@ -247,10 +308,10 @@
     <script src="/Dashboard/assets/js/theme.js"></script>
     <script>
       const setUserName = () => {
-          let user = JSON.parse(localStorage.getItem('user'));
-          document.getElementById("userName").innerText = user.userName;
+        let user = JSON.parse(localStorage.getItem("user"));
+        document.getElementById("userName").innerText = user.userName;
       };
       setUserName();
-  </script>
+    </script>
   </body>
 </html>
