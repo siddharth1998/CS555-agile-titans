@@ -13,8 +13,8 @@ const photoUpload= new mongoose.Schema(
             type:String,
             required:true
         },
-        fileName:{
-            type:String, 
+        fileNames:{
+            type:Array, 
             required: true
         },
         content:{

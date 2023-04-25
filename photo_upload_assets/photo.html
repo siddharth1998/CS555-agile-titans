@@ -1,83 +1,29 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="./photo.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-      <div class="container outerContainer" >
-        <form action="">
-
-
-          <div class="container centerify">
-  
-            <div class="row">
-              <div class="col-sm-6">
-                <label for="customerId" class="centerify">Customer ID</label>
-              </div>
-              <div class="col-sm-6">
-                <input type="text" class="form-control" id="customerId">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <label for="email centerify"  class="centerify">Email</label>
-              </div>
-              <div class="col-sm-6">
-                <input type="email" class="form-control" id="email">
-              </div>
-            </div>
-            <div class="row" style="background-color: rgb(168, 168, 168);border-radius: 15px;padding:10px">
-              <div class="col-sm-6">
-                <label for="operation" class="centerify">Operation</label>
-              </div>
-              <div class="col-sm-6">
-                <select name="operation" class="form-control" id="operation">
-                  <option value="inspection">Inspection</option>
-                  <option value="support">Support</option>
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <label for="content" class="centerify">Comment</label>
-              </div>
-              <div class="col-sm-6">
-                <textarea name="content" class="form-control" id="content" cols="40" rows="5"></textarea>
-              </div>
-            </div>
-
-
-          </div>
-          <div class="upload__box">
-            <div class="upload__btn-box">
-             
-  
-              <label class="upload__btn">
-                <p>Upload images</p>
-                <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
-              </label>
-            </div>
-            <div class="upload__img-wrap"></div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8 centerify">
-              <input class="btn btn-primary" type="submit" value="Submit" >
-
-            </div>
-            <div class="col-sm-2"></div>
-          </div>
-        </form>
-        
-      </div>
-      
-    </form>
-    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="./photo.js"></script>
-    </body>
-</html>
+{
+  "name": "cs555-agile-titans",
+  "version": "1.0.0",
+  "description": "## Team <ol>   <li>Siddharth</li>   <li>Vishwanath</li>   <li>Pradyumn</li>   <li>Jay</li>   <li>Aayushi</li>   <li>Tanvisha</li> </ol>",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siddharth1998/CS555-agile-titans.git"
+  },
+  "author": "Kashi Vishwanath Bondugula",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/siddharth1998/CS555-agile-titans/issues"
+  },
+  "homepage": "https://github.com/siddharth1998/CS555-agile-titans#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20"
+  }
+}
