@@ -56,12 +56,10 @@ router.get("/countInProgress", async (req, res) => {
 router.post("/create", async (req, res) => {
   try {
     if (!req.body)
-      res
-        .status(400)
-        .json({
-          status: "error",
-          message: "No contract list details are sent",
-        });
+      return res.status(400).json({
+        status: "error",
+        message: "No contract list details are sent",
+      });
     let contract = await createContractList(req.body);
     return res
       .status(200)
@@ -99,10 +97,11 @@ router.post("/content/:contractNo", async (req, res) => {
   try {
     let contractNo = req.params.contractNo;
     let secondParty = req.body.secondPartySignature;
-    if (!secondParty) res.status(400).json({
-      status: "error",
-      message: "Signature should not be empty",
-    });
+    if (!(secondParty.trim()))
+      return res.status(400).json({
+        status: "error",
+        message: "Signature should not be empty",
+      });
     await updateSecondPartySignature(contractNo, secondParty);
     let updatedContent = await updateSecondParty(contractNo, secondParty);
     return res.status(200).json({
@@ -121,9 +120,13 @@ router.post("/content/:contractNo", async (req, res) => {
 router.post("/details/create", async (req, res) => {
   try {
     if (!req.body)
-      res
+      return res
         .status(400)
         .json({ status: "error", message: "No contract content sent" });
+    if (!req.body.firstPartySignature.trim())
+      return res
+        .status(400)
+        .json({ status: "error", message: "Signature should not be empty" });
     let contract = await createContractDetail(req.body);
     await updateContractList(
       req.body.contractNo,
@@ -185,9 +188,13 @@ router.post("/update/:contractNo", async (req, res) => {
     let contractNo = req.params.contractNo;
     await terminateContractAtWill(contractNo);
     if (!req.body)
-      res
+      return res
         .status(400)
         .json({ status: "error", message: "No new contract content sent" });
+    if (!(req.body.firstPartySignature.trim())) 
+      return res
+        .status(400)
+        .json({ status: "error", message: "Signature should not be empty" });
     let newContract = await createContractDetail(req.body);
     let oldListItem = await getContractListByContractNo(contractNo);
     let newListItem = {

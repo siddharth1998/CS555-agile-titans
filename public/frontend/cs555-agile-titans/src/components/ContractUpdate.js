@@ -5,6 +5,7 @@ import { fetchSomething } from "../services/fetchService";
 const ContractUpdate = () => {
   const [contractContent, setContractContent] = useState({});
   const [error, setError] = useState("");
+  const [jump, setJump] = useState(false);
   let { contractNo } = useParams();
   const navigate = useNavigate();
   const contractNoRef = useRef();
@@ -40,7 +41,10 @@ const ContractUpdate = () => {
         ).substring(0, 10);
         setContractContent(result.contractContent);
       },
-      (err) => console.log("error", err)
+      (err) => {
+        console.log(err);
+        setError(err.massage);
+      }
     );
   }, [contractNo]);
 
@@ -72,22 +76,37 @@ const ContractUpdate = () => {
       requestOptions,
       (res) => {
         console.log(res);
+        setJump(true);
       },
       (err) => {
         console.log(err);
-        setError(err.massage);
+        setError(err.message);
       }
     );
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setError("");
+    setJump(false);
+
+    updateContract();
+  };
+
+  if (jump) {
+    navigate("/contract");
+    window.location.reload();
+  }
+
   return (
     <div>
+      {error && (
+        <div className="alert alert-danger" role="alert">
+          {error}
+        </div>
+      )}
       <form>
-        {error && (
-          <div className="alert alert-danger" role="alert">
-            {error}
-          </div>
-        )}
         <div className="row">
           <div
             className="col-md-8"
@@ -287,12 +306,7 @@ const ContractUpdate = () => {
                 <button
                   type="button"
                   className="btn btn-primary mb-3"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    updateContract();
-                    navigate("/contract");
-                    window.location.reload();
-                  }}
+                  onClick={handleSubmit}
                 >
                   Party A Sign (Update)
                 </button>

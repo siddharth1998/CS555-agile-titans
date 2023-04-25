@@ -5,7 +5,8 @@ import { fetchSomething } from "../services/fetchService";
 const ContractContent = () => {
   const [contractContent, setContractContent] = useState({});
   const [error, setError] = useState("");
-  let { contractNo } = useParams();
+  const [jump, setJump] = useState(false);
+  const { contractNo } = useParams();
   const navigate = useNavigate();
   const secondPartySignedRef = useRef();
 
@@ -57,13 +58,27 @@ const ContractContent = () => {
       requestOptions,
       (res) => {
         console.log(res);
+        setJump(true);
       },
       (err) => {
         console.log("error", err);
-        setError(err.massage);
+        setError(err.message);
       }
     );
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setError("");
+    setJump(false);
+
+    postSecondParty();
+  };
+
+  if (jump) {
+    window.location.reload();
+  }
 
   return (
     <div>
@@ -182,11 +197,7 @@ const ContractContent = () => {
                   <button
                     type="button"
                     className="btn btn-primary mb-3"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      postSecondParty();
-                      window.location.reload();
-                    }}
+                    onClick={handleSubmit}
                   >
                     Party B Sign
                   </button>
@@ -222,6 +233,7 @@ const ContractContent = () => {
       </div>
     </div>
   );
+
 };
 
 export default ContractContent;
