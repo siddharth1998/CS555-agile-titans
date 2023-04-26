@@ -232,7 +232,10 @@
                           longString.substring(0, 80) + "..." %>
                         </td>
                         <td><%= projects [i].status %></td>
-                        <td><%= projects [i].endDate %></td>
+                        <td>
+                          <% let longStringDate = projects[i].endDate.toString() %> 
+                          <%=longStringDate.substring(0, 16) %>
+                        </td>
                         <td>
                           <a href="/project/<%= projects [i]._id %>"
                             ><i class="fa fa-eye"></i
@@ -295,7 +298,9 @@
                 Status: <%= projects [i].status %>
               </div>
               <div class="project-end-date text-truncate">
-                End Date: <%= projects [i].endDate %>
+                End Date:
+                  <% let longStringDate = projects[i].endDate.toString() %> 
+                  <%=longStringDate.substring(0, 16) %>
               </div>
               <% } %>
             </div>

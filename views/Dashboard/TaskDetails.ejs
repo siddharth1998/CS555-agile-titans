@@ -188,9 +188,10 @@
                     >
                   </div>
                   <div class="col-sm-4 col-xl-6 input-column">
-                    <label class="col-form-label" for="name-input-field"
-                      ><%= task.dueDate %></label
-                    >
+                    <label class="col-form-label" for="name-input-field">
+                        <% let longStringDate = task.dueDate.toString() %> 
+                        <%=longStringDate.substring(0, 16) %>
+                      </label>
                   </div>
                 </div>
                 <div class="row form-group">
