@@ -168,8 +168,9 @@
                     >
                   </div>
                   <div class="col-sm-4 col-xl-6 input-column">
-                    <label class="col-form-label" for="name-input-field"
-                      ><%= project.endDate %>
+                    <label class="col-form-label" for="name-input-field">
+                        <% let longStringDate = project.endDate.toString() %> 
+                        <%=longStringDate.substring(0, 16) %>
                     </label>
                   </div>
                 </div>
