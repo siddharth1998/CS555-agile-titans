@@ -1,4 +1,6 @@
-FROM node:19
+FROM alpine
+
+RUN apk add --update --no-cache nodejs npm
 
 RUN mkdir /src
 
@@ -14,10 +16,14 @@ WORKDIR /src/public/frontend/cs555-agile-titans/build
 
 RUN cp -R * ../../../
 
+RUN rm -rf /src/public/frontend/
+
 WORKDIR /src
 
 RUN mkdir public/uploads
 
 RUN npm install
 
-CMD npm start
+RUN npm cache clean --force
+
+CMD ["npm", "start"]

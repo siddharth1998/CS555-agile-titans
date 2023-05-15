@@ -1,0 +1,7 @@
+services:
+  titans:
+    container_name: titans
+    image: crueger2878/agile:10.0
+    restart: always
+    ports:
+      - "3336:3000"
